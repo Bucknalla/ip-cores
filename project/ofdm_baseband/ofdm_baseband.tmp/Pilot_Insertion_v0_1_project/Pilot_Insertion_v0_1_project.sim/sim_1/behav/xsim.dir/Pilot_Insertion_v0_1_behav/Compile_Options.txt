@@ -1,0 +1,1 @@
+-wto "f84df0eb90804f8e9ced495b5fc66c5d" --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "Pilot_Insertion_v0_1_behav" "xil_defaultlib.Pilot_Insertion_v0_1" "xil_defaultlib.glbl" -log "elaborate.log" 

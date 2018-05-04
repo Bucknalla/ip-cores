@@ -1,0 +1,9 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  "../../../preamble.srcs/sources_1/imports/Preamble_0.1/hdl/preamble.v"
+verilog xil_defaultlib  "../../../preamble.srcs/sim_1/imports/hdl/preamble_tb.v"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

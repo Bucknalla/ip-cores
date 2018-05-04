@@ -17,29 +17,42 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
-
+import random
 from myhdl import *
 import os
 
+# Commands
 module = 'preamble'
 testbench = '%s_tb' % module
 
 srcs = []
-
 srcs.append("hdl/%s.v" % module)
 srcs.append("%s.v" % testbench)
-
 src = ' '.join(srcs)
 
-build_cmd = "iverilog -o %s.v %s" % (testbench, src)
+build_cmd = "iverilog -o %s.vvp %s" % (testbench, src) # Builds the testbench with MyHDL operatives
 
-def bench():
+# Random Seeds
+random.seed(1)
+randrange = random.randrange
 
-    # Parameters
-    WIDTH = 32
-    TYPE = "PRIORITY"
-    BLOCK = "REQUEST"
+# Parameters
+WIDTH = 32
+TYPE = "PRIORITY"
+BLOCK = "REQUEST"
+ACTIVE_LOW, INACTIVE_HIGH = 0, 1
 
+# DUT
+def preamble(clk, rst, signal_in, signal_out, preamble_length, preamble_value, frame_length, valid_in, ready_in, ready_out, valid_out, error, preamble_flag):
+
+    if os.system(build_cmd):
+        raise Exception("Error running build command")
+
+    dut = Cosimulation("vvp -m myhdl {0}.vvp -lxt2".format(testbench), **locals())
+    return dut
+
+@block
+def test_bench():
     # Inputs
     clk = Signal(bool(0))
     rst = Signal(bool(0))
@@ -50,128 +63,48 @@ def bench():
     valid_in = Signal(bool(0))
     ready_in = Signal(bool(0))
 
-
     # Outputs
     signal_out = Signal(intbv(0)[WIDTH:])
     ready_out = Signal(bool(0))
     valid_out = Signal(bool(0))
     error = Signal(bool(0))
     preamble_flag = Signal(bool(0))
+    # rst = rstSignal(0, active=0, async=True)
 
-    # DUT
-    if os.system(build_cmd):
-        raise Exception("Error running build command")
+    preamble_1 = preamble(clk, rst, signal_in, signal_out, preamble_length, preamble_value, frame_length, valid_in, ready_in, valid_out, ready_out, error, preamble_flag)
 
-    dut = Cosimulation(
-        ("vvp -m myhdl %s.vvp -lxt2" % testbench),
-        clk=clk,
-        rst=rst,
-        signal_in = signal_in,
-        preamble_length = preamble_length,
-        preamble_value = preamble_value,
-        frame_length = frame_length,
-        valid_in = valid_in,
-        ready_in = ready_in,
-        signal_out = signal_out,
-        ready_out = ready_out,
-        valid_out = valid_out,
-        error = error,
-        preamble_flag = preamble_flag
-    )
+    PERIOD = delay(10)
 
-    @always(delay(4))
-    def clkgen():
+    @always(PERIOD)
+    def clkGen():
         clk.next = not clk
 
     @instance
-    def check():
-        yield delay(100)
-        yield clk.posedge
-        rst.next = 1
-        yield clk.posedge
-        rst.next = 0
-        yield clk.posedge
-        yield delay(100)
-        yield clk.posedge
+    def stimulus():
+        rst.next = ACTIVE_LOW
+        yield clk.negedge
+        rst.next = INACTIVE_HIGH
+        for i in range(16):
+            enable.next = min(1, randrange(3))
+            yield clk.negedge
+        raise StopSimulation()
 
-        yield clk.posedge
+    @instance
+    def monitor():
+        print("enable  count")
+        yield rst.posedge
+        while 1:
+            yield clk.posedge
+            yield delay(1)
+            print("   %s      %s" % (int(signal_out), preamble_flag))
 
-        # print("test 1: data")
-        # current_test.next = 1
+    return clkGen, stimulus, preamble_1, monitor
 
-        # yield clk.posedge
-
-        # for i in range(32):
-        #     l = [i]
-        #     k = 0
-        #     for y in l:
-        #         k = k | 1 << y
-        #     request.next = k
-        #     yield clk.posedge
-        #     request.next = 0
-        #     yield clk.posedge
-
-        #     assert grant == 1 << i
-        #     assert grant_encoded == i
-
-        #     yield clk.posedge
-
-        # yield delay(100)
-
-        # yield clk.posedge
-
-        # print("test 2: two bits")
-        # current_test.next = 2
-
-        # for i in range(32):
-        #     for j in range(32):
-        #         l = [i, j]
-        #         k = 0
-        #         for y in l:
-        #             k = k | 1 << y
-        #         request.next = k
-        #         yield clk.posedge
-        #         request.next = 0
-        #         yield clk.posedge
-
-        #         assert grant == 1 << max(l)
-        #         assert grant_encoded == max(l)
-
-        #         request.next = 0
-
-        #         yield clk.posedge
-
-        # print("test 3: five bits")
-        # current_test.next = 3
-
-        # for i in range(32):
-        #     l = [(i*x) % 32 for x in [1,2,3,4,5]]
-        #     k = 0
-        #     for y in l:
-        #         k = k | 1 << y
-        #     request.next = k
-        #     yield clk.posedge
-        #     request.next = 0
-        #     yield clk.posedge
-
-        #     assert grant == 1 << max(l)
-        #     assert grant_encoded == max(l)
-
-        #     prev = int(grant_encoded)
-
-        #     yield clk.posedge
-
-        # yield delay(100)
-
-        raise StopSimulation
-
-    return dut, clkgen, check
-
-def test_bench():
+def test__bench():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
-    sim = Simulation(bench())
+    sim = Simulation()
     sim.run()
 
 if __name__ == '__main__':
     print("Running test...")
-    test_bench()
+    test__bench()

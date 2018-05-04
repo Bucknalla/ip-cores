@@ -21,6 +21,11 @@
 
 module preamble_tb();
 
+initial begin
+    $from_myhdl(B);
+    $to_myhdl(G);
+end
+
 initial
 begin
     $dumpfile("preamble_tb.vcd");

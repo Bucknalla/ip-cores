@@ -85,3 +85,7 @@
 !*.bmm
 !*.xmp
 !*.py
+/lib
+/include
+/share
+/bin

@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Fri May  4 11:24:12 2018
+//Date        : Tue May  8 15:15:53 2018
 //Host        : alex-warc running 64-bit Ubuntu 16.04.4 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -201,6 +201,7 @@ module design_1
   wire [31:0]xfft_0_M_AXIS_DATA_TDATA;
   wire xfft_0_M_AXIS_DATA_TLAST;
   wire xfft_0_M_AXIS_DATA_TVALID;
+  wire xfft_0_event_frame_started;
   wire xfft_0_event_tlast_missing;
   wire xfft_0_event_tlast_unexpected;
 
@@ -264,7 +265,8 @@ module design_1
         .s00_axi_wstrb(axi_interconnect_M03_AXI_WSTRB),
         .s00_axi_wvalid(axi_interconnect_M03_AXI_WVALID));
   design_1_Pilot_Insertion_0_0 Pilot_Insertion_0
-       (.frame_end(Pilot_Insertion_0_frame_end),
+       (.event_frame_started(xfft_0_event_frame_started),
+        .frame_end(Pilot_Insertion_0_frame_end),
         .frame_start(Pilot_Insertion_0_frame_start),
         .m00_axis_aclk(processing_system7_0_FCLK_CLK0),
         .m00_axis_aresetn(Net),
@@ -478,6 +480,7 @@ module design_1
         .Res(Net));
   design_1_xfft_0_0 xfft_0
        (.aclk(processing_system7_0_FCLK_CLK0),
+        .event_frame_started(xfft_0_event_frame_started),
         .event_tlast_missing(xfft_0_event_tlast_missing),
         .event_tlast_unexpected(xfft_0_event_tlast_unexpected),
         .m_axis_data_tdata(xfft_0_M_AXIS_DATA_TDATA),

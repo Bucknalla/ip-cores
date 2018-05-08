@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:Pilot_Insertion:0.1
-// IP Revision: 17
+// IP Revision: 37
 
 `timescale 1ns/1ps
 
@@ -58,6 +58,7 @@ module design_1_Pilot_Insertion_0_0 (
   frame_start,
   frame_end,
   error,
+  event_frame_started,
   m00_axis_tdata,
   m00_axis_tlast,
   m00_axis_tvalid,
@@ -96,6 +97,7 @@ output wire pilot_flag;
 output wire frame_start;
 output wire frame_end;
 output wire error;
+input wire event_frame_started;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TDATA" *)
 output wire [31 : 0] m00_axis_tdata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TLAST" *)
@@ -172,6 +174,7 @@ input wire s00_axi_aresetn;
     .frame_start(frame_start),
     .frame_end(frame_end),
     .error(error),
+    .event_frame_started(event_frame_started),
     .m00_axis_tdata(m00_axis_tdata),
     .m00_axis_tlast(m00_axis_tlast),
     .m00_axis_tvalid(m00_axis_tvalid),

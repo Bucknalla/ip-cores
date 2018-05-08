@@ -26,6 +26,7 @@
         output wire frame_start,
         output wire frame_end,
         output wire error,
+		input wire event_frame_started,
         
 //        input wire event_frame_started,
 		// User ports ends
@@ -173,8 +174,9 @@
     frame_counter frame(
         .clk(s00_axis_aclk),
         .rst(s00_axis_aresetn),
-        .ready(s00_axis_tvalid),
+        .valid(m00_axis_tvalid),
         .pilot_flag(pilot_flag),
+		.event_frame_started(event_frame_started),
         .frame_length(frame_length),
         .end_frame(frame_end),
         .start_frame(frame_start)

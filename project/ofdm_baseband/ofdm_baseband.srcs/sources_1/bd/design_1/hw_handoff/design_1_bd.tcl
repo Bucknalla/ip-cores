@@ -281,6 +281,7 @@ CONFIG.transform_length {512} \
   connect_bd_net -net Pilot_Insertion_0_pilot_flag [get_bd_ports pilot_flag] [get_bd_pins Pilot_Insertion_0/pilot_flag]
   connect_bd_net -net READY_Driver_dout [get_bd_pins READY_Driver/dout] [get_bd_pins xfft_0/m_axis_data_tready]
   connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_ports CLK] [get_bd_pins FFT_Controller_0/m00_axis_aclk] [get_bd_pins FFT_Controller_0/s00_axi_aclk] [get_bd_pins Pilot_Insertion_0/m00_axis_aclk] [get_bd_pins Pilot_Insertion_0/s00_axi_aclk] [get_bd_pins Pilot_Insertion_0/s00_axis_aclk] [get_bd_pins Preamble_0/m00_axis_aclk] [get_bd_pins Preamble_0/s00_axi_aclk] [get_bd_pins Preamble_0/s00_axis_aclk] [get_bd_pins QAM_Modulator_0/m00_axis_aclk] [get_bd_pins QAM_Modulator_0/s00_axi_aclk] [get_bd_pins QAM_Modulator_0/s00_axis_aclk] [get_bd_pins axi_interconnect/ACLK] [get_bd_pins axi_interconnect/M00_ACLK] [get_bd_pins axi_interconnect/M01_ACLK] [get_bd_pins axi_interconnect/M02_ACLK] [get_bd_pins axi_interconnect/M03_ACLK] [get_bd_pins axi_interconnect/S00_ACLK] [get_bd_pins xfft_0/aclk]
+  connect_bd_net -net xfft_0_event_frame_started [get_bd_pins Pilot_Insertion_0/event_frame_started] [get_bd_pins xfft_0/event_frame_started]
   connect_bd_net -net xfft_0_event_tlast_missing [get_bd_ports event_tlast_missing] [get_bd_pins xfft_0/event_tlast_missing]
   connect_bd_net -net xfft_0_event_tlast_unexpected [get_bd_ports ERROR] [get_bd_pins xfft_0/event_tlast_unexpected]
 
@@ -297,9 +298,9 @@ CONFIG.transform_length {512} \
 preplace port pilot_flag -pg 1 -y 20 -defaultsOSRD
 preplace port frame_end -pg 1 -y 250 -defaultsOSRD
 preplace port DATA_INIT -pg 1 -y -100 -defaultsOSRD
-preplace port event_frame_started -pg 1 -y 210 -defaultsOSRD
 preplace port RST -pg 1 -y 230 -defaultsOSRD
 preplace port CLK -pg 1 -y 10 -defaultsOSRD
+preplace port event_frame_started -pg 1 -y 210 -defaultsOSRD
 preplace port DATA_OUT_AXIS -pg 1 -y 150 -defaultsOSRD
 preplace port CONFIG_AXI -pg 1 -y 190 -defaultsOSRD
 preplace port frame_start -pg 1 -y 230 -defaultsOSRD
@@ -315,26 +316,27 @@ preplace inst FFT_Controller_0 -pg 1 -lvl 4 -y 420 -defaultsOSRD
 preplace inst xfft_0 -pg 1 -lvl 5 -y 260 -defaultsOSRD
 preplace inst READY_Driver -pg 1 -lvl 5 -y 70 -defaultsOSRD
 preplace netloc DATA_IN_AXIS_1 1 0 2 30J 60 N
-preplace netloc xfft_0_event_tlast_unexpected 1 5 1 1910J
+preplace netloc xfft_0_event_frame_started 1 3 3 1090 0 NJ 0 1940
+preplace netloc xfft_0_event_tlast_unexpected 1 5 1 1940J
 preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1470
 preplace netloc axi_interconnect_M01_AXI 1 1 2 NJ 300 710
-preplace netloc READY_Driver_dout 1 5 1 1900
+preplace netloc READY_Driver_dout 1 5 1 1930
 preplace netloc ARESETN_1 1 0 1 30
-preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1910J
+preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1950J
 preplace netloc QAM_Modulator_0_M00_AXIS 1 2 1 720
 preplace netloc S00_AXI_1 1 0 1 NJ
 preplace netloc axi_interconnect_M02_AXI 1 1 3 NJ 320 NJ 320 1060
-preplace netloc Pilot_Insertion_0_frame_end 1 4 2 1490J 140 1920J
-preplace netloc xfft_0_event_tlast_missing 1 5 1 1900J
+preplace netloc Pilot_Insertion_0_frame_end 1 4 2 1490J 140 1960J
+preplace netloc xfft_0_event_tlast_missing 1 5 1 1930J
 preplace netloc FFT_Controller_0_M00_AXIS 1 4 1 1490
 preplace netloc Net 1 1 3 400 540 720 540 1090
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 20 120 390 230 700 60 1080 70 1480
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 20 120 390 230 700 60 1080 60 1480
 preplace netloc axi_interconnect_M00_AXI 1 1 1 380
 preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 340 NJ 340 1070
 preplace netloc Preamble_0_M00_AXIS 1 3 1 1070
-preplace netloc Pilot_Insertion_0_frame_start 1 4 2 1460J 120 1930J
+preplace netloc Pilot_Insertion_0_frame_start 1 4 2 1460J 120 1970J
 preplace netloc Pilot_Insertion_0_pilot_flag 1 4 2 1450J 20 NJ
-levelinfo -pg 1 0 240 570 920 1300 1720 1960 -top -340 -bot 930
+levelinfo -pg 1 0 240 570 920 1300 1750 2020 -top -340 -bot 930
 ",
 }
 

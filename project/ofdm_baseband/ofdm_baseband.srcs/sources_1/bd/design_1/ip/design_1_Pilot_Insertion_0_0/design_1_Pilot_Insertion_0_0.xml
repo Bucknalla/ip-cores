@@ -861,11 +861,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri May 04 10:23:56 UTC 2018</spirit:value>
+            <spirit:value>Tue May 08 14:15:54 UTC 2018</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRC</spirit:name>
-            <spirit:value>c5c26e55</spirit:value>
+            <spirit:value>023be5a4</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRCversion</spirit:name>
@@ -873,7 +873,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>41d8cc44</spirit:value>
+            <spirit:value>a47c0570</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRCversion</spirit:name>
@@ -892,11 +892,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri May 04 10:23:56 UTC 2018</spirit:value>
+            <spirit:value>Tue May 08 14:15:54 UTC 2018</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRC</spirit:name>
-            <spirit:value>c5c26e55</spirit:value>
+            <spirit:value>023be5a4</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRCversion</spirit:name>
@@ -904,7 +904,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>41d8cc44</spirit:value>
+            <spirit:value>a47c0570</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRCversion</spirit:name>
@@ -923,11 +923,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri May 04 10:23:56 UTC 2018</spirit:value>
+            <spirit:value>Tue May 08 14:15:54 UTC 2018</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRC</spirit:name>
-            <spirit:value>c5c26e55</spirit:value>
+            <spirit:value>023be5a4</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRCversion</spirit:name>
@@ -935,7 +935,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>8ee57108</spirit:value>
+            <spirit:value>faca2639</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRCversion</spirit:name>
@@ -954,11 +954,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri May 04 10:23:56 UTC 2018</spirit:value>
+            <spirit:value>Tue May 08 14:15:54 UTC 2018</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRC</spirit:name>
-            <spirit:value>c5c26e55</spirit:value>
+            <spirit:value>023be5a4</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>boundaryCRCversion</spirit:name>
@@ -966,7 +966,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>8ee57108</spirit:value>
+            <spirit:value>faca2639</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>customizationCRCversion</spirit:name>
@@ -1019,6 +1019,19 @@
         <spirit:name>error</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>event_frame_started</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
               <spirit:typeName>wire</spirit:typeName>
@@ -1542,27 +1555,27 @@
     <spirit:fileSet>
       <spirit:name>xilinx_verilogsynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/frame_counter.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/frame_counter.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/Pilot_Top.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/Pilot_Top.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/Pilot_Insertion_v0_1_S00_AXI.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/Pilot_Insertion_v0_1_S00_AXI.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/Pilot_Insertion_v0_1_S00_AXIS.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/Pilot_Insertion_v0_1_S00_AXIS.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/Pilot_Insertion_v0_1_M00_AXIS.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/Pilot_Insertion_v0_1_M00_AXIS.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/Pilot_Insertion_v0_1.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/Pilot_Insertion_v0_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1577,27 +1590,27 @@
     <spirit:fileSet>
       <spirit:name>xilinx_verilogbehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/frame_counter.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/frame_counter.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/Pilot_Top.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/Pilot_Top.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/Pilot_Insertion_v0_1_S00_AXI.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/Pilot_Insertion_v0_1_S00_AXI.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/Pilot_Insertion_v0_1_S00_AXIS.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/Pilot_Insertion_v0_1_S00_AXIS.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/Pilot_Insertion_v0_1_M00_AXIS.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/Pilot_Insertion_v0_1_M00_AXIS.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/ef09/hdl/Pilot_Insertion_v0_1.v</spirit:name>
+        <spirit:name>../../ipshared/2bae/hdl/Pilot_Insertion_v0_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1702,7 +1715,7 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:displayName>Pilot_Insertion_v0.1</xilinx:displayName>
-      <xilinx:coreRevision>17</xilinx:coreRevision>
+      <xilinx:coreRevision>37</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="user.org:user:Pilot_Insertion:0.1_ARCHIVE_LOCATION">/home/alex/GitHub/ip-cores/cores/pilot/pilot.srcs/sources_1/imports/Pilot_Insertion_0.1</xilinx:tag>
       </xilinx:tags>
@@ -1763,8 +1776,8 @@
       <xilinx:xilinxVersion>2016.4</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="4e8bc9ff"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="493665f4"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="598454ab"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="98ae8142"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="201344a7"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="b5543741"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="40859981"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="cfea3cf3"/>
     </xilinx:packagingInfo>

@@ -3,9 +3,9 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pa" timeStamp="Tue May  8 10:33:38 2018">
+<application name="pa" timeStamp="Fri May  4 22:38:17 2018">
 <section name="Project Information" visible="false">
-<property name="ProjectID" value="7df965e5eb93438d94bc7a8d63aee533" type="ProjectID"/>
+<property name="ProjectID" value="8b5fcc04aa0749079315a99901861317" type="ProjectID"/>
 <property name="ProjectIteration" value="1" type="ProjectIteration"/>
 </section>
 <section name="PlanAhead Usage" visible="true">
@@ -20,35 +20,33 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="CloseProject" value="1" type="JavaHandler"/>
 <property name="EditInIPPackagerHandler" value="1" type="JavaHandler"/>
 <property name="IPPackagerHandler" value="1" type="JavaHandler"/>
-<property name="OpenBlockDesign" value="1" type="JavaHandler"/>
 <property name="OpenProject" value="1" type="JavaHandler"/>
-<property name="SetTopNode" value="1" type="JavaHandler"/>
-<property name="SimulationRun" value="1" type="JavaHandler"/>
+<property name="ProjectSettingsCmdHandler" value="1" type="JavaHandler"/>
+<property name="ToolsOptions" value="1" type="JavaHandler"/>
 </item>
 <item name="Gui Resources Info">
-<property name="AbstractFileView_RELOAD" value="2" type="GuiResourceData"/>
-<property name="BaseDialog_OK" value="4" type="GuiResourceData"/>
+<property name="AbstractCombinedPanel_REMOVE_SELECTED_ELEMENTS" value="2" type="GuiResourceData"/>
+<property name="BaseDialog_OK" value="3" type="GuiResourceData"/>
 <property name="CmdMsgDialog_MESSAGES" value="1" type="GuiResourceData"/>
-<property name="CmdMsgDialog_OK" value="1" type="GuiResourceData"/>
-<property name="FileSetPanel_FILE_SET_PANEL_TREE" value="14" type="GuiResourceData"/>
-<property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="2" type="GuiResourceData"/>
-<property name="GettingStartedView_RECENT_PROJECTS" value="1" type="GuiResourceData"/>
+<property name="CmdMsgDialog_OK" value="2" type="GuiResourceData"/>
+<property name="FileSetPanel_FILE_SET_PANEL_TREE" value="10" type="GuiResourceData"/>
 <property name="MainMenuMgr_FILE" value="2" type="GuiResourceData"/>
-<property name="PACommandNames_AUTO_UPDATE_HIER" value="1" type="GuiResourceData"/>
+<property name="MainMenuMgr_REPORT" value="2" type="GuiResourceData"/>
+<property name="MainMenuMgr_TOOLS" value="4" type="GuiResourceData"/>
 <property name="PACommandNames_EDIT_IN_IP_PACKAGER" value="1" type="GuiResourceData"/>
 <property name="PACommandNames_OPEN_PROJECT" value="1" type="GuiResourceData"/>
-<property name="PACommandNames_SET_AS_TOP" value="1" type="GuiResourceData"/>
-<property name="PACommandNames_SIMULATION_RUN_BEHAVIORAL" value="1" type="GuiResourceData"/>
-<property name="PackagerStepsPanel_PACKAGER_STEPS_LIST" value="1" type="GuiResourceData"/>
-<property name="PortAndInterfaceFacetTable_PORT_AND_INTERFACE_FACET_TABLE" value="14" type="GuiResourceData"/>
+<property name="PACommandNames_PROJECT_SETTINGS" value="1" type="GuiResourceData"/>
+<property name="ProjectSettingsIPPage_TABBED_PANE" value="1" type="GuiResourceData"/>
+<property name="ProjectSettingsIPRepositoryPanel_REPOSITORY_CHOOSER" value="1" type="GuiResourceData"/>
+<property name="RDICommands_CUSTOM_COMMANDS" value="2" type="GuiResourceData"/>
+<property name="RDICommands_OPTIONS" value="1" type="GuiResourceData"/>
 <property name="SelectMenu_HIGHLIGHT" value="1" type="GuiResourceData"/>
-<property name="SrcMenu_IP_HIERARCHY" value="1" type="GuiResourceData"/>
-<property name="TaskBanner_CLOSE" value="1" type="GuiResourceData"/>
+<property name="SystemBuilderView_ORIENTATION" value="1" type="GuiResourceData"/>
 </item>
 <item name="Other">
-<property name="GuiMode" value="55" type="GuiMode"/>
+<property name="GuiMode" value="14" type="GuiMode"/>
 <property name="BatchMode" value="0" type="BatchMode"/>
-<property name="TclMode" value="29" type="TclMode"/>
+<property name="TclMode" value="13" type="TclMode"/>
 </item>
 </section>
 </application>

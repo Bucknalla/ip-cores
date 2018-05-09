@@ -3,7 +3,7 @@
 <!--The data in this file is primarily intended for consumption by Xilinx tools.
 The structure and the elements are likely to change over the next few releases.
 This means code written to parse this file will need to be revisited each subsequent release.-->
-<application name="pa" timeStamp="Tue May  8 22:40:37 2018">
+<application name="pa" timeStamp="Wed May  9 22:23:14 2018">
 <section name="Project Information" visible="false">
 <property name="ProjectID" value="7a6978d57d194784b5bffa99d2d6d96a" type="ProjectID"/>
 <property name="ProjectIteration" value="3" type="ProjectIteration"/>
@@ -40,12 +40,12 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="SaveFileProxyHandler" value="1" type="JavaHandler"/>
 <property name="SaveRSBDesign" value="1" type="JavaHandler"/>
 <property name="ShowView" value="4" type="JavaHandler"/>
-<property name="SimulationRelaunch" value="20" type="JavaHandler"/>
-<property name="SimulationRestart" value="22" type="JavaHandler"/>
+<property name="SimulationRelaunch" value="22" type="JavaHandler"/>
+<property name="SimulationRestart" value="25" type="JavaHandler"/>
 <property name="SimulationRun" value="22" type="JavaHandler"/>
-<property name="SimulationRunAll" value="22" type="JavaHandler"/>
+<property name="SimulationRunAll" value="25" type="JavaHandler"/>
 <property name="UpdateRegId" value="1" type="JavaHandler"/>
-<property name="UpgradeIP" value="15" type="JavaHandler"/>
+<property name="UpgradeIP" value="16" type="JavaHandler"/>
 <property name="ValidateRSBDesign" value="11" type="JavaHandler"/>
 </item>
 <item name="Gui Resources Info">
@@ -56,7 +56,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="BaseDialog_CANCEL" value="13" type="GuiResourceData"/>
 <property name="BaseDialog_OK" value="52" type="GuiResourceData"/>
 <property name="BaseDialog_YES" value="2" type="GuiResourceData"/>
-<property name="BaseReportTab_RERUN" value="16" type="GuiResourceData"/>
+<property name="BaseReportTab_RERUN" value="18" type="GuiResourceData"/>
 <property name="BusParameterFacetTable_BUS_PARAMETER_FACET_TABLE" value="3" type="GuiResourceData"/>
 <property name="CmdMsgDialog_MESSAGES" value="3" type="GuiResourceData"/>
 <property name="CmdMsgDialog_OK" value="46" type="GuiResourceData"/>
@@ -69,13 +69,13 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="FileGroupFacetTable_FILE_GROUP_FACET_TABLE" value="15" type="GuiResourceData"/>
 <property name="FileGroupFacetTable_REMOVE_FILE" value="1" type="GuiResourceData"/>
 <property name="FileSetPanel_FILE_SET_PANEL_TREE" value="90" type="GuiResourceData"/>
-<property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="80" type="GuiResourceData"/>
+<property name="FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE" value="81" type="GuiResourceData"/>
 <property name="GettingStartedView_RECENT_PROJECTS" value="5" type="GuiResourceData"/>
 <property name="GraphicalView_ZOOM_FIT" value="1" type="GuiResourceData"/>
 <property name="HACGCComboBox_VALUE_OF_SPECIFIED_PARAMETER" value="1" type="GuiResourceData"/>
 <property name="HACGCComboBox_VALUE_OF_SPECIFIED_PARAMETER_MANUAL" value="1" type="GuiResourceData"/>
 <property name="HCodeEditor_SEARCH_TEXT_COMBO_BOX" value="6" type="GuiResourceData"/>
-<property name="IPStatusSectionPanel_UPGRADE_SELECTED" value="16" type="GuiResourceData"/>
+<property name="IPStatusSectionPanel_UPGRADE_SELECTED" value="17" type="GuiResourceData"/>
 <property name="MainMenuMgr_DESIGN_HUBS" value="1" type="GuiResourceData"/>
 <property name="MainMenuMgr_EDIT" value="6" type="GuiResourceData"/>
 <property name="MainMenuMgr_EXPORT" value="3" type="GuiResourceData"/>
@@ -118,26 +118,26 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="PACommandNames_PROJECT_SETTINGS" value="4" type="GuiResourceData"/>
 <property name="PACommandNames_RECUSTOMIZE_CORE" value="1" type="GuiResourceData"/>
 <property name="PACommandNames_REGENERATE_LAYOUT" value="1" type="GuiResourceData"/>
-<property name="PACommandNames_SIMULATION_LIVE_RESTART" value="22" type="GuiResourceData"/>
-<property name="PACommandNames_SIMULATION_LIVE_RUN_ALL" value="22" type="GuiResourceData"/>
-<property name="PACommandNames_SIMULATION_RELAUNCH" value="20" type="GuiResourceData"/>
+<property name="PACommandNames_SIMULATION_LIVE_RESTART" value="25" type="GuiResourceData"/>
+<property name="PACommandNames_SIMULATION_LIVE_RUN_ALL" value="25" type="GuiResourceData"/>
+<property name="PACommandNames_SIMULATION_RELAUNCH" value="22" type="GuiResourceData"/>
 <property name="PACommandNames_SIMULATION_RUN" value="1" type="GuiResourceData"/>
 <property name="PACommandNames_SIMULATION_RUN_BEHAVIORAL" value="22" type="GuiResourceData"/>
 <property name="PACommandNames_VALIDATE_RSB_DESIGN" value="11" type="GuiResourceData"/>
-<property name="PAViews_CODE" value="11" type="GuiResourceData"/>
+<property name="PAViews_CODE" value="12" type="GuiResourceData"/>
 <property name="PackagerStepsPanel_PACKAGER_STEPS_LIST" value="24" type="GuiResourceData"/>
 <property name="PlanAheadTab_REFRESH_IP_CATALOG" value="15" type="GuiResourceData"/>
 <property name="PortAndInterfaceFacetTable_EDIT_INTERFACE" value="2" type="GuiResourceData"/>
 <property name="PortAndInterfaceFacetTable_EDIT_PORT" value="2" type="GuiResourceData"/>
 <property name="PortAndInterfaceFacetTable_PORT_AND_INTERFACE_FACET_TABLE" value="13" type="GuiResourceData"/>
 <property name="PortAndInterfaceFacetTable_REMOVE_PORT" value="1" type="GuiResourceData"/>
-<property name="ProgressDialog_CANCEL" value="16" type="GuiResourceData"/>
+<property name="ProgressDialog_CANCEL" value="19" type="GuiResourceData"/>
 <property name="ProjectSettingsIPPage_TABBED_PANE" value="4" type="GuiResourceData"/>
 <property name="ProjectSettingsIPRepositoryPanel_ADD_REPOSITORY" value="1" type="GuiResourceData"/>
 <property name="ProjectSettingsIPRepositoryPanel_REPOSITORY_CHOOSER" value="8" type="GuiResourceData"/>
 <property name="RDICommands_CUSTOM_COMMANDS" value="7" type="GuiResourceData"/>
 <property name="RDICommands_PROPERTIES" value="3" type="GuiResourceData"/>
-<property name="RDIViews_WAVEFORM_VIEWER" value="34" type="GuiResourceData"/>
+<property name="RDIViews_WAVEFORM_VIEWER" value="48" type="GuiResourceData"/>
 <property name="RSBApplyAutomationBar_RUN_CONNECTION_AUTOMATION" value="2" type="GuiResourceData"/>
 <property name="RSBBlockPropPanels_NAME" value="1" type="GuiResourceData"/>
 <property name="RSBExternalInterfacePropPanels_ASSOCIATED_CLOCK_PORT" value="1" type="GuiResourceData"/>
@@ -146,7 +146,7 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="SelectMenu_HIGHLIGHT" value="9" type="GuiResourceData"/>
 <property name="SimpleOutputProductDialog_APPLY_OPTIONS_AND_DISMISS_DIALOG_WITHOUT" value="1" type="GuiResourceData"/>
 <property name="SimpleOutputProductDialog_CONFIGURE_HOSTS" value="1" type="GuiResourceData"/>
-<property name="SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY" value="29" type="GuiResourceData"/>
+<property name="SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY" value="30" type="GuiResourceData"/>
 <property name="SimpleOutputProductDialog_SYNTHESIZE_ALL_IP_INCLUDING_IP_CONTAINED" value="1" type="GuiResourceData"/>
 <property name="SimpleOutputProductDialog_SYNTHESIZE_DESIGN_GLOBALLY" value="1" type="GuiResourceData"/>
 <property name="SimulationObjectsPanel_SIMULATION_OBJECTS_TREE_TABLE" value="24" type="GuiResourceData"/>
@@ -158,17 +158,22 @@ This means code written to parse this file will need to be revisited each subseq
 <property name="SystemBuilderMenu_CREATE_INTERFACE_PORT" value="1" type="GuiResourceData"/>
 <property name="SystemBuilderView_ADD_IP" value="6" type="GuiResourceData"/>
 <property name="SystemBuilderView_EXPAND_COLLAPSE" value="8" type="GuiResourceData"/>
+<property name="SystemTab_SHOW_IP_STATUS" value="1" type="GuiResourceData"/>
 <property name="SystemTreeView_SYSTEM_TREE" value="9" type="GuiResourceData"/>
 <property name="TaskBanner_CLOSE" value="12" type="GuiResourceData"/>
 <property name="TclConsoleView_COPY" value="3" type="GuiResourceData"/>
 <property name="TclConsoleView_TCL_CONSOLE_CODE_EDITOR" value="31" type="GuiResourceData"/>
-<property name="WaveformNameTree_WAVEFORM_NAME_TREE" value="15" type="GuiResourceData"/>
-<property name="WaveformView_GOTO_TIME_0" value="3" type="GuiResourceData"/>
+<property name="WaveformNameTree_WAVEFORM_NAME_TREE" value="16" type="GuiResourceData"/>
+<property name="WaveformView_ADD_MARKER" value="2" type="GuiResourceData"/>
+<property name="WaveformView_GOTO_TIME_0" value="4" type="GuiResourceData"/>
+<property name="WaveformView_NEXT_TRANSITION" value="3" type="GuiResourceData"/>
+<property name="WaveformView_PREVIOUS_MARKER" value="1" type="GuiResourceData"/>
+<property name="WaveformView_PREVIOUS_TRANSITION" value="2" type="GuiResourceData"/>
 </item>
 <item name="Other">
-<property name="GuiMode" value="15" type="GuiMode"/>
+<property name="GuiMode" value="16" type="GuiMode"/>
 <property name="BatchMode" value="0" type="BatchMode"/>
-<property name="TclMode" value="13" type="TclMode"/>
+<property name="TclMode" value="14" type="TclMode"/>
 </item>
 </section>
 </application>

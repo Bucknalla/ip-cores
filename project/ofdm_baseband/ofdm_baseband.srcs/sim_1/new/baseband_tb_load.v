@@ -22,7 +22,7 @@ module baseband_tb_load_file();
 
 reg clk;
 reg [15:0] counter;
-reg rst; 
+reg rst, rst_axi; 
 wire [31:0] signal_out;
 reg [31:0] captured_data;
 reg ready_in;
@@ -52,8 +52,11 @@ design_1 design_1_i
     .DATA_IN_AXIS_tvalid(valid_in),
     .DATA_OUT_AXIS_tdata(signal_out),
     .DATA_OUT_AXIS_tvalid(valid_out),
+    .DATA_OUT_AXIS_tready(ready_in),
+    
     .ERROR(error),
-    .RST(rst)
+    .RST(rst),
+    .RST_AXI(rst_axi)
     );
 
 
@@ -63,7 +66,7 @@ always #(CLK_PERIOD/2) clk = ~clk;
 
 // SIGNAL_IN INCREMENTER
 always @(posedge clk) begin
-    if((!rst) & ready_out) begin
+    if((rst) & ready_out) begin
         scan_stream = $fscanf(data_stream, "%b\n", captured_data);
         $display(captured_data); 
     end
@@ -77,14 +80,16 @@ end
 // S_AXIS_DATA (INPUT)
 initial
 begin
-    rst = 1;
+    rst = 0;
+    rst_axi = 1;
     counter = 0;
     captured_data = 0;
     scan_stream = 0;
-    ready_in = 1;
-    valid_in = 1; 
+    valid_in = 1;
+    ready_in = 1; 
     #20;  
-    rst = 0;
+    rst = 1;
+    rst_axi = 0;
 end
         
 

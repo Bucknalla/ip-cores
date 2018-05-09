@@ -1,15 +1,15 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Tue May  8 15:15:53 2018
-//Host        : alex-warc running 64-bit Ubuntu 16.04.4 LTS
+//Date        : Wed May  9 21:16:06 2018
+//Host        : Alex-Ubuntu running 64-bit Ubuntu 16.04.4 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=14,numReposBlks=8,numNonXlnxBlks=4,numHierBlks=6,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=12,numReposBlks=6,numNonXlnxBlks=4,numHierBlks=6,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (CLK,
     CONFIG_AXI_araddr,
@@ -31,16 +31,16 @@ module design_1
     CONFIG_AXI_wready,
     CONFIG_AXI_wstrb,
     CONFIG_AXI_wvalid,
-    DATA_INIT,
     DATA_IN_AXIS_tdata,
     DATA_IN_AXIS_tready,
     DATA_IN_AXIS_tvalid,
     DATA_OUT_AXIS_tdata,
     DATA_OUT_AXIS_tlast,
+    DATA_OUT_AXIS_tready,
     DATA_OUT_AXIS_tvalid,
     ERROR,
     RST,
-    event_frame_started,
+    RST_AXI,
     event_tlast_missing,
     frame_end,
     frame_start,
@@ -65,29 +65,29 @@ module design_1
   output [0:0]CONFIG_AXI_wready;
   input [3:0]CONFIG_AXI_wstrb;
   input [0:0]CONFIG_AXI_wvalid;
-  input DATA_INIT;
   input [31:0]DATA_IN_AXIS_tdata;
   output DATA_IN_AXIS_tready;
   input DATA_IN_AXIS_tvalid;
   output [31:0]DATA_OUT_AXIS_tdata;
   output DATA_OUT_AXIS_tlast;
+  input DATA_OUT_AXIS_tready;
   output DATA_OUT_AXIS_tvalid;
   output ERROR;
   input RST;
-  output event_frame_started;
+  input RST_AXI;
   output event_tlast_missing;
   output frame_end;
   output frame_start;
   output pilot_flag;
 
   wire ARESETN_1;
+  wire ARESETN_2;
   wire [31:0]DATA_IN_AXIS_1_TDATA;
   wire DATA_IN_AXIS_1_TREADY;
   wire DATA_IN_AXIS_1_TVALID;
   wire [23:0]FFT_Controller_0_M00_AXIS_TDATA;
   wire FFT_Controller_0_M00_AXIS_TREADY;
   wire FFT_Controller_0_M00_AXIS_TVALID;
-  wire [0:0]Net;
   wire [31:0]Pilot_Insertion_0_M00_AXIS_TDATA;
   wire Pilot_Insertion_0_M00_AXIS_TLAST;
   wire Pilot_Insertion_0_M00_AXIS_TREADY;
@@ -98,10 +98,9 @@ module design_1
   wire [31:0]Preamble_0_M00_AXIS_TDATA;
   wire Preamble_0_M00_AXIS_TREADY;
   wire Preamble_0_M00_AXIS_TVALID;
-  wire [31:0]QAM_Modulator_0_M00_AXIS_TDATA;
-  wire QAM_Modulator_0_M00_AXIS_TREADY;
-  wire QAM_Modulator_0_M00_AXIS_TVALID;
-  wire [0:0]READY_Driver_dout;
+  wire [31:0]QAM_Modulator_1_M00_AXIS_TDATA;
+  wire QAM_Modulator_1_M00_AXIS_TREADY;
+  wire QAM_Modulator_1_M00_AXIS_TVALID;
   wire [14:0]S00_AXI_1_ARADDR;
   wire [2:0]S00_AXI_1_ARPROT;
   wire [0:0]S00_AXI_1_ARREADY;
@@ -200,12 +199,14 @@ module design_1
   wire processing_system7_0_FCLK_CLK0;
   wire [31:0]xfft_0_M_AXIS_DATA_TDATA;
   wire xfft_0_M_AXIS_DATA_TLAST;
+  wire xfft_0_M_AXIS_DATA_TREADY;
   wire xfft_0_M_AXIS_DATA_TVALID;
   wire xfft_0_event_frame_started;
   wire xfft_0_event_tlast_missing;
   wire xfft_0_event_tlast_unexpected;
 
   assign ARESETN_1 = RST;
+  assign ARESETN_2 = RST_AXI;
   assign CONFIG_AXI_arready[0] = S00_AXI_1_ARREADY;
   assign CONFIG_AXI_awready[0] = S00_AXI_1_AWREADY;
   assign CONFIG_AXI_bresp[1:0] = S00_AXI_1_BRESP;
@@ -237,15 +238,16 @@ module design_1
   assign frame_start = Pilot_Insertion_0_frame_start;
   assign pilot_flag = Pilot_Insertion_0_pilot_flag;
   assign processing_system7_0_FCLK_CLK0 = CLK;
-  design_1_FFT_Controller_0_1 FFT_Controller_0
+  assign xfft_0_M_AXIS_DATA_TREADY = DATA_OUT_AXIS_tready;
+  design_1_FFT_Controller_0_0 FFT_Controller_0
        (.m00_axis_aclk(processing_system7_0_FCLK_CLK0),
-        .m00_axis_aresetn(Net),
+        .m00_axis_aresetn(ARESETN_1),
         .m00_axis_tdata(FFT_Controller_0_M00_AXIS_TDATA),
         .m00_axis_tready(FFT_Controller_0_M00_AXIS_TREADY),
         .m00_axis_tvalid(FFT_Controller_0_M00_AXIS_TVALID),
         .s00_axi_aclk(processing_system7_0_FCLK_CLK0),
         .s00_axi_araddr(axi_interconnect_M03_AXI_ARADDR[3:0]),
-        .s00_axi_aresetn(Net),
+        .s00_axi_aresetn(ARESETN_1),
         .s00_axi_arprot(axi_interconnect_M03_AXI_ARPROT),
         .s00_axi_arready(axi_interconnect_M03_AXI_ARREADY),
         .s00_axi_arvalid(axi_interconnect_M03_AXI_ARVALID),
@@ -269,7 +271,7 @@ module design_1
         .frame_end(Pilot_Insertion_0_frame_end),
         .frame_start(Pilot_Insertion_0_frame_start),
         .m00_axis_aclk(processing_system7_0_FCLK_CLK0),
-        .m00_axis_aresetn(Net),
+        .m00_axis_aresetn(ARESETN_1),
         .m00_axis_tdata(Pilot_Insertion_0_M00_AXIS_TDATA),
         .m00_axis_tlast(Pilot_Insertion_0_M00_AXIS_TLAST),
         .m00_axis_tready(Pilot_Insertion_0_M00_AXIS_TREADY),
@@ -277,7 +279,7 @@ module design_1
         .pilot_flag(Pilot_Insertion_0_pilot_flag),
         .s00_axi_aclk(processing_system7_0_FCLK_CLK0),
         .s00_axi_araddr(axi_interconnect_M02_AXI_ARADDR[3:0]),
-        .s00_axi_aresetn(Net),
+        .s00_axi_aresetn(ARESETN_1),
         .s00_axi_arprot(axi_interconnect_M02_AXI_ARPROT),
         .s00_axi_arready(axi_interconnect_M02_AXI_ARREADY),
         .s00_axi_arvalid(axi_interconnect_M02_AXI_ARVALID),
@@ -297,19 +299,19 @@ module design_1
         .s00_axi_wstrb(axi_interconnect_M02_AXI_WSTRB),
         .s00_axi_wvalid(axi_interconnect_M02_AXI_WVALID),
         .s00_axis_aclk(processing_system7_0_FCLK_CLK0),
-        .s00_axis_aresetn(Net),
+        .s00_axis_aresetn(ARESETN_1),
         .s00_axis_tdata(Preamble_0_M00_AXIS_TDATA),
         .s00_axis_tready(Preamble_0_M00_AXIS_TREADY),
         .s00_axis_tvalid(Preamble_0_M00_AXIS_TVALID));
   design_1_Preamble_0_0 Preamble_0
        (.m00_axis_aclk(processing_system7_0_FCLK_CLK0),
-        .m00_axis_aresetn(Net),
+        .m00_axis_aresetn(ARESETN_1),
         .m00_axis_tdata(Preamble_0_M00_AXIS_TDATA),
         .m00_axis_tready(Preamble_0_M00_AXIS_TREADY),
         .m00_axis_tvalid(Preamble_0_M00_AXIS_TVALID),
         .s00_axi_aclk(processing_system7_0_FCLK_CLK0),
         .s00_axi_araddr(axi_interconnect_M01_AXI_ARADDR[3:0]),
-        .s00_axi_aresetn(Net),
+        .s00_axi_aresetn(ARESETN_1),
         .s00_axi_arprot(axi_interconnect_M01_AXI_ARPROT),
         .s00_axi_arready(axi_interconnect_M01_AXI_ARREADY),
         .s00_axi_arvalid(axi_interconnect_M01_AXI_ARVALID),
@@ -329,19 +331,19 @@ module design_1
         .s00_axi_wstrb(axi_interconnect_M01_AXI_WSTRB),
         .s00_axi_wvalid(axi_interconnect_M01_AXI_WVALID),
         .s00_axis_aclk(processing_system7_0_FCLK_CLK0),
-        .s00_axis_aresetn(Net),
-        .s00_axis_tdata(QAM_Modulator_0_M00_AXIS_TDATA),
-        .s00_axis_tready(QAM_Modulator_0_M00_AXIS_TREADY),
-        .s00_axis_tvalid(QAM_Modulator_0_M00_AXIS_TVALID));
-  design_1_QAM_Modulator_0_1 QAM_Modulator_0
+        .s00_axis_aresetn(ARESETN_1),
+        .s00_axis_tdata(QAM_Modulator_1_M00_AXIS_TDATA),
+        .s00_axis_tready(QAM_Modulator_1_M00_AXIS_TREADY),
+        .s00_axis_tvalid(QAM_Modulator_1_M00_AXIS_TVALID));
+  design_1_QAM_Modulator_1_0 QAM_Modulator_1
        (.m00_axis_aclk(processing_system7_0_FCLK_CLK0),
-        .m00_axis_aresetn(Net),
-        .m00_axis_tdata(QAM_Modulator_0_M00_AXIS_TDATA),
-        .m00_axis_tready(QAM_Modulator_0_M00_AXIS_TREADY),
-        .m00_axis_tvalid(QAM_Modulator_0_M00_AXIS_TVALID),
+        .m00_axis_aresetn(ARESETN_1),
+        .m00_axis_tdata(QAM_Modulator_1_M00_AXIS_TDATA),
+        .m00_axis_tready(QAM_Modulator_1_M00_AXIS_TREADY),
+        .m00_axis_tvalid(QAM_Modulator_1_M00_AXIS_TVALID),
         .s00_axi_aclk(processing_system7_0_FCLK_CLK0),
         .s00_axi_araddr(axi_interconnect_M00_AXI_ARADDR[3:0]),
-        .s00_axi_aresetn(Net),
+        .s00_axi_aresetn(ARESETN_1),
         .s00_axi_arprot(axi_interconnect_M00_AXI_ARPROT),
         .s00_axi_arready(axi_interconnect_M00_AXI_ARREADY),
         .s00_axi_arvalid(axi_interconnect_M00_AXI_ARVALID),
@@ -361,17 +363,15 @@ module design_1
         .s00_axi_wstrb(axi_interconnect_M00_AXI_WSTRB),
         .s00_axi_wvalid(axi_interconnect_M00_AXI_WVALID),
         .s00_axis_aclk(processing_system7_0_FCLK_CLK0),
-        .s00_axis_aresetn(Net),
+        .s00_axis_aresetn(ARESETN_1),
         .s00_axis_tdata(DATA_IN_AXIS_1_TDATA),
         .s00_axis_tready(DATA_IN_AXIS_1_TREADY),
         .s00_axis_tvalid(DATA_IN_AXIS_1_TVALID));
-  design_1_xlconstant_0_0 READY_Driver
-       (.dout(READY_Driver_dout));
   design_1_axi_interconnect_0_0 axi_interconnect
        (.ACLK(processing_system7_0_FCLK_CLK0),
-        .ARESETN(ARESETN_1),
+        .ARESETN(ARESETN_2),
         .M00_ACLK(processing_system7_0_FCLK_CLK0),
-        .M00_ARESETN(ARESETN_1),
+        .M00_ARESETN(ARESETN_2),
         .M00_AXI_araddr(axi_interconnect_M00_AXI_ARADDR),
         .M00_AXI_arprot(axi_interconnect_M00_AXI_ARPROT),
         .M00_AXI_arready(axi_interconnect_M00_AXI_ARREADY),
@@ -392,7 +392,7 @@ module design_1
         .M00_AXI_wstrb(axi_interconnect_M00_AXI_WSTRB),
         .M00_AXI_wvalid(axi_interconnect_M00_AXI_WVALID),
         .M01_ACLK(processing_system7_0_FCLK_CLK0),
-        .M01_ARESETN(ARESETN_1),
+        .M01_ARESETN(ARESETN_2),
         .M01_AXI_araddr(axi_interconnect_M01_AXI_ARADDR),
         .M01_AXI_arprot(axi_interconnect_M01_AXI_ARPROT),
         .M01_AXI_arready(axi_interconnect_M01_AXI_ARREADY),
@@ -413,7 +413,7 @@ module design_1
         .M01_AXI_wstrb(axi_interconnect_M01_AXI_WSTRB),
         .M01_AXI_wvalid(axi_interconnect_M01_AXI_WVALID),
         .M02_ACLK(processing_system7_0_FCLK_CLK0),
-        .M02_ARESETN(ARESETN_1),
+        .M02_ARESETN(ARESETN_2),
         .M02_AXI_araddr(axi_interconnect_M02_AXI_ARADDR),
         .M02_AXI_arprot(axi_interconnect_M02_AXI_ARPROT),
         .M02_AXI_arready(axi_interconnect_M02_AXI_ARREADY),
@@ -434,7 +434,7 @@ module design_1
         .M02_AXI_wstrb(axi_interconnect_M02_AXI_WSTRB),
         .M02_AXI_wvalid(axi_interconnect_M02_AXI_WVALID),
         .M03_ACLK(processing_system7_0_FCLK_CLK0),
-        .M03_ARESETN(ARESETN_1),
+        .M03_ARESETN(ARESETN_2),
         .M03_AXI_araddr(axi_interconnect_M03_AXI_ARADDR),
         .M03_AXI_arprot(axi_interconnect_M03_AXI_ARPROT),
         .M03_AXI_arready(axi_interconnect_M03_AXI_ARREADY),
@@ -455,7 +455,7 @@ module design_1
         .M03_AXI_wstrb(axi_interconnect_M03_AXI_WSTRB),
         .M03_AXI_wvalid(axi_interconnect_M03_AXI_WVALID),
         .S00_ACLK(processing_system7_0_FCLK_CLK0),
-        .S00_ARESETN(ARESETN_1),
+        .S00_ARESETN(ARESETN_2),
         .S00_AXI_araddr(S00_AXI_1_ARADDR),
         .S00_AXI_arprot(S00_AXI_1_ARPROT),
         .S00_AXI_arready(S00_AXI_1_ARREADY),
@@ -475,9 +475,6 @@ module design_1
         .S00_AXI_wready(S00_AXI_1_WREADY),
         .S00_AXI_wstrb(S00_AXI_1_WSTRB),
         .S00_AXI_wvalid(S00_AXI_1_WVALID));
-  design_1_util_vector_logic_0_0 util_vector_logic_0
-       (.Op1(ARESETN_1),
-        .Res(Net));
   design_1_xfft_0_0 xfft_0
        (.aclk(processing_system7_0_FCLK_CLK0),
         .event_frame_started(xfft_0_event_frame_started),
@@ -485,7 +482,7 @@ module design_1
         .event_tlast_unexpected(xfft_0_event_tlast_unexpected),
         .m_axis_data_tdata(xfft_0_M_AXIS_DATA_TDATA),
         .m_axis_data_tlast(xfft_0_M_AXIS_DATA_TLAST),
-        .m_axis_data_tready(READY_Driver_dout),
+        .m_axis_data_tready(xfft_0_M_AXIS_DATA_TREADY),
         .m_axis_data_tvalid(xfft_0_M_AXIS_DATA_TVALID),
         .s_axis_config_tdata(FFT_Controller_0_M00_AXIS_TDATA),
         .s_axis_config_tready(FFT_Controller_0_M00_AXIS_TREADY),

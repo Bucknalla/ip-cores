@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:Preamble:0.1
-// IP Revision: 7
+// IP Revision: 10
 
 (* X_CORE_INFO = "Preamble_v0_1,Vivado 2016.4" *)
 (* CHECK_LICENSE_TYPE = "design_1_Preamble_0_0,Preamble_v0_1,{}" *)

@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:Pilot_Insertion:0.1
-// IP Revision: 37
+// IP Revision: 38
 
 (* X_CORE_INFO = "Pilot_Insertion_v0_1,Vivado 2016.4" *)
 (* CHECK_LICENSE_TYPE = "design_1_Pilot_Insertion_0_0,Pilot_Insertion_v0_1,{}" *)

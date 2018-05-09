@@ -1,8 +1,8 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Tue May  8 15:15:54 2018
-//Host        : alex-warc running 64-bit Ubuntu 16.04.4 LTS
+//Date        : Wed May  9 21:16:07 2018
+//Host        : Alex-Ubuntu running 64-bit Ubuntu 16.04.4 LTS
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
 //Purpose     : IP block netlist
@@ -30,16 +30,16 @@ module design_1_wrapper
     CONFIG_AXI_wready,
     CONFIG_AXI_wstrb,
     CONFIG_AXI_wvalid,
-    DATA_INIT,
     DATA_IN_AXIS_tdata,
     DATA_IN_AXIS_tready,
     DATA_IN_AXIS_tvalid,
     DATA_OUT_AXIS_tdata,
     DATA_OUT_AXIS_tlast,
+    DATA_OUT_AXIS_tready,
     DATA_OUT_AXIS_tvalid,
     ERROR,
     RST,
-    event_frame_started,
+    RST_AXI,
     event_tlast_missing,
     frame_end,
     frame_start,
@@ -64,16 +64,16 @@ module design_1_wrapper
   output [0:0]CONFIG_AXI_wready;
   input [3:0]CONFIG_AXI_wstrb;
   input [0:0]CONFIG_AXI_wvalid;
-  input DATA_INIT;
   input [31:0]DATA_IN_AXIS_tdata;
   output DATA_IN_AXIS_tready;
   input DATA_IN_AXIS_tvalid;
   output [31:0]DATA_OUT_AXIS_tdata;
   output DATA_OUT_AXIS_tlast;
+  input DATA_OUT_AXIS_tready;
   output DATA_OUT_AXIS_tvalid;
   output ERROR;
   input RST;
-  output event_frame_started;
+  input RST_AXI;
   output event_tlast_missing;
   output frame_end;
   output frame_start;
@@ -99,16 +99,16 @@ module design_1_wrapper
   wire [0:0]CONFIG_AXI_wready;
   wire [3:0]CONFIG_AXI_wstrb;
   wire [0:0]CONFIG_AXI_wvalid;
-  wire DATA_INIT;
   wire [31:0]DATA_IN_AXIS_tdata;
   wire DATA_IN_AXIS_tready;
   wire DATA_IN_AXIS_tvalid;
   wire [31:0]DATA_OUT_AXIS_tdata;
   wire DATA_OUT_AXIS_tlast;
+  wire DATA_OUT_AXIS_tready;
   wire DATA_OUT_AXIS_tvalid;
   wire ERROR;
   wire RST;
-  wire event_frame_started;
+  wire RST_AXI;
   wire event_tlast_missing;
   wire frame_end;
   wire frame_start;
@@ -135,16 +135,16 @@ module design_1_wrapper
         .CONFIG_AXI_wready(CONFIG_AXI_wready),
         .CONFIG_AXI_wstrb(CONFIG_AXI_wstrb),
         .CONFIG_AXI_wvalid(CONFIG_AXI_wvalid),
-        .DATA_INIT(DATA_INIT),
         .DATA_IN_AXIS_tdata(DATA_IN_AXIS_tdata),
         .DATA_IN_AXIS_tready(DATA_IN_AXIS_tready),
         .DATA_IN_AXIS_tvalid(DATA_IN_AXIS_tvalid),
         .DATA_OUT_AXIS_tdata(DATA_OUT_AXIS_tdata),
         .DATA_OUT_AXIS_tlast(DATA_OUT_AXIS_tlast),
+        .DATA_OUT_AXIS_tready(DATA_OUT_AXIS_tready),
         .DATA_OUT_AXIS_tvalid(DATA_OUT_AXIS_tvalid),
         .ERROR(ERROR),
         .RST(RST),
-        .event_frame_started(event_frame_started),
+        .RST_AXI(RST_AXI),
         .event_tlast_missing(event_tlast_missing),
         .frame_end(frame_end),
         .frame_start(frame_start),

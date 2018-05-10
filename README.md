@@ -1,4 +1,4 @@
-# IP Cores
+# IP Cores for OFDM Baseband
 IP Cores for Xilinx FPGA Devices
 
 ![Block Design](design_1.svg "OFDM TX Baseband Block Design" )

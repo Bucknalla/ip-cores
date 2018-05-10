@@ -32,8 +32,6 @@ module qam_top(
     output reg error = 0
 );
 
-
-    
 reg [2:0] qam_state = 0;    
 reg [31:0] signal_in_mod;
 reg select_qam_2, select_qam_4, select_qam_16 = 1'b0;
@@ -59,6 +57,7 @@ always @ (posedge clk) begin
     else if (ready_in & valid_in) begin
         error <= 0;
         ready_out <= 0;
+        valid_out <= 0;
         if (bit_counter == 32) begin
             ready_out <= 1;   
             bit_counter <= 1;
@@ -68,11 +67,10 @@ always @ (posedge clk) begin
         else if(bit_counter == 0) begin
             signal_in_mod <= signal_in;
             bit_counter <= 1;
-            valid_out <= 0;
         end
         else begin
-            bit_counter <= bit_counter + bit_shift;
             valid_out <= 1;
+            bit_counter <= bit_counter + bit_shift;
             signal_in_mod <= signal_in_mod >> bit_shift;
         end
         
@@ -84,8 +82,9 @@ always @ (posedge clk) begin
         endcase
         
     end
-    else if(ready_in) begin
+    else if(ready_in & ((bit_counter == 0)|(bit_counter == 32))) begin
         ready_out <= 1;
+        error <= 1;
     end
     else begin
         ready_out <= 0;

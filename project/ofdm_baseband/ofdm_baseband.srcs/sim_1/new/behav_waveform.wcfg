@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="baseband_tb_load_file_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="baseband_tb_load_file" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="5000000fs"></ZoomStartTime>
+      <ZoomEndTime time="31705000001fs"></ZoomEndTime>
+      <Cursor1Time time="6385000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="192"></NameColumnWidth>
+      <ValueColumnWidth column_width="84"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="89" />
+   <wave_markers>
+      <marker label="" time="11505000000" />
+      <marker label="" time="6385000000" />
+   </wave_markers>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/rst_axi">
+      <obj_property name="ElementShortName">rst_axi</obj_property>
+      <obj_property name="ObjectShortName">rst_axi</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/signal_out">
+      <obj_property name="ElementShortName">signal_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">signal_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/captured_data">
+      <obj_property name="ElementShortName">captured_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">captured_data[31:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/ready_in">
+      <obj_property name="ElementShortName">ready_in</obj_property>
+      <obj_property name="ObjectShortName">ready_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/valid_in">
+      <obj_property name="ElementShortName">valid_in</obj_property>
+      <obj_property name="ObjectShortName">valid_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/ready_out">
+      <obj_property name="ElementShortName">ready_out</obj_property>
+      <obj_property name="ObjectShortName">ready_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/valid_out">
+      <obj_property name="ElementShortName">valid_out</obj_property>
+      <obj_property name="ObjectShortName">valid_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/error">
+      <obj_property name="ElementShortName">error</obj_property>
+      <obj_property name="ObjectShortName">error</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/data_stream">
+      <obj_property name="ElementShortName">data_stream[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_stream[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/scan_stream">
+      <obj_property name="ElementShortName">scan_stream[31:0]</obj_property>
+      <obj_property name="ObjectShortName">scan_stream[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider16" type="divider">
+      <obj_property name="label">QAM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#0000FF</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/signal_in">
+      <obj_property name="ElementShortName">signal_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">signal_in[31:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/signal_in_mod">
+      <obj_property name="ElementShortName">signal_in_mod[31:0]</obj_property>
+      <obj_property name="ObjectShortName">signal_in_mod[31:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/signal_out">
+      <obj_property name="ElementShortName">signal_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">signal_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/qam">
+      <obj_property name="ElementShortName">qam[2:0]</obj_property>
+      <obj_property name="ObjectShortName">qam[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/ready_out">
+      <obj_property name="ElementShortName">ready_out</obj_property>
+      <obj_property name="ObjectShortName">ready_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/ready_in">
+      <obj_property name="ElementShortName">ready_in</obj_property>
+      <obj_property name="ObjectShortName">ready_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/valid_in">
+      <obj_property name="ElementShortName">valid_in</obj_property>
+      <obj_property name="ObjectShortName">valid_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/valid_out">
+      <obj_property name="ElementShortName">valid_out</obj_property>
+      <obj_property name="ObjectShortName">valid_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/error">
+      <obj_property name="ElementShortName">error</obj_property>
+      <obj_property name="ObjectShortName">error</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/qam_state">
+      <obj_property name="ElementShortName">qam_state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">qam_state[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/signal_in_mod">
+      <obj_property name="ElementShortName">signal_in_mod[31:0]</obj_property>
+      <obj_property name="ObjectShortName">signal_in_mod[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/select_qam_2">
+      <obj_property name="ElementShortName">select_qam_2</obj_property>
+      <obj_property name="ObjectShortName">select_qam_2</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/select_qam_4">
+      <obj_property name="ElementShortName">select_qam_4</obj_property>
+      <obj_property name="ObjectShortName">select_qam_4</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/select_qam_16">
+      <obj_property name="ElementShortName">select_qam_16</obj_property>
+      <obj_property name="ObjectShortName">select_qam_16</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/bit_shift">
+      <obj_property name="ElementShortName">bit_shift[2:0]</obj_property>
+      <obj_property name="ObjectShortName">bit_shift[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/bit_counter">
+      <obj_property name="ElementShortName">bit_counter[5:0]</obj_property>
+      <obj_property name="ObjectShortName">bit_counter[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider17" type="divider">
+      <obj_property name="label">Preamble</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFFF00</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/signal_in">
+      <obj_property name="ElementShortName">signal_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">signal_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/signal_out">
+      <obj_property name="ElementShortName">signal_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">signal_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/preamble_value">
+      <obj_property name="ElementShortName">preamble_value[31:0]</obj_property>
+      <obj_property name="ObjectShortName">preamble_value[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/preamble_length">
+      <obj_property name="ElementShortName">preamble_length[31:0]</obj_property>
+      <obj_property name="ObjectShortName">preamble_length[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/frame_length">
+      <obj_property name="ElementShortName">frame_length[31:0]</obj_property>
+      <obj_property name="ObjectShortName">frame_length[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/valid_in">
+      <obj_property name="ElementShortName">valid_in</obj_property>
+      <obj_property name="ObjectShortName">valid_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/ready_in">
+      <obj_property name="ElementShortName">ready_in</obj_property>
+      <obj_property name="ObjectShortName">ready_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/ready_out">
+      <obj_property name="ElementShortName">ready_out</obj_property>
+      <obj_property name="ObjectShortName">ready_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/valid_out">
+      <obj_property name="ElementShortName">valid_out</obj_property>
+      <obj_property name="ObjectShortName">valid_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/error">
+      <obj_property name="ElementShortName">error</obj_property>
+      <obj_property name="ObjectShortName">error</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/preamble_flag">
+      <obj_property name="ElementShortName">preamble_flag</obj_property>
+      <obj_property name="ObjectShortName">preamble_flag</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/cnt">
+      <obj_property name="ElementShortName">cnt[13:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt[13:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/new_frame">
+      <obj_property name="ElementShortName">new_frame</obj_property>
+      <obj_property name="ObjectShortName">new_frame</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/rst_state">
+      <obj_property name="ElementShortName">rst_state</obj_property>
+      <obj_property name="ObjectShortName">rst_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider18" type="divider">
+      <obj_property name="label">Pilot</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FF0000</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/signal_in">
+      <obj_property name="ElementShortName">signal_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">signal_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/signal_out">
+      <obj_property name="ElementShortName">signal_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">signal_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/frame_length">
+      <obj_property name="ElementShortName">frame_length[12:0]</obj_property>
+      <obj_property name="ObjectShortName">frame_length[12:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/pilot_interval">
+      <obj_property name="ElementShortName">pilot_interval[12:0]</obj_property>
+      <obj_property name="ObjectShortName">pilot_interval[12:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/pilot_value">
+      <obj_property name="ElementShortName">pilot_value[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pilot_value[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/ready_out">
+      <obj_property name="ElementShortName">ready_out</obj_property>
+      <obj_property name="ObjectShortName">ready_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/ready_in">
+      <obj_property name="ElementShortName">ready_in</obj_property>
+      <obj_property name="ObjectShortName">ready_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/valid_out">
+      <obj_property name="ElementShortName">valid_out</obj_property>
+      <obj_property name="ObjectShortName">valid_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/valid_in">
+      <obj_property name="ElementShortName">valid_in</obj_property>
+      <obj_property name="ObjectShortName">valid_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/error">
+      <obj_property name="ElementShortName">error</obj_property>
+      <obj_property name="ObjectShortName">error</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/pilot_inserted">
+      <obj_property name="ElementShortName">pilot_inserted</obj_property>
+      <obj_property name="ObjectShortName">pilot_inserted</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/frame_end">
+      <obj_property name="ElementShortName">frame_end</obj_property>
+      <obj_property name="ObjectShortName">frame_end</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/cnt_frame">
+      <obj_property name="ElementShortName">cnt_frame[12:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt_frame[12:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/cnt_pilot">
+      <obj_property name="ElementShortName">cnt_pilot[12:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt_pilot[12:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider19" type="divider">
+      <obj_property name="label">FFT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#00FF7F</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/s_axis_data_tdata">
+      <obj_property name="ElementShortName">s_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/m_axis_data_tdata">
+      <obj_property name="ElementShortName">m_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/s_axis_config_tdata">
+      <obj_property name="ElementShortName">s_axis_config_tdata[23:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_config_tdata[23:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/s_axis_config_tvalid">
+      <obj_property name="ElementShortName">s_axis_config_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_config_tvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/s_axis_config_tready">
+      <obj_property name="ElementShortName">s_axis_config_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_config_tready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/s_axis_data_tvalid">
+      <obj_property name="ElementShortName">s_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/s_axis_data_tready">
+      <obj_property name="ElementShortName">s_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/s_axis_data_tlast">
+      <obj_property name="ElementShortName">s_axis_data_tlast</obj_property>
+      <obj_property name="ObjectShortName">s_axis_data_tlast</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/m_axis_data_tvalid">
+      <obj_property name="ElementShortName">m_axis_data_tvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/m_axis_data_tready">
+      <obj_property name="ElementShortName">m_axis_data_tready</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/m_axis_data_tlast">
+      <obj_property name="ElementShortName">m_axis_data_tlast</obj_property>
+      <obj_property name="ObjectShortName">m_axis_data_tlast</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/event_frame_started">
+      <obj_property name="ElementShortName">event_frame_started</obj_property>
+      <obj_property name="ObjectShortName">event_frame_started</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/event_tlast_unexpected">
+      <obj_property name="ElementShortName">event_tlast_unexpected</obj_property>
+      <obj_property name="ObjectShortName">event_tlast_unexpected</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/event_tlast_missing">
+      <obj_property name="ElementShortName">event_tlast_missing</obj_property>
+      <obj_property name="ObjectShortName">event_tlast_missing</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/event_status_channel_halt">
+      <obj_property name="ElementShortName">event_status_channel_halt</obj_property>
+      <obj_property name="ObjectShortName">event_status_channel_halt</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/event_data_in_channel_halt">
+      <obj_property name="ElementShortName">event_data_in_channel_halt</obj_property>
+      <obj_property name="ObjectShortName">event_data_in_channel_halt</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/event_data_out_channel_halt">
+      <obj_property name="ElementShortName">event_data_out_channel_halt</obj_property>
+      <obj_property name="ObjectShortName">event_data_out_channel_halt</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider20" type="divider">
+      <obj_property name="label">FFT Controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFA500</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/FFT_Controller_0/inst/axi/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/FFT_Controller_0/inst/axi/data_out">
+      <obj_property name="ElementShortName">data_out[23:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[23:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/FFT_Controller_0/inst/axi/slv_reg0">
+      <obj_property name="ElementShortName">slv_reg0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">slv_reg0[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/FFT_Controller_0/inst/axi/slv_reg1">
+      <obj_property name="ElementShortName">slv_reg1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">slv_reg1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/FFT_Controller_0/inst/axi/slv_reg2">
+      <obj_property name="ElementShortName">slv_reg2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">slv_reg2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/FFT_Controller_0/inst/axi/slv_reg3">
+      <obj_property name="ElementShortName">slv_reg3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">slv_reg3[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/FFT_Controller_0/inst/axi/valid_out">
+      <obj_property name="ElementShortName">valid_out</obj_property>
+      <obj_property name="ObjectShortName">valid_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/FFT_Controller_0/inst/axi/ready_in">
+      <obj_property name="ElementShortName">ready_in</obj_property>
+      <obj_property name="ObjectShortName">ready_in</obj_property>
+   </wvobject>
+</wave_config>

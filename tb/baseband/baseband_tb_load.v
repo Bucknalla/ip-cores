@@ -1,0 +1,1 @@
+/home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sim_1/new/baseband_tb_load.v

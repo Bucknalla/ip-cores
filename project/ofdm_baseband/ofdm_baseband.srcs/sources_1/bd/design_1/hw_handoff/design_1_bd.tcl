@@ -225,15 +225,6 @@ CONFIG.POLARITY {ACTIVE_LOW} \
   # Create instance: Pilot_Insertion_0, and set properties
   set Pilot_Insertion_0 [ create_bd_cell -type ip -vlnv user.org:user:Pilot_Insertion:0.1 Pilot_Insertion_0 ]
 
-  set_property -dict [ list \
-CONFIG.TDATA_NUM_BYTES {4} \
- ] [get_bd_intf_pins /Pilot_Insertion_0/M00_AXIS]
-
-  set_property -dict [ list \
-CONFIG.NUM_READ_OUTSTANDING {1} \
-CONFIG.NUM_WRITE_OUTSTANDING {1} \
- ] [get_bd_intf_pins /Pilot_Insertion_0/S00_AXI]
-
   # Create instance: Preamble_0, and set properties
   set Preamble_0 [ create_bd_cell -type ip -vlnv user.org:user:Preamble:0.1 Preamble_0 ]
 
@@ -325,14 +316,14 @@ preplace inst Preamble_0 -pg 1 -lvl 3 -y 120 -defaultsOSRD
 preplace inst FFT_Controller_0 -pg 1 -lvl 4 -y 170 -defaultsOSRD
 preplace inst xfft_0 -pg 1 -lvl 5 -y 200 -defaultsOSRD
 preplace netloc DATA_IN_AXIS_1 1 0 2 NJ 110 310J
-preplace netloc xfft_0_event_frame_started 1 3 3 950 50 NJ 50 1630
+preplace netloc xfft_0_event_frame_started 1 3 3 950 70 NJ 70 1630
 preplace netloc xfft_0_event_tlast_unexpected 1 5 1 1640J
 preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1270
 preplace netloc axi_interconnect_M01_AXI 1 1 2 340 50 NJ
 preplace netloc ARESETN_1 1 0 4 NJ 40 330 40 630 240 940
 preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 610
 preplace netloc ARESETN_2 1 0 1 20
-preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1650J
+preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1640J
 preplace netloc S00_AXI_1 1 0 1 NJ
 preplace netloc axi_interconnect_M02_AXI 1 1 3 NJ 310 NJ 310 N
 preplace netloc Pilot_Insertion_0_frame_end 1 4 2 NJ 410 NJ

@@ -56,7 +56,7 @@ always @ (posedge clk) begin
         rst_state       <= 1;
     end else if(ready_in & valid_in) begin
         error <= 0;
-        ready_out   <= 1;
+        // ready_out   <= 1;
         if (new_frame == 1) begin
             valid_out   <= 1;
             

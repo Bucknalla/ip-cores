@@ -89,3 +89,4 @@
 /include
 /share
 /bin
+!*.svg

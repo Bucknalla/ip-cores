@@ -201,7 +201,7 @@ CONFIG.TUSER_WIDTH {0} \
   # Create ports
   set CLK [ create_bd_port -dir I -type clk CLK ]
   set_property -dict [ list \
-CONFIG.ASSOCIATED_BUSIF {DATA_IN_AXIS:CONFIG_AXI:DATA_OUT_AXIS:DATA_IN} \
+CONFIG.ASSOCIATED_BUSIF {DATA_IN_AXIS:CONFIG_AXI:DATA_OUT_AXIS} \
 CONFIG.ASSOCIATED_RESET {RST_AXI:RST} \
 CONFIG.FREQ_HZ {100000000} \
  ] $CLK
@@ -225,29 +225,20 @@ CONFIG.POLARITY {ACTIVE_LOW} \
   # Create instance: Pilot_Insertion_0, and set properties
   set Pilot_Insertion_0 [ create_bd_cell -type ip -vlnv user.org:user:Pilot_Insertion:0.1 Pilot_Insertion_0 ]
 
+  set_property -dict [ list \
+CONFIG.TDATA_NUM_BYTES {4} \
+ ] [get_bd_intf_pins /Pilot_Insertion_0/M00_AXIS]
+
+  set_property -dict [ list \
+CONFIG.NUM_READ_OUTSTANDING {1} \
+CONFIG.NUM_WRITE_OUTSTANDING {1} \
+ ] [get_bd_intf_pins /Pilot_Insertion_0/S00_AXI]
+
   # Create instance: Preamble_0, and set properties
   set Preamble_0 [ create_bd_cell -type ip -vlnv user.org:user:Preamble:0.1 Preamble_0 ]
 
-  set_property -dict [ list \
-CONFIG.TDATA_NUM_BYTES {4} \
- ] [get_bd_intf_pins /Preamble_0/M00_AXIS]
-
-  set_property -dict [ list \
-CONFIG.NUM_READ_OUTSTANDING {1} \
-CONFIG.NUM_WRITE_OUTSTANDING {1} \
- ] [get_bd_intf_pins /Preamble_0/S00_AXI]
-
   # Create instance: QAM_Modulator_1, and set properties
   set QAM_Modulator_1 [ create_bd_cell -type ip -vlnv user.org:user:QAM_Modulator:0.2 QAM_Modulator_1 ]
-
-  set_property -dict [ list \
-CONFIG.TDATA_NUM_BYTES {4} \
- ] [get_bd_intf_pins /QAM_Modulator_1/M00_AXIS]
-
-  set_property -dict [ list \
-CONFIG.NUM_READ_OUTSTANDING {1} \
-CONFIG.NUM_WRITE_OUTSTANDING {1} \
- ] [get_bd_intf_pins /QAM_Modulator_1/S00_AXI]
 
   # Create instance: axi_interconnect, and set properties
   set axi_interconnect [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect ]

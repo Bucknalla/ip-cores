@@ -101,6 +101,8 @@ begin
     rst = 1;
     rst_axi = 0;
     #10000
+    valid_in = 1;
+    #10000
     valid_in = 0;
     #1000
     valid_in = 1;

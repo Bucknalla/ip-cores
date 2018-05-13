@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:Pilot_Insertion:0.1
-// IP Revision: 38
+// IP Revision: 40
 
 `timescale 1ns/1ps
 
@@ -97,6 +97,7 @@ output wire pilot_flag;
 output wire frame_start;
 output wire frame_end;
 output wire error;
+(* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 event_frame_started INTERRUPT" *)
 input wire event_frame_started;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TDATA" *)
 output wire [31 : 0] m00_axis_tdata;

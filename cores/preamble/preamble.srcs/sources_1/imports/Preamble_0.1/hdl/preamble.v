@@ -1,44 +1,44 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 29.03.2018 17:54:51
-// Design Name: 
+// Design Name:
 // Module Name: preamble
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 
 module preamble(
-    input               clk,
-    input               rst,
-    
-    input       [31:0]  preamble_value,
-    input       [31:0]  preamble_length,
-    input       [31:0]  frame_length,
+           input               clk,
+           input               rst,
 
-    input               valid_in,   // VALID on AXIS_S
-    input               ready_in,  // READY on AXIS_M (TX)
+           input       [31:0]  preamble_value,
+           input       [31:0]  preamble_length,
+           input       [31:0]  frame_length,
 
-    output  reg         ready_out,   // READY on AXIS_S (RX)
-    output  reg         valid_out,  // VALID on AXIS_M
+           input               valid_in,   // VALID on AXIS_S
+           input               ready_in,  // READY on AXIS_M (TX)
 
-    input       [31:0]  signal_in,
-    output  reg [31:0]  signal_out,
+           output  reg         ready_out,   // READY on AXIS_S (RX)
+           output  reg         valid_out,  // VALID on AXIS_M
 
-    output  reg         error,
-    output  reg         preamble_flag);
+           input       [31:0]  signal_in,
+           output  reg [31:0]  signal_out,
+
+           output  reg         error,
+           output  reg         preamble_flag);
 
 reg [13:0]  cnt             = 0;
 reg         new_frame       = 0;
@@ -54,27 +54,30 @@ always @ (posedge clk) begin
         preamble_flag   <= 0;
         error           <= 0;
         rst_state       <= 1;
-    end else if(ready_in & valid_in) begin
+    end
+    else if(ready_in & valid_in) begin
         error <= 0;
         // ready_out   <= 1;
         if (new_frame == 1) begin
             valid_out   <= 1;
-            
+
             if (cnt <= preamble_length - 1) begin
                 cnt             <= cnt + 1;
                 preamble_flag   <= 1;
                 signal_out      <= preamble_value;
                 preamble_flag   <= 1;
                 ready_out        <= 0;
-            end else begin
+            end
+            else begin
                 new_frame       <= 0;
                 preamble_flag   <= 0;
                 signal_out      <= signal_in;
                 ready_out        <= 1;
                 cnt             <= 0;
             end
-            
-        end else if (new_frame == 0) begin
+
+        end
+        else if (new_frame == 0) begin
             valid_out   <= 1;
             if (cnt >= frame_length - 1) begin
                 new_frame       <= 1;
@@ -82,18 +85,21 @@ always @ (posedge clk) begin
                 cnt             <= 1;
                 ready_out        <= 0;
                 signal_out      <= preamble_value;
-            end else begin
+            end
+            else begin
                 ready_out        <= 1;
                 cnt             <= cnt + 1;
                 signal_out      <= signal_in;
             end
         end
-    end else if (ready_in) begin
+    end
+    else if (ready_in) begin
         ready_out   <= 1;
-    end else begin
+    end
+    else begin
         ready_out <= 0;
     end
-end 
+end
 
 
 endmodule

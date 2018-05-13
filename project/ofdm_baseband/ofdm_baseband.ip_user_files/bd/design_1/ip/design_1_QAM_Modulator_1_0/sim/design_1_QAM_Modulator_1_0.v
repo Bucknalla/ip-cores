@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:QAM_Modulator:0.2
-// IP Revision: 19
+// IP Revision: 20
 
 `timescale 1ns/1ps
 

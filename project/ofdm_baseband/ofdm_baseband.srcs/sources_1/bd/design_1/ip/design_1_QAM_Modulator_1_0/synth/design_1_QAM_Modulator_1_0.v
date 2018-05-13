@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:QAM_Modulator:0.2
-// IP Revision: 19
+// IP Revision: 20
 
 (* X_CORE_INFO = "QAM_Modulator_v0_1,Vivado 2016.4" *)
 (* CHECK_LICENSE_TYPE = "design_1_QAM_Modulator_1_0,QAM_Modulator_v0_1,{}" *)

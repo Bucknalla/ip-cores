@@ -7,11 +7,14 @@ import math
 
 # Configure Variables
 
-K = 64 # Number of OFDM subcarriers
+K = 512 # Number of OFDM subcarriers
 CP = K * 0.25 # Length of the cyclic prefix: % of the block
 P = 8 # Number of pilot carriers per OFDM block
 P_Value = 3+3j # The known complex value each pilot transmits
 MU = 16 # Number of bits per symbol (i.e. 16QAM) - NOTE: Must have integer sqrt(MU) 
+Pr = 32 # Number of preamble carriers
+Pr_Value = 1+1j # 
+
 
 # Generating carriers
 

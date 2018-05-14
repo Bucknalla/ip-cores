@@ -55,44 +55,46 @@ always @ (posedge clk) begin
         signal_in_mod <= signal_in;
         {select_qam_2,select_qam_4,select_qam_16, bit_shift} <= 6'b100001;
     end
-    else if (ready_in & (!valid_in)) begin
-        valid_out <= 0;
-        error <= 1;
-    end
-    else if (ready_in & valid_in) begin
-        error <= 0;
-        ready_out <= 0;
-        valid_out <= 0;
-        if (bit_counter == 32) begin
-            ready_out <= 1;
-            bit_counter <= 1;
+    else if (ready_in) begin
+        ready_out <= 1;
+        if (valid_in) begin
+            error <= 0;
+            ready_out <= 0;
             valid_out <= 1;
-            signal_in_mod <= signal_in;
+            
+            if (bit_counter == 32) begin
+                ready_out <= 1;
+                bit_counter <= 1;
+                signal_in_mod <= signal_in;
+            end
+            else if(bit_counter == 0) begin
+                signal_in_mod <= signal_in;
+                bit_counter <= 1;
+                valid_out <= 0;
+            end
+            else begin
+                bit_counter <= bit_counter + bit_shift;
+                signal_in_mod <= signal_in_mod >> bit_shift;
+            end
+    
+            case (qam)
+                0 :
+                    {select_qam_2, select_qam_4, select_qam_16, bit_shift} <= 6'b100001;
+                1 :
+                    {select_qam_2, select_qam_4, select_qam_16, bit_shift} <= 6'b010010;
+                2 :
+                    {select_qam_2, select_qam_4, select_qam_16, bit_shift} <= 6'b001100;
+                default :
+                    {select_qam_2, select_qam_4, select_qam_16, bit_shift} <= 6'b100001;
+            endcase
+            
         end
-        else if(bit_counter == 0) begin
-            signal_in_mod <= signal_in;
-            bit_counter <= 1;
+        else if(!valid_in) begin
+            valid_out <= 0;
+            error <= 1;
         end
-        else begin
-            valid_out <= 1;
-            bit_counter <= bit_counter + bit_shift;
-            signal_in_mod <= signal_in_mod >> bit_shift;
-        end
-
-        // Quadrature Selector
-        case (qam)
-            0 :
-                {select_qam_2, select_qam_4, select_qam_16, bit_shift} <= 6'b100001;
-            1 :
-                {select_qam_2, select_qam_4, select_qam_16, bit_shift} <= 6'b010010;
-            2 :
-                {select_qam_2, select_qam_4, select_qam_16, bit_shift} <= 6'b001100;
-            default :
-                {select_qam_2, select_qam_4, select_qam_16, bit_shift} <= 6'b100001;
-        endcase
-
     end
-    else begin
+    else if(!ready_in) begin
         ready_out <= 0;
     end
 end

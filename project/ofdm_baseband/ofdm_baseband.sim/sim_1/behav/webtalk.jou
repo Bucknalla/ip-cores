@@ -2,8 +2,8 @@
 # Webtalk v2016.4 (64-bit)
 # SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
 # IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
-# Start of session at: Sun May 13 20:55:45 2018
-# Process ID: 8433
+# Start of session at: Mon May 14 10:39:19 2018
+# Process ID: 10291
 # Current directory: /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.sim/sim_1/behav
 # Command line: wbtcv -mode batch -source /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.sim/sim_1/behav/xsim.dir/baseband_tb_load_file_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.sim/sim_1/behav/webtalk.log

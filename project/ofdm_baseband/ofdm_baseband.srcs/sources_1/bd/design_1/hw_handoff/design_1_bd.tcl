@@ -237,8 +237,26 @@ CONFIG.NUM_WRITE_OUTSTANDING {1} \
   # Create instance: Preamble_0, and set properties
   set Preamble_0 [ create_bd_cell -type ip -vlnv user.org:user:Preamble:0.1 Preamble_0 ]
 
+  set_property -dict [ list \
+CONFIG.TDATA_NUM_BYTES {4} \
+ ] [get_bd_intf_pins /Preamble_0/M00_AXIS]
+
+  set_property -dict [ list \
+CONFIG.NUM_READ_OUTSTANDING {1} \
+CONFIG.NUM_WRITE_OUTSTANDING {1} \
+ ] [get_bd_intf_pins /Preamble_0/S00_AXI]
+
   # Create instance: QAM_Modulator_1, and set properties
   set QAM_Modulator_1 [ create_bd_cell -type ip -vlnv user.org:user:QAM_Modulator:0.2 QAM_Modulator_1 ]
+
+  set_property -dict [ list \
+CONFIG.TDATA_NUM_BYTES {4} \
+ ] [get_bd_intf_pins /QAM_Modulator_1/M00_AXIS]
+
+  set_property -dict [ list \
+CONFIG.NUM_READ_OUTSTANDING {1} \
+CONFIG.NUM_WRITE_OUTSTANDING {1} \
+ ] [get_bd_intf_pins /QAM_Modulator_1/S00_AXI]
 
   # Create instance: axi_interconnect, and set properties
   set axi_interconnect [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect ]

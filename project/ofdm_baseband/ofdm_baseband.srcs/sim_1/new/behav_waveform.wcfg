@@ -11,15 +11,20 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="9724166667fs"></ZoomStartTime>
-      <ZoomEndTime time="17649166668fs"></ZoomEndTime>
-      <Cursor1Time time="11045000000fs"></Cursor1Time>
+      <ZoomStartTime time="9860400000fs"></ZoomStartTime>
+      <ZoomEndTime time="10177800001fs"></ZoomEndTime>
+      <Cursor1Time time="10035000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="192"></NameColumnWidth>
-      <ValueColumnWidth column_width="84"></ValueColumnWidth>
+      <ValueColumnWidth column_width="82"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="89" />
+   <wave_markers>
+      <marker label="" time="10385000000" />
+      <marker label="" time="10705000000" />
+      <marker label="" time="11025500000" />
+   </wave_markers>
    <wvobject type="logic" fp_name="/baseband_tb_load_file/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -143,6 +148,7 @@
    <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/QAM_Modulator_1/inst/qam/bit_counter">
       <obj_property name="ElementShortName">bit_counter[5:0]</obj_property>
       <obj_property name="ObjectShortName">bit_counter[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="divider17" type="divider">
       <obj_property name="label">Preamble</obj_property>
@@ -200,6 +206,7 @@
    <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/cnt">
       <obj_property name="ElementShortName">cnt[13:0]</obj_property>
       <obj_property name="ObjectShortName">cnt[13:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/new_frame">
       <obj_property name="ElementShortName">new_frame</obj_property>

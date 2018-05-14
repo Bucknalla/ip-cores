@@ -813,13 +813,6 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>Preamble_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="user" spirit:name="Preamble" spirit:vendor="user.org" spirit:version="0.1"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_Preamble_0_0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
         <spirit:instanceName>QAM_Modulator_1</spirit:instanceName>
         <spirit:componentRef spirit:library="user" spirit:name="QAM_Modulator" spirit:vendor="user.org" spirit:version="0.2"/>
         <spirit:configurableElementValues>
@@ -831,6 +824,13 @@
         <spirit:componentRef spirit:library="user" spirit:name="Pilot_Insertion" spirit:vendor="user.org" spirit:version="0.1"/>
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_Pilot_Insertion_0_0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>Preamble_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="user" spirit:name="Preamble" spirit:vendor="user.org" spirit:version="0.1"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_Preamble_0_0</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
     </spirit:componentInstances>
@@ -883,36 +883,36 @@
         <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="s00_axi_aclk"/>
         <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="m00_axis_aclk"/>
         <spirit:internalPortReference spirit:componentRef="xfft_0" spirit:portRef="aclk"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="m00_axis_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axis_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axi_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="s00_axi_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="s00_axis_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="m00_axis_aclk"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect" spirit:portRef="M00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect" spirit:portRef="M01_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect" spirit:portRef="M02_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect" spirit:portRef="M03_ACLK"/>
+        <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="s00_axi_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="s00_axis_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="m00_axis_aclk"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="m00_axis_aclk"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="s00_axis_aclk"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="s00_axi_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="m00_axis_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axis_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axi_aclk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>ARESETN_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="RST"/>
         <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="s00_axi_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="m00_axis_aresetn"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="m00_axis_aresetn"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axis_aresetn"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axi_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="s00_axi_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="s00_axis_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="m00_axis_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="m00_axis_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="s00_axis_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="s00_axi_aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="m00_axis_aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axis_aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axi_aresetn"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>Pilot_Insertion_0_pilot_flag</spirit:name>

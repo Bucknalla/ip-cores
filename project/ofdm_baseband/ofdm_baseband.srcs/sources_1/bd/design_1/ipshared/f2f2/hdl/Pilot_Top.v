@@ -52,48 +52,46 @@ always @ (posedge clk) begin
         valid_out <= 0;
         error <= 0;
     end 
-    else if (ready_in & valid_in) begin
-        valid_out <= 1;
-        error <= 0;
-
-        if(cnt_frame >= (frame_length - 1)) begin
-            cnt_frame <= 0;
-            frame_end <= 1;
-        end
-        else if(cnt_frame == 0) begin
-            cnt_frame <= cnt_frame + 1;
-//            frame_end <= 1;
-        end
-        else begin
-            cnt_frame <= cnt_frame + 1;
-            frame_end <= 0;
-        end
-        
-
-        if(cnt_pilot >= (pilot_interval - 1)) begin
-            cnt_pilot <= 0;
-        end
-        else if((cnt_pilot % pilot_interval) == 0 ) begin
-            ready_out <= 0;
-            signal_out <= pilot_value;
-            pilot_inserted <= 1;
-            cnt_pilot <= cnt_pilot + 1;
-        end
-        else begin
-            pilot_inserted <= 0;
-            ready_out <= 1;
-            cnt_pilot <= cnt_pilot + 1;
-            signal_out <= signal_in;
-        end
-
-    end
-    else if(ready_in) begin
+    else if (ready_in) begin
         ready_out <= 1;
+        if (valid_in) begin
+            valid_out <= 1;
+            if(cnt_frame >= (frame_length - 1)) begin
+                cnt_frame <= 0;
+                frame_end <= 1;
+            end
+            else if(cnt_frame == 0) begin
+                cnt_frame <= cnt_frame + 1;
+            end
+            else begin
+                cnt_frame <= cnt_frame + 1;
+                frame_end <= 0;
+            end    
+            if(cnt_pilot >= (pilot_interval - 1)) begin
+                cnt_pilot <= 0;
+            end
+            else if((cnt_pilot % pilot_interval) == 0 ) begin
+                ready_out <= 0;
+                signal_out <= pilot_value;
+                pilot_inserted <= 1;
+                cnt_pilot <= cnt_pilot + 1;
+            end
+            else begin
+                pilot_inserted <= 0;
+                ready_out <= 1;
+                cnt_pilot <= cnt_pilot + 1;
+                signal_out <= signal_in;
+            end
+        end
+        else if(!valid_in) begin
+            valid_out <= 0;
+            error <= 1;
+        end
+
     end
-    else begin
+    else if(!ready_in) begin
         ready_out <= 0;
     end
 end
-
 
 endmodule

@@ -47,29 +47,14 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: user.org:user:Pilot_Insertion:0.1
-// IP Revision: 43
+// IP VLNV: user.org:user:QAM_Modulator_2:0.2
+// IP Revision: 7
 
 `timescale 1ns/1ps
 
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module design_1_Pilot_Insertion_0_0 (
-  pilot_flag,
-  frame_start,
-  frame_end,
+module design_1_QAM_Modulator_0_0 (
   error,
-  event_frame_started,
-  m00_axis_tdata,
-  m00_axis_tlast,
-  m00_axis_tvalid,
-  m00_axis_tready,
-  m00_axis_aclk,
-  m00_axis_aresetn,
-  s00_axis_tdata,
-  s00_axis_tvalid,
-  s00_axis_tready,
-  s00_axis_aclk,
-  s00_axis_aresetn,
   s00_axi_awaddr,
   s00_axi_awprot,
   s00_axi_awvalid,
@@ -90,37 +75,20 @@ module design_1_Pilot_Insertion_0_0 (
   s00_axi_rvalid,
   s00_axi_rready,
   s00_axi_aclk,
-  s00_axi_aresetn
+  s00_axi_aresetn,
+  s00_axis_tdata,
+  s00_axis_tvalid,
+  s00_axis_tready,
+  s00_axis_aclk,
+  s00_axis_aresetn,
+  m00_axis_tdata,
+  m00_axis_tvalid,
+  m00_axis_tready,
+  m00_axis_aclk,
+  m00_axis_aresetn
 );
 
-output wire pilot_flag;
-output wire frame_start;
-output wire frame_end;
 output wire error;
-(* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 event_frame_started INTERRUPT" *)
-input wire event_frame_started;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TDATA" *)
-output wire [31 : 0] m00_axis_tdata;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TLAST" *)
-output wire m00_axis_tlast;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TVALID" *)
-output wire m00_axis_tvalid;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TREADY" *)
-input wire m00_axis_tready;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 M00_AXIS_CLK CLK, xilinx.com:signal:clock:1.0 m00_axis_aclk CLK" *)
-input wire m00_axis_aclk;
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 M00_AXIS_RST RST, xilinx.com:signal:reset:1.0 m00_axis_aresetn RST" *)
-input wire m00_axis_aresetn;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S00_AXIS TDATA" *)
-input wire [31 : 0] s00_axis_tdata;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S00_AXIS TVALID" *)
-input wire s00_axis_tvalid;
-(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S00_AXIS TREADY" *)
-output wire s00_axis_tready;
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 S00_AXIS_CLK CLK, xilinx.com:signal:clock:1.0 s00_axis_aclk CLK" *)
-input wire s00_axis_aclk;
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 S00_AXIS_RST RST, xilinx.com:signal:reset:1.0 s00_axis_aresetn RST" *)
-input wire s00_axis_aresetn;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWADDR" *)
 input wire [3 : 0] s00_axi_awaddr;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWPROT" *)
@@ -163,30 +131,35 @@ input wire s00_axi_rready;
 input wire s00_axi_aclk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 S00_AXI_RST RST, xilinx.com:signal:reset:1.0 s00_axi_aresetn RST" *)
 input wire s00_axi_aresetn;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S00_AXIS TDATA" *)
+input wire [31 : 0] s00_axis_tdata;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S00_AXIS TVALID" *)
+input wire s00_axis_tvalid;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S00_AXIS TREADY" *)
+output wire s00_axis_tready;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 S00_AXIS_CLK CLK, xilinx.com:signal:clock:1.0 s00_axis_aclk CLK" *)
+input wire s00_axis_aclk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 S00_AXIS_RST RST, xilinx.com:signal:reset:1.0 s00_axis_aresetn RST" *)
+input wire s00_axis_aresetn;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TDATA" *)
+output wire [31 : 0] m00_axis_tdata;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TVALID" *)
+output wire m00_axis_tvalid;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TREADY" *)
+input wire m00_axis_tready;
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 M00_AXIS_CLK CLK, xilinx.com:signal:clock:1.0 m00_axis_aclk CLK" *)
+input wire m00_axis_aclk;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 M00_AXIS_RST RST, xilinx.com:signal:reset:1.0 m00_axis_aresetn RST" *)
+input wire m00_axis_aresetn;
 
-  Pilot_Insertion_v0_1 #(
-    .C_M00_AXIS_TDATA_WIDTH(32),  // Width of S_AXIS address bus. The slave accepts the read and write addresses of width C_M_AXIS_TDATA_WIDTH.
-    .C_M00_AXIS_START_COUNT(32),  // Start count is the numeber of clock cycles the master will wait before initiating/issuing any transaction.
-    .C_S00_AXIS_TDATA_WIDTH(32),  // AXI4Stream sink: Data Width
+  QAM_Modulator_v0_1 #(
     .C_S00_AXI_DATA_WIDTH(32),  // Width of S_AXI data bus
-    .C_S00_AXI_ADDR_WIDTH(4)  // Width of S_AXI address bus
+    .C_S00_AXI_ADDR_WIDTH(4),  // Width of S_AXI address bus
+    .C_S00_AXIS_TDATA_WIDTH(32),  // AXI4Stream sink: Data Width
+    .C_M00_AXIS_TDATA_WIDTH(32),  // Width of S_AXIS address bus. The slave accepts the read and write addresses of width C_M_AXIS_TDATA_WIDTH.
+    .C_M00_AXIS_START_COUNT(32)  // Start count is the numeber of clock cycles the master will wait before initiating/issuing any transaction.
   ) inst (
-    .pilot_flag(pilot_flag),
-    .frame_start(frame_start),
-    .frame_end(frame_end),
     .error(error),
-    .event_frame_started(event_frame_started),
-    .m00_axis_tdata(m00_axis_tdata),
-    .m00_axis_tlast(m00_axis_tlast),
-    .m00_axis_tvalid(m00_axis_tvalid),
-    .m00_axis_tready(m00_axis_tready),
-    .m00_axis_aclk(m00_axis_aclk),
-    .m00_axis_aresetn(m00_axis_aresetn),
-    .s00_axis_tdata(s00_axis_tdata),
-    .s00_axis_tvalid(s00_axis_tvalid),
-    .s00_axis_tready(s00_axis_tready),
-    .s00_axis_aclk(s00_axis_aclk),
-    .s00_axis_aresetn(s00_axis_aresetn),
     .s00_axi_awaddr(s00_axi_awaddr),
     .s00_axi_awprot(s00_axi_awprot),
     .s00_axi_awvalid(s00_axi_awvalid),
@@ -207,6 +180,16 @@ input wire s00_axi_aresetn;
     .s00_axi_rvalid(s00_axi_rvalid),
     .s00_axi_rready(s00_axi_rready),
     .s00_axi_aclk(s00_axi_aclk),
-    .s00_axi_aresetn(s00_axi_aresetn)
+    .s00_axi_aresetn(s00_axi_aresetn),
+    .s00_axis_tdata(s00_axis_tdata),
+    .s00_axis_tvalid(s00_axis_tvalid),
+    .s00_axis_tready(s00_axis_tready),
+    .s00_axis_aclk(s00_axis_aclk),
+    .s00_axis_aresetn(s00_axis_aresetn),
+    .m00_axis_tdata(m00_axis_tdata),
+    .m00_axis_tvalid(m00_axis_tvalid),
+    .m00_axis_tready(m00_axis_tready),
+    .m00_axis_aclk(m00_axis_aclk),
+    .m00_axis_aresetn(m00_axis_aresetn)
   );
 endmodule

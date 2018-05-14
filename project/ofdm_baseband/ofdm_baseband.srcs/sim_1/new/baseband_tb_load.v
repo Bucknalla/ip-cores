@@ -70,8 +70,7 @@ always #(CLK_PERIOD/2) clk = ~clk;
 
 // SIGNAL_IN INCREMENTER
 always @(posedge clk) begin
-    if((rst) & ready_out) begin
-        valid_in = 1;
+    if(rst & ready_out & valid_in) begin
         scan_stream = $fscanf(data_stream, "%b\n", captured_data);
         $display(captured_data); 
     end

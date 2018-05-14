@@ -79,7 +79,7 @@ always @ (posedge clk) begin
                     preamble_flag   <= 0;
                     signal_out      <= init_store;
                     ready_out        <= 1;
-                    cnt             <= 0;
+//                    cnt             <= 0;
                 end
     
             end

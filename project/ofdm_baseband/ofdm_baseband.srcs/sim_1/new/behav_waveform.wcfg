@@ -11,19 +11,20 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="9860400000fs"></ZoomStartTime>
-      <ZoomEndTime time="10177800001fs"></ZoomEndTime>
-      <Cursor1Time time="10035000000fs"></Cursor1Time>
+      <ZoomStartTime time="26000000fs"></ZoomStartTime>
+      <ZoomEndTime time="69376000001fs"></ZoomEndTime>
+      <Cursor1Time time="15176000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="192"></NameColumnWidth>
-      <ValueColumnWidth column_width="82"></ValueColumnWidth>
+      <ValueColumnWidth column_width="282"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="89" />
+   <WVObjectSize size="90" />
    <wave_markers>
-      <marker label="" time="10385000000" />
-      <marker label="" time="10705000000" />
-      <marker label="" time="11025500000" />
+      <marker label="" time="38465000000" />
+      <marker label="" time="33305000000" />
+      <marker label="" time="15165000000" />
+      <marker label="" time="10055000000" />
    </wave_markers>
    <wvobject type="logic" fp_name="/baseband_tb_load_file/clk">
       <obj_property name="ElementShortName">clk</obj_property>
@@ -179,6 +180,10 @@
       <obj_property name="ElementShortName">frame_length[31:0]</obj_property>
       <obj_property name="ObjectShortName">frame_length[31:0]</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/init_store">
+      <obj_property name="ElementShortName">init_store[31:0]</obj_property>
+      <obj_property name="ObjectShortName">init_store[31:0]</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Preamble_0/inst/pre/valid_in">
       <obj_property name="ElementShortName">valid_in</obj_property>
       <obj_property name="ObjectShortName">valid_in</obj_property>
@@ -240,6 +245,7 @@
    <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/pilot_interval">
       <obj_property name="ElementShortName">pilot_interval[12:0]</obj_property>
       <obj_property name="ObjectShortName">pilot_interval[12:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/pilot_value">
       <obj_property name="ElementShortName">pilot_value[31:0]</obj_property>
@@ -276,6 +282,7 @@
    <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/cnt_frame">
       <obj_property name="ElementShortName">cnt_frame[12:0]</obj_property>
       <obj_property name="ObjectShortName">cnt_frame[12:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/pilot/cnt_pilot">
       <obj_property name="ElementShortName">cnt_pilot[12:0]</obj_property>

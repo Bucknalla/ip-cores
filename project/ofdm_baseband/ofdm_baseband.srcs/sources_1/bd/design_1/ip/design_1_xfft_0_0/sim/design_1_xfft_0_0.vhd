@@ -59,7 +59,7 @@ USE xfft_v9_0_11.xfft_v9_0_11;
 ENTITY design_1_xfft_0_0 IS
   PORT (
     aclk : IN STD_LOGIC;
-    s_axis_config_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+    s_axis_config_tdata : IN STD_LOGIC_VECTOR(39 DOWNTO 0);
     s_axis_config_tvalid : IN STD_LOGIC;
     s_axis_config_tready : OUT STD_LOGIC;
     s_axis_data_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -122,7 +122,7 @@ ARCHITECTURE design_1_xfft_0_0_arch OF design_1_xfft_0_0 IS
       aclk : IN STD_LOGIC;
       aclken : IN STD_LOGIC;
       aresetn : IN STD_LOGIC;
-      s_axis_config_tdata : IN STD_LOGIC_VECTOR(23 DOWNTO 0);
+      s_axis_config_tdata : IN STD_LOGIC_VECTOR(39 DOWNTO 0);
       s_axis_config_tvalid : IN STD_LOGIC;
       s_axis_config_tready : OUT STD_LOGIC;
       s_axis_data_tdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -169,7 +169,7 @@ BEGIN
   U0 : xfft_v9_0_11
     GENERIC MAP (
       C_XDEVICEFAMILY => "zynq",
-      C_S_AXIS_CONFIG_TDATA_WIDTH => 24,
+      C_S_AXIS_CONFIG_TDATA_WIDTH => 40,
       C_S_AXIS_DATA_TDATA_WIDTH => 32,
       C_M_AXIS_DATA_TDATA_WIDTH => 32,
       C_M_AXIS_DATA_TUSER_WIDTH => 1,
@@ -190,8 +190,8 @@ BEGIN
       C_HAS_ARESETN => 0,
       C_HAS_OVFLO => 0,
       C_HAS_NATURAL_INPUT => 1,
-      C_HAS_NATURAL_OUTPUT => 0,
-      C_HAS_CYCLIC_PREFIX => 0,
+      C_HAS_NATURAL_OUTPUT => 1,
+      C_HAS_CYCLIC_PREFIX => 1,
       C_HAS_XK_INDEX => 0,
       C_DATA_MEM_TYPE => 1,
       C_TWIDDLE_MEM_TYPE => 1,

@@ -802,14 +802,19 @@
           <spirit:configurableElementValue spirit:referenceId="transform_length">512</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="implementation_options">pipelined_streaming_io</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="run_time_configurable_transform_length">true</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="data_format">fixed_point</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="scaling_options">scaled</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="throttle_scheme">nonrealtime</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="output_ordering">natural_order</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="cyclic_prefix_insertion">true</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="number_of_stages_using_block_ram_for_data_and_phase_factors">2</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>FFT_Controller_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="user" spirit:name="FFT_Controller" spirit:vendor="user.org" spirit:version="0.1"/>
+        <spirit:instanceName>Preamble_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="user" spirit:name="Preamble" spirit:vendor="user.org" spirit:version="0.1"/>
         <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_FFT_Controller_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_Preamble_0_0</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
@@ -827,10 +832,10 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>Preamble_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="user" spirit:name="Preamble" spirit:vendor="user.org" spirit:version="0.1"/>
+        <spirit:instanceName>FFT_Controller_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="user" spirit:name="FFT_Controller" spirit:vendor="user.org" spirit:version="0.1"/>
         <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_Preamble_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">design_1_FFT_Controller_0_0</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
     </spirit:componentInstances>
@@ -880,9 +885,10 @@
       <spirit:adHocConnection>
         <spirit:name>processing_system7_0_FCLK_CLK0</spirit:name>
         <spirit:externalPortReference spirit:portRef="CLK"/>
-        <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="s00_axi_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="m00_axis_aclk"/>
         <spirit:internalPortReference spirit:componentRef="xfft_0" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="m00_axis_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axis_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axi_aclk"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect" spirit:portRef="M00_ACLK"/>
@@ -895,24 +901,23 @@
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="m00_axis_aclk"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="s00_axis_aclk"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="s00_axi_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="m00_axis_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axis_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axi_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="s00_axi_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="m00_axis_aclk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>ARESETN_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="RST"/>
-        <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="s00_axi_aresetn"/>
-        <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="m00_axis_aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="m00_axis_aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axis_aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axi_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="s00_axi_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="s00_axis_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="QAM_Modulator_1" spirit:portRef="m00_axis_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="m00_axis_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="s00_axis_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="Pilot_Insertion_0" spirit:portRef="s00_axi_aresetn"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="m00_axis_aresetn"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axis_aresetn"/>
-        <spirit:internalPortReference spirit:componentRef="Preamble_0" spirit:portRef="s00_axi_aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="s00_axi_aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="FFT_Controller_0" spirit:portRef="m00_axis_aresetn"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>Pilot_Insertion_0_pilot_flag</spirit:name>

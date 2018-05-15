@@ -99,9 +99,9 @@ begin
     ready_in = 1; 
     rst = 1;
     rst_axi = 0;
-    #10000
+    #15000
     valid_in = 1;
-    #10000
+    #14540
     valid_in = 0;
     #1000
     valid_in = 1;

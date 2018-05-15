@@ -4,38 +4,29 @@
 # Block Designs: bd/design_1/design_1.bd
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1 || ORIG_REF_NAME==design_1}]
 
-# IP: bd/design_1/ip/design_1_xfft_0_0/design_1_xfft_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_xfft_0_0 || ORIG_REF_NAME==design_1_xfft_0_0}]
-
-# IP: bd/design_1/ip/design_1_Pilot_Insertion_0_0/design_1_Pilot_Insertion_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_Pilot_Insertion_0_0 || ORIG_REF_NAME==design_1_Pilot_Insertion_0_0}]
-
-# IP: bd/design_1/ip/design_1_QAM_Modulator_0_0/design_1_QAM_Modulator_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_QAM_Modulator_0_0 || ORIG_REF_NAME==design_1_QAM_Modulator_0_0}]
-
-# IP: bd/design_1/ip/design_1_xlconcat_0_0/design_1_xlconcat_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_xlconcat_0_0 || ORIG_REF_NAME==design_1_xlconcat_0_0}]
-
-# IP: bd/design_1/ip/design_1_Preamble_0_0/design_1_Preamble_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_Preamble_0_0 || ORIG_REF_NAME==design_1_Preamble_0_0}]
-
-# IP: bd/design_1/ip/design_1_xlconcat_0_1/design_1_xlconcat_0_1.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_xlconcat_0_1 || ORIG_REF_NAME==design_1_xlconcat_0_1}]
-
 # IP: bd/design_1/ip/design_1_axi_interconnect_0_0/design_1_axi_interconnect_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_axi_interconnect_0_0 || ORIG_REF_NAME==design_1_axi_interconnect_0_0}]
 
 # IP: bd/design_1/ip/design_1_xbar_0/design_1_xbar_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_xbar_0 || ORIG_REF_NAME==design_1_xbar_0}]
 
-# IP: bd/design_1/ip/design_1_FFT_Controller_0_1/design_1_FFT_Controller_0_1.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_FFT_Controller_0_1 || ORIG_REF_NAME==design_1_FFT_Controller_0_1}]
+# IP: bd/design_1/ip/design_1_xfft_0_0/design_1_xfft_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_xfft_0_0 || ORIG_REF_NAME==design_1_xfft_0_0}]
 
-# IP: bd/design_1/ip/design_1_util_vector_logic_0_0/design_1_util_vector_logic_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_util_vector_logic_0_0 || ORIG_REF_NAME==design_1_util_vector_logic_0_0}]
+# IP: bd/design_1/ip/design_1_FFT_Controller_0_0/design_1_FFT_Controller_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_FFT_Controller_0_0 || ORIG_REF_NAME==design_1_FFT_Controller_0_0}]
 
-# XDC: bd/design_1/ip/design_1_xfft_0_0/design_1_xfft_0_0_ooc.xdc
+# IP: bd/design_1/ip/design_1_Preamble_0_0/design_1_Preamble_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_Preamble_0_0 || ORIG_REF_NAME==design_1_Preamble_0_0}]
+
+# IP: bd/design_1/ip/design_1_Pilot_Insertion_0_0/design_1_Pilot_Insertion_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_Pilot_Insertion_0_0 || ORIG_REF_NAME==design_1_Pilot_Insertion_0_0}]
+
+# IP: bd/design_1/ip/design_1_QAM_Modulator_1_0/design_1_QAM_Modulator_1_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==design_1_QAM_Modulator_1_0 || ORIG_REF_NAME==design_1_QAM_Modulator_1_0}]
 
 # XDC: bd/design_1/ip/design_1_xbar_0/design_1_xbar_0_ooc.xdc
+
+# XDC: bd/design_1/ip/design_1_xfft_0_0/design_1_xfft_0_0_ooc.xdc
 
 # XDC: bd/design_1/design_1_ooc.xdc

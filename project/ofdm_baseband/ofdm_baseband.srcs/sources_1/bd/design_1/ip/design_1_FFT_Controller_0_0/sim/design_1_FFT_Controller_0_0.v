@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:FFT_Controller:0.1
-// IP Revision: 9
+// IP Revision: 13
 
 `timescale 1ns/1ps
 
@@ -127,8 +127,8 @@ input wire s00_axi_aclk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 S00_AXI_RST RST, xilinx.com:signal:reset:1.0 s00_axi_aresetn RST" *)
 input wire s00_axi_aresetn;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TDATA" *)
-output wire [23 : 0] m00_axis_tdata;
-output wire [2 : 0] m00_axis_tstrb;
+output wire [39 : 0] m00_axis_tdata;
+output wire [4 : 0] m00_axis_tstrb;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TLAST" *)
 output wire m00_axis_tlast;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TVALID" *)

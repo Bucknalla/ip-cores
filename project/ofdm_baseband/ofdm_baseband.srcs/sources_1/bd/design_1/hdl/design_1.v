@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Mon May 14 17:19:32 2018
+//Date        : Tue May 15 17:28:29 2018
 //Host        : alex-warc running 64-bit Ubuntu 16.04.4 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -85,7 +85,7 @@ module design_1
   wire [31:0]DATA_IN_AXIS_1_TDATA;
   wire DATA_IN_AXIS_1_TREADY;
   wire DATA_IN_AXIS_1_TVALID;
-  wire [23:0]FFT_Controller_0_M00_AXIS_TDATA;
+  wire [39:0]FFT_Controller_0_M00_AXIS_TDATA;
   wire FFT_Controller_0_M00_AXIS_TREADY;
   wire FFT_Controller_0_M00_AXIS_TVALID;
   wire [31:0]Pilot_Insertion_0_M00_AXIS_TDATA;

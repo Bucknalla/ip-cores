@@ -11,20 +11,20 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="26000000fs"></ZoomStartTime>
-      <ZoomEndTime time="69376000001fs"></ZoomEndTime>
-      <Cursor1Time time="15176000000fs"></Cursor1Time>
+      <ZoomStartTime time="45000000fs"></ZoomStartTime>
+      <ZoomEndTime time="150645000001fs"></ZoomEndTime>
+      <Cursor1Time time="22745000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="192"></NameColumnWidth>
-      <ValueColumnWidth column_width="282"></ValueColumnWidth>
+      <ValueColumnWidth column_width="163"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="90" />
+   <WVObjectSize size="94" />
    <wave_markers>
-      <marker label="" time="38465000000" />
-      <marker label="" time="33305000000" />
-      <marker label="" time="15165000000" />
-      <marker label="" time="10055000000" />
+      <marker label="" time="42935000000" />
+      <marker label="" time="37815000000" />
+      <marker label="" time="15115000000" />
+      <marker label="" time="20235000000" />
    </wave_markers>
    <wvobject type="logic" fp_name="/baseband_tb_load_file/clk">
       <obj_property name="ElementShortName">clk</obj_property>
@@ -288,6 +288,23 @@
       <obj_property name="ElementShortName">cnt_pilot[12:0]</obj_property>
       <obj_property name="ObjectShortName">cnt_pilot[12:0]</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/frame/counter">
+      <obj_property name="ElementShortName">counter[12:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[12:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/frame/start_frame">
+      <obj_property name="ElementShortName">start_frame</obj_property>
+      <obj_property name="ObjectShortName">start_frame</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/frame/end_frame">
+      <obj_property name="ElementShortName">end_frame</obj_property>
+      <obj_property name="ObjectShortName">end_frame</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_M00_AXIS_inst/M_AXIS_TLAST">
+      <obj_property name="ElementShortName">M_AXIS_TLAST</obj_property>
+      <obj_property name="ObjectShortName">M_AXIS_TLAST</obj_property>
+   </wvobject>
    <wvobject fp_name="divider19" type="divider">
       <obj_property name="label">FFT</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -300,10 +317,17 @@
    <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/m_axis_data_tdata">
       <obj_property name="ElementShortName">m_axis_data_tdata[31:0]</obj_property>
       <obj_property name="ObjectShortName">m_axis_data_tdata[31:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_FIXED</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">1000.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_LINEAR</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/s_axis_config_tdata">
-      <obj_property name="ElementShortName">s_axis_config_tdata[23:0]</obj_property>
-      <obj_property name="ObjectShortName">s_axis_config_tdata[23:0]</obj_property>
+      <obj_property name="ElementShortName">s_axis_config_tdata[39:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_config_tdata[39:0]</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/s_axis_config_tvalid">
       <obj_property name="ElementShortName">s_axis_config_tvalid</obj_property>
@@ -341,13 +365,13 @@
       <obj_property name="ElementShortName">event_frame_started</obj_property>
       <obj_property name="ObjectShortName">event_frame_started</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/event_tlast_unexpected">
-      <obj_property name="ElementShortName">event_tlast_unexpected</obj_property>
-      <obj_property name="ObjectShortName">event_tlast_unexpected</obj_property>
-   </wvobject>
    <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/event_tlast_missing">
       <obj_property name="ElementShortName">event_tlast_missing</obj_property>
       <obj_property name="ObjectShortName">event_tlast_missing</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/event_tlast_unexpected">
+      <obj_property name="ElementShortName">event_tlast_unexpected</obj_property>
+      <obj_property name="ObjectShortName">event_tlast_unexpected</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/baseband_tb_load_file/design_1_i/xfft_0/event_status_channel_halt">
       <obj_property name="ElementShortName">event_status_channel_halt</obj_property>
@@ -371,8 +395,8 @@
       <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/FFT_Controller_0/inst/axi/data_out">
-      <obj_property name="ElementShortName">data_out[23:0]</obj_property>
-      <obj_property name="ObjectShortName">data_out[23:0]</obj_property>
+      <obj_property name="ElementShortName">data_out[40:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[40:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/baseband_tb_load_file/design_1_i/FFT_Controller_0/inst/axi/slv_reg0">
       <obj_property name="ElementShortName">slv_reg0[31:0]</obj_property>

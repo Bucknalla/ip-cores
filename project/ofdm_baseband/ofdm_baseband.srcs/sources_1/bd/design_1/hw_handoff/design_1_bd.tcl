@@ -222,6 +222,11 @@ CONFIG.POLARITY {ACTIVE_LOW} \
   # Create instance: FFT_Controller_0, and set properties
   set FFT_Controller_0 [ create_bd_cell -type ip -vlnv user.org:user:FFT_Controller:0.1 FFT_Controller_0 ]
 
+  set_property -dict [ list \
+CONFIG.NUM_READ_OUTSTANDING {1} \
+CONFIG.NUM_WRITE_OUTSTANDING {1} \
+ ] [get_bd_intf_pins /FFT_Controller_0/S00_AXI]
+
   # Create instance: Pilot_Insertion_0, and set properties
   set Pilot_Insertion_0 [ create_bd_cell -type ip -vlnv user.org:user:Pilot_Insertion:0.1 Pilot_Insertion_0 ]
 
@@ -236,15 +241,6 @@ CONFIG.NUM_WRITE_OUTSTANDING {1} \
 
   # Create instance: Preamble_0, and set properties
   set Preamble_0 [ create_bd_cell -type ip -vlnv user.org:user:Preamble:0.1 Preamble_0 ]
-
-  set_property -dict [ list \
-CONFIG.TDATA_NUM_BYTES {4} \
- ] [get_bd_intf_pins /Preamble_0/M00_AXIS]
-
-  set_property -dict [ list \
-CONFIG.NUM_READ_OUTSTANDING {1} \
-CONFIG.NUM_WRITE_OUTSTANDING {1} \
- ] [get_bd_intf_pins /Preamble_0/S00_AXI]
 
   # Create instance: QAM_Modulator_1, and set properties
   set QAM_Modulator_1 [ create_bd_cell -type ip -vlnv user.org:user:QAM_Modulator:0.2 QAM_Modulator_1 ]
@@ -267,9 +263,14 @@ CONFIG.NUM_MI {4} \
   # Create instance: xfft_0, and set properties
   set xfft_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xfft:9.0 xfft_0 ]
   set_property -dict [ list \
+CONFIG.cyclic_prefix_insertion {true} \
+CONFIG.data_format {fixed_point} \
 CONFIG.implementation_options {pipelined_streaming_io} \
 CONFIG.number_of_stages_using_block_ram_for_data_and_phase_factors {2} \
+CONFIG.output_ordering {natural_order} \
 CONFIG.run_time_configurable_transform_length {true} \
+CONFIG.scaling_options {scaled} \
+CONFIG.throttle_scheme {nonrealtime} \
 CONFIG.transform_length {512} \
  ] $xfft_0
 
@@ -307,44 +308,44 @@ CONFIG.transform_length {512} \
   regenerate_bd_layout -layout_string {
    guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port pilot_flag -pg 1 -y 370 -defaultsOSRD
-preplace port RST_AXI -pg 1 -y 220 -defaultsOSRD
-preplace port frame_end -pg 1 -y 410 -defaultsOSRD
-preplace port RST -pg 1 -y 40 -defaultsOSRD
-preplace port CLK -pg 1 -y 60 -defaultsOSRD
-preplace port DATA_OUT_AXIS -pg 1 -y 90 -defaultsOSRD
-preplace port CONFIG_AXI -pg 1 -y 180 -defaultsOSRD
-preplace port frame_start -pg 1 -y 390 -defaultsOSRD
-preplace port event_tlast_missing -pg 1 -y 170 -defaultsOSRD
-preplace port ERROR -pg 1 -y 150 -defaultsOSRD
-preplace port DATA_IN_AXIS -pg 1 -y 110 -defaultsOSRD
-preplace inst Pilot_Insertion_0 -pg 1 -lvl 4 -y 390 -defaultsOSRD
-preplace inst axi_interconnect -pg 1 -lvl 1 -y 300 -defaultsOSRD
+preplace port pilot_flag -pg 1 -y 380 -defaultsOSRD
+preplace port RST_AXI -pg 1 -y 200 -defaultsOSRD
+preplace port frame_end -pg 1 -y 420 -defaultsOSRD
+preplace port RST -pg 1 -y 110 -defaultsOSRD
+preplace port CLK -pg 1 -y 180 -defaultsOSRD
+preplace port DATA_OUT_AXIS -pg 1 -y 220 -defaultsOSRD
+preplace port CONFIG_AXI -pg 1 -y 160 -defaultsOSRD
+preplace port frame_start -pg 1 -y 400 -defaultsOSRD
+preplace port event_tlast_missing -pg 1 -y 280 -defaultsOSRD
+preplace port ERROR -pg 1 -y 260 -defaultsOSRD
+preplace port DATA_IN_AXIS -pg 1 -y 90 -defaultsOSRD
+preplace inst Pilot_Insertion_0 -pg 1 -lvl 4 -y 420 -defaultsOSRD
+preplace inst axi_interconnect -pg 1 -lvl 1 -y 280 -defaultsOSRD
 preplace inst QAM_Modulator_1 -pg 1 -lvl 2 -y 180 -defaultsOSRD
+preplace inst FFT_Controller_0 -pg 1 -lvl 4 -y 190 -defaultsOSRD
 preplace inst Preamble_0 -pg 1 -lvl 3 -y 120 -defaultsOSRD
-preplace inst FFT_Controller_0 -pg 1 -lvl 4 -y 170 -defaultsOSRD
-preplace inst xfft_0 -pg 1 -lvl 5 -y 200 -defaultsOSRD
-preplace netloc DATA_IN_AXIS_1 1 0 2 NJ 110 310J
-preplace netloc xfft_0_event_frame_started 1 3 3 950 70 NJ 70 1630
-preplace netloc xfft_0_event_tlast_unexpected 1 5 1 1640J
-preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1270
-preplace netloc axi_interconnect_M01_AXI 1 1 2 340 50 NJ
-preplace netloc ARESETN_1 1 0 4 NJ 40 330 40 630 240 940
-preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 610
-preplace netloc ARESETN_2 1 0 1 20
-preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1640J
+preplace inst xfft_0 -pg 1 -lvl 5 -y 280 -defaultsOSRD
+preplace netloc DATA_IN_AXIS_1 1 0 2 NJ 90 290J
+preplace netloc xfft_0_event_frame_started 1 3 3 890 90 NJ 90 1690
+preplace netloc xfft_0_event_tlast_unexpected 1 5 1 NJ
+preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1240
+preplace netloc axi_interconnect_M01_AXI 1 1 2 260 50 NJ
+preplace netloc ARESETN_1 1 0 4 -40J 460 290 460 570 460 880
+preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 550
+preplace netloc ARESETN_2 1 0 1 -20
+preplace netloc xfft_0_M_AXIS_DATA 1 5 1 NJ
 preplace netloc S00_AXI_1 1 0 1 NJ
-preplace netloc axi_interconnect_M02_AXI 1 1 3 NJ 310 NJ 310 N
-preplace netloc Pilot_Insertion_0_frame_end 1 4 2 NJ 410 NJ
-preplace netloc xfft_0_event_tlast_missing 1 5 1 1650J
+preplace netloc axi_interconnect_M02_AXI 1 1 3 260 340 NJ 340 NJ
+preplace netloc Pilot_Insertion_0_frame_end 1 4 2 NJ 440 1710J
+preplace netloc xfft_0_event_tlast_missing 1 5 1 NJ
 preplace netloc FFT_Controller_0_M00_AXIS 1 4 1 1250
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 30 60 320 60 620 250 930 80 1260J
-preplace netloc axi_interconnect_M00_AXI 1 1 1 350
-preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 330 NJ 330 910
-preplace netloc Preamble_0_M00_AXIS 1 3 1 920
-preplace netloc Pilot_Insertion_0_frame_start 1 4 2 NJ 390 NJ
-preplace netloc Pilot_Insertion_0_pilot_flag 1 4 2 NJ 370 NJ
-levelinfo -pg 1 0 170 480 770 1100 1450 1670 -top -10 -bot 520
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 -30 480 280 480 560 480 870 290 1230J
+preplace netloc axi_interconnect_M00_AXI 1 1 1 270
+preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 310 NJ 310 850
+preplace netloc Preamble_0_M00_AXIS 1 3 1 860
+preplace netloc Pilot_Insertion_0_frame_start 1 4 2 NJ 420 1700J
+preplace netloc Pilot_Insertion_0_pilot_flag 1 4 2 NJ 400 1690J
+levelinfo -pg 1 -60 120 420 710 1060 1480 1730 -top 0 -bot 550
 ",
 }
 

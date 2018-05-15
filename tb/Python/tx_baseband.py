@@ -18,6 +18,10 @@ Pr_Value = 1+1j #
 
 # Generating carriers
 
+def load_ofdm_symbol(filename):
+    with 
+
+
 allCarriers = np.arange(K)  # indices of all subcarriers ([0, 1, ... K-1])
 pilotCarriers = allCarriers[::K // P] # Pilots is every (K/P)th carrier.
 pilotCarriers = np.hstack([pilotCarriers, np.array([allCarriers[-1]])]) # Make the last carriers also pilots

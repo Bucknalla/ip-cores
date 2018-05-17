@@ -222,11 +222,6 @@ CONFIG.POLARITY {ACTIVE_LOW} \
   # Create instance: FFT_Controller_0, and set properties
   set FFT_Controller_0 [ create_bd_cell -type ip -vlnv user.org:user:FFT_Controller:0.1 FFT_Controller_0 ]
 
-  set_property -dict [ list \
-CONFIG.NUM_READ_OUTSTANDING {1} \
-CONFIG.NUM_WRITE_OUTSTANDING {1} \
- ] [get_bd_intf_pins /FFT_Controller_0/S00_AXI]
-
   # Create instance: Pilot_Insertion_0, and set properties
   set Pilot_Insertion_0 [ create_bd_cell -type ip -vlnv user.org:user:Pilot_Insertion:0.1 Pilot_Insertion_0 ]
 
@@ -244,15 +239,6 @@ CONFIG.NUM_WRITE_OUTSTANDING {1} \
 
   # Create instance: QAM_Modulator_1, and set properties
   set QAM_Modulator_1 [ create_bd_cell -type ip -vlnv user.org:user:QAM_Modulator:0.2 QAM_Modulator_1 ]
-
-  set_property -dict [ list \
-CONFIG.TDATA_NUM_BYTES {4} \
- ] [get_bd_intf_pins /QAM_Modulator_1/M00_AXIS]
-
-  set_property -dict [ list \
-CONFIG.NUM_READ_OUTSTANDING {1} \
-CONFIG.NUM_WRITE_OUTSTANDING {1} \
- ] [get_bd_intf_pins /QAM_Modulator_1/S00_AXI]
 
   # Create instance: axi_interconnect, and set properties
   set axi_interconnect [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect ]
@@ -272,6 +258,7 @@ CONFIG.run_time_configurable_transform_length {true} \
 CONFIG.scaling_options {scaled} \
 CONFIG.throttle_scheme {nonrealtime} \
 CONFIG.transform_length {512} \
+CONFIG.xk_index {true} \
  ] $xfft_0
 
   # Create interface connections
@@ -324,28 +311,28 @@ preplace inst axi_interconnect -pg 1 -lvl 1 -y 280 -defaultsOSRD
 preplace inst QAM_Modulator_1 -pg 1 -lvl 2 -y 180 -defaultsOSRD
 preplace inst FFT_Controller_0 -pg 1 -lvl 4 -y 190 -defaultsOSRD
 preplace inst Preamble_0 -pg 1 -lvl 3 -y 120 -defaultsOSRD
-preplace inst xfft_0 -pg 1 -lvl 5 -y 280 -defaultsOSRD
-preplace netloc DATA_IN_AXIS_1 1 0 2 NJ 90 290J
-preplace netloc xfft_0_event_frame_started 1 3 3 890 90 NJ 90 1690
-preplace netloc xfft_0_event_tlast_unexpected 1 5 1 NJ
+preplace inst xfft_0 -pg 1 -lvl 5 -y 320 -defaultsOSRD
+preplace netloc DATA_IN_AXIS_1 1 0 2 NJ 90 280J
+preplace netloc xfft_0_event_frame_started 1 3 3 880 550 NJ 550 1720
+preplace netloc xfft_0_event_tlast_unexpected 1 5 1 1730J
 preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1240
-preplace netloc axi_interconnect_M01_AXI 1 1 2 260 50 NJ
-preplace netloc ARESETN_1 1 0 4 -40J 460 290 460 570 460 880
-preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 550
-preplace netloc ARESETN_2 1 0 1 -20
-preplace netloc xfft_0_M_AXIS_DATA 1 5 1 NJ
+preplace netloc axi_interconnect_M01_AXI 1 1 2 250 50 NJ
+preplace netloc ARESETN_1 1 0 4 -50J 460 280 460 560 460 870
+preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 540
+preplace netloc ARESETN_2 1 0 1 -30
+preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1720J
 preplace netloc S00_AXI_1 1 0 1 NJ
-preplace netloc axi_interconnect_M02_AXI 1 1 3 260 340 NJ 340 NJ
-preplace netloc Pilot_Insertion_0_frame_end 1 4 2 NJ 440 1710J
-preplace netloc xfft_0_event_tlast_missing 1 5 1 NJ
-preplace netloc FFT_Controller_0_M00_AXIS 1 4 1 1250
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 -30 480 280 480 560 480 870 290 1230J
-preplace netloc axi_interconnect_M00_AXI 1 1 1 270
-preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 310 NJ 310 850
-preplace netloc Preamble_0_M00_AXIS 1 3 1 860
-preplace netloc Pilot_Insertion_0_frame_start 1 4 2 NJ 420 1700J
-preplace netloc Pilot_Insertion_0_pilot_flag 1 4 2 NJ 400 1690J
-levelinfo -pg 1 -60 120 420 710 1060 1480 1730 -top 0 -bot 550
+preplace netloc axi_interconnect_M02_AXI 1 1 3 250 340 NJ 340 NJ
+preplace netloc Pilot_Insertion_0_frame_end 1 4 2 NJ 480 1750J
+preplace netloc xfft_0_event_tlast_missing 1 5 1 1750J
+preplace netloc FFT_Controller_0_M00_AXIS 1 4 1 1260
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 -40 480 270 480 550 480 860 290 1250J
+preplace netloc axi_interconnect_M00_AXI 1 1 1 260
+preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 310 NJ 310 840
+preplace netloc Preamble_0_M00_AXIS 1 3 1 850
+preplace netloc Pilot_Insertion_0_frame_start 1 4 2 1240J 490 1740J
+preplace netloc Pilot_Insertion_0_pilot_flag 1 4 2 1260J 500 1730J
+levelinfo -pg 1 -70 110 410 700 1060 1510 1770 -top 0 -bot 570
 ",
 }
 

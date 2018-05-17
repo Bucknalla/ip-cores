@@ -67,6 +67,7 @@ ENTITY design_1_xfft_0_0 IS
     s_axis_data_tready : OUT STD_LOGIC;
     s_axis_data_tlast : IN STD_LOGIC;
     m_axis_data_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    m_axis_data_tuser : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     m_axis_data_tvalid : OUT STD_LOGIC;
     m_axis_data_tready : IN STD_LOGIC;
     m_axis_data_tlast : OUT STD_LOGIC;
@@ -130,7 +131,7 @@ ARCHITECTURE design_1_xfft_0_0_arch OF design_1_xfft_0_0 IS
       s_axis_data_tready : OUT STD_LOGIC;
       s_axis_data_tlast : IN STD_LOGIC;
       m_axis_data_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      m_axis_data_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+      m_axis_data_tuser : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       m_axis_data_tvalid : OUT STD_LOGIC;
       m_axis_data_tready : IN STD_LOGIC;
       m_axis_data_tlast : OUT STD_LOGIC;
@@ -151,8 +152,8 @@ ARCHITECTURE design_1_xfft_0_0_arch OF design_1_xfft_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF design_1_xfft_0_0_arch : ARCHITECTURE IS "design_1_xfft_0_0,xfft_v9_0_11,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF design_1_xfft_0_0_arch: ARCHITECTURE IS "design_1_xfft_0_0,xfft_v9_0_11,{x_ipProduct=Vivado 2016.4,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xfft,x_ipVersion=9.0,x_ipCoreRevision=11,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=zynq,C_S_AXIS_CONFIG_TDATA_WIDTH=40,C_S_AXIS_DATA_TDATA_WIDTH=32,C_M_AXIS_DATA_TDATA_WIDTH=32,C_M_AXIS_DATA_TUSER_WIDTH=1,C_M_AXIS_STATUS_TDATA_WIDTH=1,C_THROTTLE_SCHEME=1,C_CHANNELS=1,C_NFFT_MAX=9,C_ARCH=3,C_HAS_NFFT=1,C_USE_FLT_PT=0,C_INPUT_WIDTH=16,C_TWIDDLE_WIDTH=16,C_OUTPUT_WIDTH=16,C_HAS_S" & 
-"CALING=1,C_HAS_BFP=0,C_HAS_ROUNDING=0,C_HAS_ACLKEN=0,C_HAS_ARESETN=0,C_HAS_OVFLO=0,C_HAS_NATURAL_INPUT=1,C_HAS_NATURAL_OUTPUT=1,C_HAS_CYCLIC_PREFIX=1,C_HAS_XK_INDEX=0,C_DATA_MEM_TYPE=1,C_TWIDDLE_MEM_TYPE=1,C_BRAM_STAGES=2,C_REORDER_MEM_TYPE=1,C_USE_HYBRID_RAM=0,C_OPTIMIZE_GOAL=0,C_CMPY_TYPE=1,C_BFLY_TYPE=0}";
+  ATTRIBUTE CORE_GENERATION_INFO OF design_1_xfft_0_0_arch: ARCHITECTURE IS "design_1_xfft_0_0,xfft_v9_0_11,{x_ipProduct=Vivado 2016.4,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xfft,x_ipVersion=9.0,x_ipCoreRevision=11,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=zynq,C_S_AXIS_CONFIG_TDATA_WIDTH=40,C_S_AXIS_DATA_TDATA_WIDTH=32,C_M_AXIS_DATA_TDATA_WIDTH=32,C_M_AXIS_DATA_TUSER_WIDTH=16,C_M_AXIS_STATUS_TDATA_WIDTH=1,C_THROTTLE_SCHEME=1,C_CHANNELS=1,C_NFFT_MAX=9,C_ARCH=3,C_HAS_NFFT=1,C_USE_FLT_PT=0,C_INPUT_WIDTH=16,C_TWIDDLE_WIDTH=16,C_OUTPUT_WIDTH=16,C_HAS_" & 
+"SCALING=1,C_HAS_BFP=0,C_HAS_ROUNDING=0,C_HAS_ACLKEN=0,C_HAS_ARESETN=0,C_HAS_OVFLO=0,C_HAS_NATURAL_INPUT=1,C_HAS_NATURAL_OUTPUT=1,C_HAS_CYCLIC_PREFIX=1,C_HAS_XK_INDEX=1,C_DATA_MEM_TYPE=1,C_TWIDDLE_MEM_TYPE=1,C_BRAM_STAGES=2,C_REORDER_MEM_TYPE=1,C_USE_HYBRID_RAM=0,C_OPTIMIZE_GOAL=0,C_CMPY_TYPE=1,C_BFLY_TYPE=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 aclk_intf CLK";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TDATA";
@@ -163,6 +164,7 @@ ARCHITECTURE design_1_xfft_0_0_arch OF design_1_xfft_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tlast: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TLAST";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tuser: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TUSER";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tlast: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TLAST";
@@ -179,7 +181,7 @@ BEGIN
       C_S_AXIS_CONFIG_TDATA_WIDTH => 40,
       C_S_AXIS_DATA_TDATA_WIDTH => 32,
       C_M_AXIS_DATA_TDATA_WIDTH => 32,
-      C_M_AXIS_DATA_TUSER_WIDTH => 1,
+      C_M_AXIS_DATA_TUSER_WIDTH => 16,
       C_M_AXIS_STATUS_TDATA_WIDTH => 1,
       C_THROTTLE_SCHEME => 1,
       C_CHANNELS => 1,
@@ -199,7 +201,7 @@ BEGIN
       C_HAS_NATURAL_INPUT => 1,
       C_HAS_NATURAL_OUTPUT => 1,
       C_HAS_CYCLIC_PREFIX => 1,
-      C_HAS_XK_INDEX => 0,
+      C_HAS_XK_INDEX => 1,
       C_DATA_MEM_TYPE => 1,
       C_TWIDDLE_MEM_TYPE => 1,
       C_BRAM_STAGES => 2,
@@ -221,6 +223,7 @@ BEGIN
       s_axis_data_tready => s_axis_data_tready,
       s_axis_data_tlast => s_axis_data_tlast,
       m_axis_data_tdata => m_axis_data_tdata,
+      m_axis_data_tuser => m_axis_data_tuser,
       m_axis_data_tvalid => m_axis_data_tvalid,
       m_axis_data_tready => m_axis_data_tready,
       m_axis_data_tlast => m_axis_data_tlast,

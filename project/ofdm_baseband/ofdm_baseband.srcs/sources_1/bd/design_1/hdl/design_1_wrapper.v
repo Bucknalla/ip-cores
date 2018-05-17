@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Tue May 15 17:28:29 2018
+//Date        : Thu May 17 14:29:54 2018
 //Host        : alex-warc running 64-bit Ubuntu 16.04.4 LTS
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -36,6 +36,7 @@ module design_1_wrapper
     DATA_OUT_AXIS_tdata,
     DATA_OUT_AXIS_tlast,
     DATA_OUT_AXIS_tready,
+    DATA_OUT_AXIS_tuser,
     DATA_OUT_AXIS_tvalid,
     ERROR,
     RST,
@@ -70,6 +71,7 @@ module design_1_wrapper
   output [31:0]DATA_OUT_AXIS_tdata;
   output DATA_OUT_AXIS_tlast;
   input DATA_OUT_AXIS_tready;
+  output [15:0]DATA_OUT_AXIS_tuser;
   output DATA_OUT_AXIS_tvalid;
   output ERROR;
   input RST;
@@ -105,6 +107,7 @@ module design_1_wrapper
   wire [31:0]DATA_OUT_AXIS_tdata;
   wire DATA_OUT_AXIS_tlast;
   wire DATA_OUT_AXIS_tready;
+  wire [15:0]DATA_OUT_AXIS_tuser;
   wire DATA_OUT_AXIS_tvalid;
   wire ERROR;
   wire RST;
@@ -141,6 +144,7 @@ module design_1_wrapper
         .DATA_OUT_AXIS_tdata(DATA_OUT_AXIS_tdata),
         .DATA_OUT_AXIS_tlast(DATA_OUT_AXIS_tlast),
         .DATA_OUT_AXIS_tready(DATA_OUT_AXIS_tready),
+        .DATA_OUT_AXIS_tuser(DATA_OUT_AXIS_tuser),
         .DATA_OUT_AXIS_tvalid(DATA_OUT_AXIS_tvalid),
         .ERROR(ERROR),
         .RST(RST),

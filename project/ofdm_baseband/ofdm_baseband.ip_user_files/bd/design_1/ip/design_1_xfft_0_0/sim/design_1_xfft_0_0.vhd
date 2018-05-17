@@ -67,6 +67,7 @@ ENTITY design_1_xfft_0_0 IS
     s_axis_data_tready : OUT STD_LOGIC;
     s_axis_data_tlast : IN STD_LOGIC;
     m_axis_data_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    m_axis_data_tuser : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
     m_axis_data_tvalid : OUT STD_LOGIC;
     m_axis_data_tready : IN STD_LOGIC;
     m_axis_data_tlast : OUT STD_LOGIC;
@@ -130,7 +131,7 @@ ARCHITECTURE design_1_xfft_0_0_arch OF design_1_xfft_0_0 IS
       s_axis_data_tready : OUT STD_LOGIC;
       s_axis_data_tlast : IN STD_LOGIC;
       m_axis_data_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      m_axis_data_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+      m_axis_data_tuser : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
       m_axis_data_tvalid : OUT STD_LOGIC;
       m_axis_data_tready : IN STD_LOGIC;
       m_axis_data_tlast : OUT STD_LOGIC;
@@ -156,6 +157,7 @@ ARCHITECTURE design_1_xfft_0_0_arch OF design_1_xfft_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tlast: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TLAST";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tuser: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TUSER";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tlast: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TLAST";
@@ -172,7 +174,7 @@ BEGIN
       C_S_AXIS_CONFIG_TDATA_WIDTH => 40,
       C_S_AXIS_DATA_TDATA_WIDTH => 32,
       C_M_AXIS_DATA_TDATA_WIDTH => 32,
-      C_M_AXIS_DATA_TUSER_WIDTH => 1,
+      C_M_AXIS_DATA_TUSER_WIDTH => 16,
       C_M_AXIS_STATUS_TDATA_WIDTH => 1,
       C_THROTTLE_SCHEME => 1,
       C_CHANNELS => 1,
@@ -192,7 +194,7 @@ BEGIN
       C_HAS_NATURAL_INPUT => 1,
       C_HAS_NATURAL_OUTPUT => 1,
       C_HAS_CYCLIC_PREFIX => 1,
-      C_HAS_XK_INDEX => 0,
+      C_HAS_XK_INDEX => 1,
       C_DATA_MEM_TYPE => 1,
       C_TWIDDLE_MEM_TYPE => 1,
       C_BRAM_STAGES => 2,
@@ -214,6 +216,7 @@ BEGIN
       s_axis_data_tready => s_axis_data_tready,
       s_axis_data_tlast => s_axis_data_tlast,
       m_axis_data_tdata => m_axis_data_tdata,
+      m_axis_data_tuser => m_axis_data_tuser,
       m_axis_data_tvalid => m_axis_data_tvalid,
       m_axis_data_tready => m_axis_data_tready,
       m_axis_data_tlast => m_axis_data_tlast,

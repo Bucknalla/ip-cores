@@ -177,6 +177,7 @@
         .clk(s00_axis_aclk),
         .rst(s00_axis_aresetn),
         .valid(m00_axis_tvalid),
+        .ready(m00_axis_tready),
         .pilot_flag(pilot_flag),
 		.event_frame_started(event_frame_started),
         .frame_length(frame_length),

@@ -11,20 +11,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="45000000fs"></ZoomStartTime>
-      <ZoomEndTime time="150645000001fs"></ZoomEndTime>
-      <Cursor1Time time="22745000000fs"></Cursor1Time>
+      <ZoomStartTime time="6851732850fs"></ZoomStartTime>
+      <ZoomEndTime time="18111732851fs"></ZoomEndTime>
+      <Cursor1Time time="31600000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="192"></NameColumnWidth>
-      <ValueColumnWidth column_width="163"></ValueColumnWidth>
+      <ValueColumnWidth column_width="161"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="94" />
    <wave_markers>
-      <marker label="" time="42935000000" />
-      <marker label="" time="37815000000" />
-      <marker label="" time="15115000000" />
-      <marker label="" time="20235000000" />
+      <marker label="" time="36595000000" />
+      <marker label="" time="31475000000" />
    </wave_markers>
    <wvobject type="logic" fp_name="/baseband_tb_load_file/clk">
       <obj_property name="ElementShortName">clk</obj_property>

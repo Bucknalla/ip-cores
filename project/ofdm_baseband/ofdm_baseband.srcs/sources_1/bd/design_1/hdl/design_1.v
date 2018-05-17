@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Tue May 15 17:28:29 2018
+//Date        : Thu May 17 14:29:54 2018
 //Host        : alex-warc running 64-bit Ubuntu 16.04.4 LTS
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -37,6 +37,7 @@ module design_1
     DATA_OUT_AXIS_tdata,
     DATA_OUT_AXIS_tlast,
     DATA_OUT_AXIS_tready,
+    DATA_OUT_AXIS_tuser,
     DATA_OUT_AXIS_tvalid,
     ERROR,
     RST,
@@ -71,6 +72,7 @@ module design_1
   output [31:0]DATA_OUT_AXIS_tdata;
   output DATA_OUT_AXIS_tlast;
   input DATA_OUT_AXIS_tready;
+  output [15:0]DATA_OUT_AXIS_tuser;
   output DATA_OUT_AXIS_tvalid;
   output ERROR;
   input RST;
@@ -200,6 +202,7 @@ module design_1
   wire [31:0]xfft_0_M_AXIS_DATA_TDATA;
   wire xfft_0_M_AXIS_DATA_TLAST;
   wire xfft_0_M_AXIS_DATA_TREADY;
+  wire [15:0]xfft_0_M_AXIS_DATA_TUSER;
   wire xfft_0_M_AXIS_DATA_TVALID;
   wire xfft_0_event_frame_started;
   wire xfft_0_event_tlast_missing;
@@ -220,6 +223,7 @@ module design_1
   assign DATA_IN_AXIS_tready = DATA_IN_AXIS_1_TREADY;
   assign DATA_OUT_AXIS_tdata[31:0] = xfft_0_M_AXIS_DATA_TDATA;
   assign DATA_OUT_AXIS_tlast = xfft_0_M_AXIS_DATA_TLAST;
+  assign DATA_OUT_AXIS_tuser[15:0] = xfft_0_M_AXIS_DATA_TUSER;
   assign DATA_OUT_AXIS_tvalid = xfft_0_M_AXIS_DATA_TVALID;
   assign ERROR = xfft_0_event_tlast_unexpected;
   assign S00_AXI_1_ARADDR = CONFIG_AXI_araddr[14:0];
@@ -483,6 +487,7 @@ module design_1
         .m_axis_data_tdata(xfft_0_M_AXIS_DATA_TDATA),
         .m_axis_data_tlast(xfft_0_M_AXIS_DATA_TLAST),
         .m_axis_data_tready(xfft_0_M_AXIS_DATA_TREADY),
+        .m_axis_data_tuser(xfft_0_M_AXIS_DATA_TUSER),
         .m_axis_data_tvalid(xfft_0_M_AXIS_DATA_TVALID),
         .s_axis_config_tdata(FFT_Controller_0_M00_AXIS_TDATA),
         .s_axis_config_tready(FFT_Controller_0_M00_AXIS_TREADY),

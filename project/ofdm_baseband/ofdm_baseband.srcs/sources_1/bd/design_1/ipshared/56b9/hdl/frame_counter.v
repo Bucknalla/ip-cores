@@ -24,15 +24,15 @@ module frame_counter
     input clk,
     input rst,
     input valid,
+    input ready,
     input pilot_flag,
     input event_frame_started,
     input [12:0] frame_length,
     output reg end_frame = 0,
-    output reg start_frame
+    output reg start_frame = 0
     );
         
     reg [12:0] counter = 0;
-    reg event_flag = 0;
     
     always @ (posedge clk) begin
         if(!rst) begin
@@ -40,26 +40,22 @@ module frame_counter
             start_frame <= 0;
             counter <= 0;
         end
-        else if (valid) begin
+        else if (valid & ready) begin
             end_frame <= 0;
             start_frame <= 0;
-            if(event_frame_started | event_flag) begin
-                if(counter == 0) begin
-                    event_flag <= 1;
-                    start_frame <= 1;
-                    counter <= counter + 1;
-                end
-                else if(counter == (frame_length - 2)) begin
-                    end_frame <= 1;
-                    counter <= counter + 1;
-                end
-                else if(counter == (frame_length - 1)) begin
-                    event_flag <= 0;
-                    counter <= 0;
-                end
-                else begin
-                    counter <= counter + 1;
-                end
+            if(counter == 0) begin
+                start_frame <= 1;
+                counter <= counter + 1;
+            end
+            else if(counter == (frame_length - 2)) begin
+                end_frame <= 1;
+                counter <= counter + 1;
+            end
+            else if(counter == (frame_length - 1)) begin
+                counter <= 0;
+            end
+            else begin
+                counter <= counter + 1;
             end
         end
     end

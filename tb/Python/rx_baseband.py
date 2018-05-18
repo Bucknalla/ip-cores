@@ -1,10 +1,41 @@
 import numpy as np
-
 import commpy as cp
 import scipy.interpolate
 import matplotlib.pyplot as plt
 import math
-from tx_baseband import CP, K, OFDM_RX
+
+# Configure Variables
+
+K = 512 # Number of OFDM subcarriers
+CP = K * 0.25 # Length of the cyclic prefix: % of the block
+P = 8 # Number of pilot carriers per OFDM block
+P_Value = 3+3j # The known complex value each pilot transmits
+MU = 16 # Number of bits per symbol (i.e. 16QAM) - NOTE: Must have integer sqrt(MU) 
+Pr = 32 # Number of preamble carriers
+Pr_Value = 1+1j # 
+
+# Load OFDM Symbol into flow
+
+def each_chunk(stream, separator):
+  buffer = ''
+  while True:  # until EOF
+    chunk = stream.read(CHUNK_SIZE)  # I propose 4096 or so
+    if not chunk:  # EOF?
+      yield buffer
+      break
+    buffer += chunk
+    while True:  # until no separator is found
+      try:
+        part, buffer = buffer.split(separator, 1)
+      except ValueError:
+        break
+      else:
+        yield part
+
+with open('myFileName') as myFile:
+  for chunk in each_chunk(myFile, separator='\\-1\n'):
+    print chunk  # not holding in memory, but printing chunk by chunk
+
 
 # OFDM Receive (RX)
 
@@ -17,7 +48,7 @@ OFDM_demod = np.fft.fft(OFDM_RX_noCP)
 
 # ## Estimate RX channel
 # 
-# Following the FFT computation, the recieved channel must be estimated to estimate how the incoming signals map to their corresponding QAM symbol in the decoder. The receive channel suffers from decay in additive white noise as well as intersymbol interference. By utilising the pilot carriers placed into the TX message, the absolute value and phase of the TX message can be estimated.
+# Following the FFT computation, the received channel must be estimated to estimate how the incoming signals map to their corresponding QAM symbol in the decoder. The receive channel suffers from decay in additive white noise as well as intersymbol interference. By utilising the pilot carriers placed into the TX message, the absolute value and phase of the TX message can be estimated.
 
 # In[103]:
 

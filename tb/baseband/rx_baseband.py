@@ -4,88 +4,110 @@ import scipy.interpolate
 import matplotlib.pyplot as plt
 import math, os
 
-# Configure Script Variables
+# assumes that there is no transmission noise, i.e. what is sent is what arrives
 
-frame_SIZE = 4096 # In bytes
 
-# Configure OFDM Variables
+class OFDM_RX():
+  def __init__(self,input_file="output.bin"):
+    # Configure Script Variables
+    self.Chunk_Size = 4096 # In bytes
+    self.Symbols = "symbols.bin"
+    # Configure OFDM Variables
 
-K = 512 # Number of OFDM subcarriers
-CP = K * 0.25 # Length of the cyclic prefix: % of the block
-P = 8 # Number of pilot carriers per OFDM block
-P_Value = 3+3j # The known complex value each pilot transmits
-MU = 16 # Number of bits per symbol (i.e. 16QAM) - NOTE: Must have integer sqrt(MU) 
-Pr = 32 # Number of preamble carriers
-Pr_Value = 1+1j # 
-Frame_Size = K + P + Pr
+    self.K = 512 # Number of OFDM subcarriers
+    self.CP = self.K * 0.25 # Length of the cyclic prefix: % of the block
+    self.P = 8 # Number of pilot carriers per OFDM block
+    self.P_Value = 3+3j # The known complex value each pilot transmits
+    self.MU = 16 # Number of bits per symbol (i.e. 16QAM) - NOTE: Must have integer sqrt(MU) 
+    self.Pr = 32 # Number of preamble carriers
+    self.Pr_Value = 1+1j # 
+    self.Symbol_Size = self.K + self.P + self.Pr
+    
+    self.prepare_ofdm_symbol(input_file)
 
-# Load bits into flow without loading entire file into memory
+  def prepare_ofdm_symbol(self, input_file):
+    if (os.stat(input_file).st_size == 0):
+        print("Please run testbench to generate output.bin")
+    try:
+        with open(input_file,"r") as file:
+            with open("symbols.bin", "w") as target:
+                for index, data in enumerate(file):
+                  if((index % self.Symbol_Size) is 0):
+                      target.write("-\n")
+                  target.write(str(data))
+                target.close()
+        file.close()
+    except IOError as e:
+        print(e.args[1])
 
-def each_frame(stream, separator):
-  buffer = ''
-  while True:  # until EOF
-    frame = stream.read(frame_SIZE)
-    if not frame:  # check EOF?
-      yield buffer
-      break
-    buffer += frame
-    while True:  # until no separator is found
-      try:
-        part, buffer = buffer.split(separator, 1)
-      except ValueError:
+  # begin receive procedure
+  def receive(self):
+    with open(self.Symbols) as binary:
+      for index, symbol in enumerate(self.__each_frame(binary, separator='-')):
+        print("OFDM Frame: "+str(index))
+        symbol = symbol.split("\n")
+        symbol = [x for x in symbol if x != ""] # Remove any fragments from code
+        print("Expected Length: {0} | {1}".format(self.Symbol_Size,len(symbol)))
+        if(len(symbol) != self.Symbol_Size):
+          print("Simulation Failed - Incomplete Frame")
+          break
+        symbol_no_cp = self.__remove_cyclic_prefix(symbol)
+        symbol_complex = self.__convert_complex(symbol_no_cp)
+        symbol_demod = self.__fft(symbol_complex)
+        symbol_binary = self.__fft_bins_to_binary(symbol_demod)
+
+  # Load blocks of data into program, without loading entire file into memory
+  def __each_frame(self, stream, separator):
+    buffer = ''
+    while True:  # until EOF
+      frame = stream.read(self.Chunk_Size)
+      if not frame:  # check EOF?
+        yield buffer
         break
-      else:
-        yield part
+      buffer += frame
+      while True:  # until no separator is found
+        try:
+          part, buffer = buffer.split(separator, 1)
+        except ValueError:
+          break
+        else:
+          if(part is ""):
+            break
+          yield part
 
-def prepare_ofdm_symbol():
-  if (os.stat("output.bin").st_size == 0):
-      print("Please run testbench to generate output.bin")
-  try:
-      with open("output.bin","r") as file:
-          with open("symbols.bin", "w") as target:
-              for index, data in enumerate(file):
-                if((index % Frame_Size) is 0):
-                    target.write("-\n")
-                target.write(str(data))
+  def __remove_cyclic_prefix(self, symbol):
+    signal = symbol[int(self.CP):]
+    return signal
 
-  except IOError as e:
-      print(e.args[1])
+  def __twos_comp(self, val):
+    if (val & (1 << (16 - 1))) != 0: # if sign bit is set e.g., 8bit: 128-255
+        val = val - (1 << 16)        # compute negative value
+    return val   
 
-# def validate_complete_frame(frame):
-#   for each in 
+  def __convert_complex(self, symbol):
+    for index, each in enumerate(symbol):
+      symbol.pop(index)
+      real = self.__twos_comp(int(each[:16],2))
+      # print(real)
+      img = self.__twos_comp(int(each[16:],2))
+      # print(img)
+      complex_value = complex(real, img)
+      # print(complex_value)
+      symbol.insert(index, complex_value)
+    complex_array = np.asarray(symbol)
+    print(complex_array)
+    return complex_array
 
-def load_ofdm_symbol(binaryname):
-  with open(binaryname) as binary:
-    for index, frame in enumerate(each_frame(binary, separator='-')):
-      print(len(frame))
-      print("OFDM Frame: "+str(index))
-      # print(frame)  # not holding in memory, but loading one frame at a time
-      frame = frame.split("\n")
-      print(frame)
-      print()
-      # frame.remove("") # remove empty packets
-      # frame = list(filter(None, frame))
-      # for index, each in enumerate(frame):
-      #   print("-{}-".format(each))
-      #   frame.pop(index)
-      #   print("{0}: {1}".format(index, each))
-      #   real = each[:16]
-      #   img = each[16:]
-      #   print("img: {0} | real: {1}".format(img,real))
+  def __fft(self, symbol):
+    return np.fft.fft(symbol)
 
+  def __fft_bins_to_binary(self, symbol):
+    for index, each in enumerate(symbol.real):
+      # pass
+      print(each)
 
-
-      
-prepare_ofdm_symbol()
-load_ofdm_symbol("symbols.bin")
-
-
-
-
-
-
-
-
+rx = OFDM_RX()
+rx.receive()
 
 
 

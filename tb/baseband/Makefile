@@ -12,4 +12,4 @@ clean-conversion:
 	rm decimal.bin && touch decimal.bin
 
 clean: 
-	rm *.bin
+	> *.bin

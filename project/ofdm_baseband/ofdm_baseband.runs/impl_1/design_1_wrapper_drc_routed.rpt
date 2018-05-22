@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-| Date         : Tue May 15 14:26:00 2018
+| Date         : Tue May 22 11:43:12 2018
 | Host         : alex-warc running 64-bit Ubuntu 16.04.4 LTS
 | Command      : report_drc -file design_1_wrapper_drc_routed.rpt -pb design_1_wrapper_drc_routed.pb -rpx design_1_wrapper_drc_routed.rpx
 | Design       : design_1_wrapper
@@ -24,191 +24,30 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 35
-+--------+------------------+----------------------------+------------+
-| Rule   | Severity         | Description                | Violations |
-+--------+------------------+----------------------------+------------+
-| NSTD-1 | Critical Warning | Unspecified I/O Standard   | 1          |
-| UCIO-1 | Critical Warning | Unconstrained Logical Port | 1          |
-| IOSR-1 | Warning          | IOB set reset sharing      | 32         |
-| ZPS7-1 | Warning          | PS7 block required         | 1          |
-+--------+------------------+----------------------------+------------+
+             Violations found: 3
++-----------+------------------+----------------------------+------------+
+| Rule      | Severity         | Description                | Violations |
++-----------+------------------+----------------------------+------------+
+| NSTD-1    | Critical Warning | Unspecified I/O Standard   | 1          |
+| UCIO-1    | Critical Warning | Unconstrained Logical Port | 1          |
+| RTSTAT-10 | Warning          | No routable loads          | 1          |
++-----------+------------------+----------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
 NSTD-1#1 Critical Warning
 Unspecified I/O Standard  
-169 out of 169 logical ports use I/O standard (IOSTANDARD) value 'DEFAULT', instead of a user assigned specific value. This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all I/O standards. This design will fail to generate a bitstream unless all logical ports have a user specified I/O standard value defined. To allow bitstream creation with unspecified I/O standard values (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks NSTD-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run. Problem ports: frame_start, frame_end, pilot_flag, ERROR, RST, DATA_OUT_AXIS_tdata[31:0], DATA_OUT_AXIS_tlast, DATA_OUT_AXIS_tready, DATA_OUT_AXIS_tvalid, CLK, DATA_IN_AXIS_tdata[31:0], DATA_IN_AXIS_tready, DATA_IN_AXIS_tvalid, CONFIG_AXI_wvalid[0], CONFIG_AXI_wstrb[3:0] (the first 15 of 40 listed).
+5 out of 135 logical ports use I/O standard (IOSTANDARD) value 'DEFAULT', instead of a user assigned specific value. This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all I/O standards. This design will fail to generate a bitstream unless all logical ports have a user specified I/O standard value defined. To allow bitstream creation with unspecified I/O standard values (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks NSTD-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run. Problem ports: pilot_flag, frame_end, frame_start, ERROR, event_tlast_missing.
 Related violations: <none>
 
 UCIO-1#1 Critical Warning
 Unconstrained Logical Port  
-169 out of 169 logical ports have no user assigned specific location constraint (LOC). This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all pin locations. This design will fail to generate a bitstream unless all logical ports have a user specified site LOC constraint defined.  To allow bitstream creation with unspecified pin locations (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks UCIO-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run.  Problem ports: frame_start, frame_end, pilot_flag, ERROR, RST, DATA_OUT_AXIS_tdata[31:0], DATA_OUT_AXIS_tlast, DATA_OUT_AXIS_tready, DATA_OUT_AXIS_tvalid, CLK, DATA_IN_AXIS_tdata[31:0], DATA_IN_AXIS_tready, DATA_IN_AXIS_tvalid, CONFIG_AXI_wvalid[0], CONFIG_AXI_wstrb[3:0] (the first 15 of 40 listed).
+5 out of 135 logical ports have no user assigned specific location constraint (LOC). This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all pin locations. This design will fail to generate a bitstream unless all logical ports have a user specified site LOC constraint defined.  To allow bitstream creation with unspecified pin locations (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks UCIO-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run.  Problem ports: pilot_flag, frame_end, frame_start, ERROR, event_tlast_missing.
 Related violations: <none>
 
-IOSR-1#1 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[0] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#2 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[10] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#3 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[11] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#4 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[12] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#5 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[13] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#6 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[14] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#7 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[15] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#8 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[16] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#9 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[17] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#10 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[18] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#11 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[19] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#12 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[1] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#13 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[20] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#14 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[21] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#15 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[22] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#16 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[23] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#17 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[24] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#18 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[25] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#19 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[26] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#20 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[27] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#21 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[28] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#22 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[29] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#23 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[2] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#24 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[30] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#25 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[31] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#26 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[3] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#27 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[4] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#28 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[5] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#29 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[6] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#30 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[7] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#31 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[8] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-IOSR-1#32 Warning
-IOB set reset sharing  
-IO CONFIG_AXI_wdata[9] connects to flops which have these design_1_i/FFT_Controller_0/inst/FFT_Controller_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Pilot_Insertion_0/inst/Pilot_Insertion_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/Preamble_0/inst/Preamble_v0_1_S00_AXI_inst/axi_awready_i_1_n_0, design_1_i/QAM_Modulator_1/inst/QAM_Modulator_v0_1_S00_AXI_inst/axi_awready_i_1_n_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
-Related violations: <none>
-
-ZPS7-1#1 Warning
-PS7 block required  
-The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
+RTSTAT-10#1 Warning
+No routable loads  
+33 net(s) have no routable loads. The problem bus(es) and/or net(s) are design_1_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/FAMILY_SUPPORTED.I_SYNC_FIFO_BRAM/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, design_1_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, design_1_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/FAMILY_SUPPORTED.I_SYNC_FIFO_BRAM/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, design_1_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, design_1_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, design_1_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/FAMILY_SUPPORTED.I_SYNC_FIFO_BRAM/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/empty_fwft_i, design_1_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/FAMILY_SUPPORTED.I_SYNC_FIFO_BRAM/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/empty_fwft_i, design_1_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/FAMILY_SUPPORTED.I_SYNC_FIFO_BRAM/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, design_1_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_XD_FIFO/NON_BLK_MEM.I_SYNC_FIFOGEN_FIFO/FAMILY_SUPPORTED.I_SYNC_FIFO_BRAM/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, design_1_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_READ.USE_SPLIT_R.read_addr_inst/USE_R_CHANNEL.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, design_1_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/FAMILY_SUPPORTED.I_SYNC_FIFO_BRAM/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, design_1_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, design_1_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, design_1_i/axi_dma_0/U0/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/BLK_MEM.I_SYNC_FIFOGEN_FIFO/FAMILY_SUPPORTED.I_SYNC_FIFO_BRAM/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_i, design_1_i/axi_mem_intercon/m00_couplers/auto_pc/inst/gen_axi4_axi3.axi3_conv_inst/USE_WRITE.write_addr_inst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_i (the first 15 of 33 listed).
 Related violations: <none>
 
 

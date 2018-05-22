@@ -42,7 +42,6 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
 
@@ -59,8 +58,22 @@ set rc [catch {
   set_property ip_repo_paths /home/alex/GitHub/ip-cores/cores [current_project]
   set_property ip_output_repo /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  set_property XPM_LIBRARIES XPM_CDC [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   add_files -quiet /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.runs/synth_1/design_1_wrapper.dcp
+  read_xdc -ref design_1_processing_system7_0_0 -cells inst /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc
+  set_property processing_order EARLY [get_files /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc]
+  read_xdc -ref design_1_axi_dma_0_0 -cells U0 /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0_1/design_1_axi_dma_0_0.xdc
+  set_property processing_order EARLY [get_files /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0_1/design_1_axi_dma_0_0.xdc]
+  read_xdc -prop_thru_buffers -ref design_1_rst_ps7_0_100M_0 -cells U0 /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_board.xdc
+  set_property processing_order EARLY [get_files /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_board.xdc]
+  read_xdc -ref design_1_rst_ps7_0_100M_0 -cells U0 /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0.xdc
+  set_property processing_order EARLY [get_files /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0.xdc]
+  read_xdc -ref design_1_axi_dma_0_0 -cells U0 /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0_1/design_1_axi_dma_0_0_clocks.xdc
+  set_property processing_order LATE [get_files /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_axi_dma_0_0_1/design_1_axi_dma_0_0_clocks.xdc]
+  read_xdc -ref design_1_auto_us_0 -cells inst /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_auto_us_0/design_1_auto_us_0_clocks.xdc
+  set_property processing_order LATE [get_files /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_auto_us_0/design_1_auto_us_0_clocks.xdc]
+  read_xdc -ref design_1_auto_us_1 -cells inst /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_auto_us_1/design_1_auto_us_1_clocks.xdc
+  set_property processing_order LATE [get_files /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_auto_us_1/design_1_auto_us_1_clocks.xdc]
   link_design -top design_1_wrapper -part xc7z020clg484-1
   write_hwdef -file design_1_wrapper.hwdef
   close_msg_db -file init_design.pb
@@ -130,6 +143,25 @@ if {$rc} {
   return -code error $RESULT
 } else {
   end_step route_design
+  unset ACTIVE_STEP 
+}
+
+start_step write_bitstream
+set ACTIVE_STEP write_bitstream
+set rc [catch {
+  create_msg_db write_bitstream.pb
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+  catch { write_mem_info -force design_1_wrapper.mmi }
+  write_bitstream -force -no_partial_bitfile design_1_wrapper.bit 
+  catch { write_sysdef -hwdef design_1_wrapper.hwdef -bitfile design_1_wrapper.bit -meminfo design_1_wrapper.mmi -file design_1_wrapper.sysdef }
+  catch {write_debug_probes -quiet -force debug_nets}
+  close_msg_db -file write_bitstream.pb
+} RESULT]
+if {$rc} {
+  step_failed write_bitstream
+  return -code error $RESULT
+} else {
+  end_step write_bitstream
   unset ACTIVE_STEP 
 }
 

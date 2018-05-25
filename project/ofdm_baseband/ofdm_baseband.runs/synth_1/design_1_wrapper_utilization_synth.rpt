@@ -1,8 +1,8 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-| Date         : Tue May 22 11:41:12 2018
-| Host         : alex-warc running 64-bit Ubuntu 16.04.4 LTS
+| Date         : Fri May 25 10:51:29 2018
+| Host         : Alex-Ubuntu running 64-bit Ubuntu 16.04.4 LTS
 | Command      : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
 | Design       : design_1_wrapper
 | Device       : 7z020clg484-1
@@ -30,8 +30,8 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                | 7544 |     0 |     53200 | 14.18 |
-|   LUT as Logic             | 6258 |     0 |     53200 | 11.76 |
+| Slice LUTs*                | 7539 |     0 |     53200 | 14.17 |
+|   LUT as Logic             | 6253 |     0 |     53200 | 11.75 |
 |   LUT as Memory            | 1286 |     0 |     17400 |  7.39 |
 |     LUT as Distributed RAM |   18 |     0 |           |       |
 |     LUT as Shift Register  | 1268 |     0 |           |       |
@@ -95,7 +95,7 @@ Table of Contents
 +-----------------------------+------+-------+-----------+--------+
 |          Site Type          | Used | Fixed | Available |  Util% |
 +-----------------------------+------+-------+-----------+--------+
-| Bonded IOB                  |    8 |     0 |       200 |   4.00 |
+| Bonded IOB                  |    3 |     0 |       200 |   1.50 |
 | Bonded IPADs                |    0 |     0 |         2 |   0.00 |
 | Bonded IOPADs               |  130 |     0 |       130 | 100.00 |
 | PHY_CONTROL                 |    0 |     0 |         4 |   0.00 |
@@ -152,11 +152,11 @@ Table of Contents
 | Ref Name | Used |  Functional Category |
 +----------+------+----------------------+
 | FDRE     | 9411 |         Flop & Latch |
-| LUT3     | 2467 |                  LUT |
-| LUT6     | 1447 |                  LUT |
+| LUT3     | 2499 |                  LUT |
+| LUT6     | 1412 |                  LUT |
 | SRL16E   | 1280 |   Distributed Memory |
-| LUT4     | 1169 |                  LUT |
-| LUT2     | 1136 |                  LUT |
+| LUT4     | 1168 |                  LUT |
+| LUT2     | 1135 |                  LUT |
 | LUT5     |  901 |                  LUT |
 | LUT1     |  563 |                  LUT |
 | CARRY4   |  529 |           CarryLogic |
@@ -169,7 +169,6 @@ Table of Contents
 | RAMD32   |   26 |   Distributed Memory |
 | DSP48E1  |   12 |     Block Arithmetic |
 | RAMS32   |    8 |   Distributed Memory |
-| OBUF     |    5 |                   IO |
 | RAMB18E1 |    4 |         Block Memory |
 | IBUF     |    3 |                   IO |
 | RAMB36E1 |    2 |         Block Memory |

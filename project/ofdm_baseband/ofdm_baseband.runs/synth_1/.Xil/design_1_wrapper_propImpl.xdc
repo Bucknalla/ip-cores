@@ -1,8 +1,9 @@
 set_property SRC_FILE_INFO {cfile:/home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc rfile:../../../ofdm_baseband.srcs/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc id:1 order:EARLY scoped_inst:design_1_i/processing_system7_0/inst} [current_design]
+set_property SRC_FILE_INFO {cfile:/home/alex/GitHub/digilent-xdc/Zedboard-Master.xdc rfile:../../../../../../digilent-xdc/Zedboard-Master.xdc id:2} [current_design]
 set_property src_info {type:SCOPED_XDC file:1 line:21 export:INPUT save:INPUT read:READ} [current_design]
-set_input_jitter clk_fpga_0 0.3
-set_property src_info {type:SCOPED_XDC file:1 line:24 export:INPUT save:INPUT read:READ} [current_design]
 set_input_jitter clk_fpga_1 0.21
+set_property src_info {type:SCOPED_XDC file:1 line:24 export:INPUT save:INPUT read:READ} [current_design]
+set_input_jitter clk_fpga_0 0.3
 set_property src_info {type:SCOPED_XDC file:1 line:34 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN "C12" [get_ports "MIO[53]"]
 set_property src_info {type:SCOPED_XDC file:1 line:40 export:INPUT save:INPUT read:READ} [current_design]
@@ -263,3 +264,13 @@ set_property src_info {type:SCOPED_XDC file:1 line:652 export:INPUT save:INPUT r
 set_property PACKAGE_PIN "C9" [get_ports "PS_SRSTB"]
 set_property src_info {type:SCOPED_XDC file:1 line:655 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN "F7" [get_ports "PS_CLK"]
+set_property src_info {type:XDC file:2 line:82 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN Y9 [get_ports {GCLK}];  # "GCLK"
+set_property src_info {type:XDC file:2 line:362 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOSTANDARD LVCMOS33 [get_ports -of_objects [get_iobanks 33]];
+set_property src_info {type:XDC file:2 line:367 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOSTANDARD LVCMOS18 [get_ports -of_objects [get_iobanks 34]];
+set_property src_info {type:XDC file:2 line:372 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOSTANDARD LVCMOS18 [get_ports -of_objects [get_iobanks 35]];
+set_property src_info {type:XDC file:2 line:375 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOSTANDARD LVCMOS33 [get_ports -of_objects [get_iobanks 13]];

@@ -23,7 +23,7 @@
 module qam_4(
     input clk,
     input rst, 
-    input select,
+//    input select,
     input [1:0] signal_in,
     output reg [31:0] signal_out,
     output reg ready

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:19 MST 2017
+# 
+# Start of session at: Fri May 25 12:23:33 2018
+# Process ID: 20569
+# Current directory: /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.sdk/webtalk
+# Command line: wbtcv -mode batch -source sdk_webtalk.tcl
+# Log file: /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.sdk/webtalk/webtalk.log
+# Journal file: /home/alex/GitHub/ip-cores/project/ofdm_baseband/ofdm_baseband.sdk/webtalk/webtalk.jou
+#-----------------------------------------------------------
+source sdk_webtalk.tcl

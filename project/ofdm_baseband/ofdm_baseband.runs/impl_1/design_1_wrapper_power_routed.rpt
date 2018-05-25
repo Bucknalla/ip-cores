@@ -1,8 +1,8 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-| Date             : Tue May 22 11:43:19 2018
-| Host             : alex-warc running 64-bit Ubuntu 16.04.4 LTS
+| Date             : Fri May 25 10:53:23 2018
+| Host             : Alex-Ubuntu running 64-bit Ubuntu 16.04.4 LTS
 | Command          : report_power -file design_1_wrapper_power_routed.rpt -pb design_1_wrapper_power_summary_routed.pb -rpx design_1_wrapper_power_routed.rpx
 | Design           : design_1_wrapper
 | Device           : xc7z020clg484-1
@@ -30,8 +30,8 @@ Table of Contents
 ----------
 
 +--------------------------+--------+
-| Total On-Chip Power (W)  | 1.803  |
-| Dynamic (W)              | 1.642  |
+| Total On-Chip Power (W)  | 1.801  |
+| Dynamic (W)              | 1.641  |
 | Device Static (W)        | 0.160  |
 | Effective TJA (C/W)      | 11.5   |
 | Max Ambient (C)          | 64.2   |
@@ -50,21 +50,20 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.031 |        4 |       --- |             --- |
-| Slice Logic              |     0.022 |    20258 |       --- |             --- |
-|   LUT as Logic           |     0.015 |     5656 |     53200 |           10.63 |
-|   LUT as Shift Register  |     0.003 |     1043 |     17400 |            5.99 |
-|   Register               |     0.003 |     9373 |    106400 |            8.81 |
+| Slice Logic              |     0.022 |    20256 |       --- |             --- |
+|   LUT as Logic           |     0.015 |     5648 |     53200 |           10.62 |
+|   LUT as Shift Register  |     0.003 |     1042 |     17400 |            5.99 |
+|   Register               |     0.003 |     9374 |    106400 |            8.81 |
 |   CARRY4                 |     0.002 |      513 |     13300 |            3.86 |
 |   F7/F8 Muxes            |    <0.001 |       54 |     53200 |            0.10 |
 |   Others                 |     0.000 |     1779 |       --- |             --- |
 |   LUT as Distributed RAM |     0.000 |       18 |     17400 |            0.10 |
-| Signals                  |     0.029 |    12918 |       --- |             --- |
+| Signals                  |     0.029 |    12911 |       --- |             --- |
 | Block RAM                |     0.011 |        4 |       140 |            2.86 |
 | DSPs                     |     0.014 |       12 |       220 |            5.45 |
-| I/O                      |    <0.001 |        5 |       200 |            2.50 |
 | PS7                      |     1.533 |        1 |       --- |             --- |
 | Static Power             |     0.160 |          |           |                 |
-| Total                    |     1.803 |          |           |                 |
+| Total                    |     1.801 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -74,7 +73,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.124 |       0.108 |      0.016 |
+| Vccint    |       1.000 |     0.123 |       0.107 |      0.016 |
 | Vccaux    |       1.800 |     0.021 |       0.000 |      0.021 |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -150,15 +149,15 @@ Table of Contents
 +-----------------------------------------------------------------------------------------------------+-----------+
 | Name                                                                                                | Power (W) |
 +-----------------------------------------------------------------------------------------------------+-----------+
-| design_1_wrapper                                                                                    |     1.642 |
-|   design_1_i                                                                                        |     1.642 |
+| design_1_wrapper                                                                                    |     1.641 |
+|   design_1_i                                                                                        |     1.641 |
 |     FFT_Controller_0                                                                                |    <0.001 |
 |       inst                                                                                          |    <0.001 |
 |         FFT_Controller_v0_1_S00_AXI_inst                                                            |    <0.001 |
 |         axi                                                                                         |    <0.001 |
 |     Pilot_Insertion_0                                                                               |     0.003 |
 |       inst                                                                                          |     0.003 |
-|         Pilot_Insertion_v0_1_S00_AXI_inst                                                           |     0.003 |
+|         Pilot_Insertion_v0_1_S00_AXI_inst                                                           |     0.002 |
 |         frame                                                                                       |    <0.001 |
 |         pilot                                                                                       |    <0.001 |
 |     Preamble_0                                                                                      |    <0.001 |
@@ -492,9 +491,9 @@ Table of Contents
 |           ACTIVE_LOW_EXT.ACT_LO_EXT                                                                 |    <0.001 |
 |         SEQ                                                                                         |    <0.001 |
 |           SEQ_COUNTER                                                                               |    <0.001 |
-|     xfft_0                                                                                          |     0.083 |
-|       U0                                                                                            |     0.083 |
-|         i_synth                                                                                     |     0.083 |
+|     xfft_0                                                                                          |     0.082 |
+|       U0                                                                                            |     0.082 |
+|         i_synth                                                                                     |     0.082 |
 |           axi_wrapper                                                                               |     0.002 |
 |             config_channel_fifo                                                                     |    <0.001 |
 |               gen_non_real_time.data_in_fifo_pt1                                                    |    <0.001 |
@@ -505,8 +504,8 @@ Table of Contents
 |             data_out_channel                                                                        |    <0.001 |
 |               gen_non_real_time.fifo                                                                |    <0.001 |
 |                 fifo0                                                                               |    <0.001 |
-|           xfft_inst                                                                                 |     0.081 |
-|             non_floating_point.arch_d.xfft_inst                                                     |     0.081 |
+|           xfft_inst                                                                                 |     0.080 |
+|             non_floating_point.arch_d.xfft_inst                                                     |     0.080 |
 |               DOUT_CNT_CTRL_0                                                                       |    <0.001 |
 |                 cnt                                                                                 |    <0.001 |
 |                   cnt_addsub                                                                        |    <0.001 |
@@ -622,9 +621,9 @@ Table of Contents
 |               input_delay_re                                                                        |    <0.001 |
 |               pe0_bf1_addr_gen                                                                      |    <0.001 |
 |               pe0_bf2_start_gen                                                                     |    <0.001 |
-|               pe_gen[0].natural_order_input.PE                                                      |     0.022 |
+|               pe_gen[0].natural_order_input.PE                                                      |     0.021 |
 |                 FB_1.BF_1                                                                           |     0.005 |
-|                   BTFLY0                                                                            |    <0.001 |
+|                   BTFLY0                                                                            |     0.001 |
 |                     logic_bfly_byp.add_i                                                            |    <0.001 |
 |                       adder                                                                         |    <0.001 |
 |                         i_baseblox.i_baseblox_addsub                                                |    <0.001 |
@@ -858,8 +857,8 @@ Table of Contents
 |                         mult                                                                        |     0.002 |
 |                           use_prim.iAdelx[0].iAdely[0].use_delay_line.Adelay                        |    <0.001 |
 |                           use_prim.iBdelx[0].iBdely[0].need_delay_line.Bdelay                       |    <0.001 |
-|                       mult2_preadder_d_plus_a.mult2                                                 |     0.002 |
-|                         mult                                                                        |     0.002 |
+|                       mult2_preadder_d_plus_a.mult2                                                 |     0.001 |
+|                         mult                                                                        |     0.001 |
 |                       mult3_preadder_d_minus_a.mult3                                                |     0.002 |
 |                         mult                                                                        |     0.002 |
 |                           use_prim.iBdelx[0].iBdely[0].need_delay_line.Bdelay                       |    <0.001 |
@@ -914,7 +913,7 @@ Table of Contents
 |                     i_bb_inst                                                                       |    <0.001 |
 |                 has_xk_load_pipelining.xk_load_out_delay                                            |    <0.001 |
 |                 hasbf2.FB_2.BF_2                                                                    |     0.004 |
-|                   BTFLY0                                                                            |     0.002 |
+|                   BTFLY0                                                                            |     0.001 |
 |                     logic_bfly_byp.add_i                                                            |    <0.001 |
 |                       adder                                                                         |    <0.001 |
 |                         i_baseblox.i_baseblox_addsub                                                |    <0.001 |
@@ -1136,7 +1135,7 @@ Table of Contents
 |                       mult3_preadder_d_minus_a.mult3                                                |     0.002 |
 |                         mult                                                                        |     0.002 |
 |                           use_prim.iBdelx[0].iBdely[0].need_delay_line.Bdelay                       |    <0.001 |
-|                       optionally_negate_inputs                                                      |    <0.001 |
+|                       optionally_negate_inputs                                                      |     0.001 |
 |                 has_TW_mult.TW                                                                      |    <0.001 |
 |                   ADD0                                                                              |    <0.001 |
 |                     adder                                                                           |    <0.001 |
@@ -1545,7 +1544,7 @@ Table of Contents
 |                   scale_mux                                                                         |    <0.001 |
 |                 scaling2bits.scaler_re                                                              |    <0.001 |
 |                   scale_mux                                                                         |    <0.001 |
-|               pe_gen[4].natural_order_input.PE                                                      |     0.004 |
+|               pe_gen[4].natural_order_input.PE                                                      |     0.003 |
 |                 FW_1.BF_1                                                                           |     0.003 |
 |                   add_subs.add_i                                                                    |    <0.001 |
 |                     adder                                                                           |    <0.001 |

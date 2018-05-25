@@ -44,6 +44,9 @@ set_property is_locked true [get_files /home/alex/GitHub/ip-cores/project/ofdm_b
 foreach dcp [get_files -quiet -all *.dcp] {
   set_property used_in_implementation false $dcp
 }
+read_xdc /home/alex/GitHub/digilent-xdc/Zedboard-Master.xdc
+set_property used_in_implementation false [get_files /home/alex/GitHub/digilent-xdc/Zedboard-Master.xdc]
+
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 

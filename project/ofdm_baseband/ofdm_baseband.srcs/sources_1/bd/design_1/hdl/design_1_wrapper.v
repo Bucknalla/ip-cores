@@ -1,8 +1,8 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Tue May 22 11:34:03 2018
-//Host        : alex-warc running 64-bit Ubuntu 16.04.4 LTS
+//Date        : Fri May 25 12:22:36 2018
+//Host        : Alex-Ubuntu running 64-bit Ubuntu 16.04.4 LTS
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
 //Purpose     : IP block netlist
@@ -26,7 +26,6 @@ module design_1_wrapper
     DDR_ras_n,
     DDR_reset_n,
     DDR_we_n,
-    ERROR,
     FIXED_IO_ddr_vrn,
     FIXED_IO_ddr_vrp,
     FIXED_IO_mio,
@@ -34,11 +33,7 @@ module design_1_wrapper
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
     RST,
-    RST_AXI,
-    event_tlast_missing,
-    frame_end,
-    frame_start,
-    pilot_flag);
+    RST_AXI);
   input CLK;
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
@@ -55,7 +50,6 @@ module design_1_wrapper
   inout DDR_ras_n;
   inout DDR_reset_n;
   inout DDR_we_n;
-  output ERROR;
   inout FIXED_IO_ddr_vrn;
   inout FIXED_IO_ddr_vrp;
   inout [53:0]FIXED_IO_mio;
@@ -64,10 +58,6 @@ module design_1_wrapper
   inout FIXED_IO_ps_srstb;
   input RST;
   input RST_AXI;
-  output event_tlast_missing;
-  output frame_end;
-  output frame_start;
-  output pilot_flag;
 
   wire CLK;
   wire [14:0]DDR_addr;
@@ -85,7 +75,6 @@ module design_1_wrapper
   wire DDR_ras_n;
   wire DDR_reset_n;
   wire DDR_we_n;
-  wire ERROR;
   wire FIXED_IO_ddr_vrn;
   wire FIXED_IO_ddr_vrp;
   wire [53:0]FIXED_IO_mio;
@@ -94,10 +83,6 @@ module design_1_wrapper
   wire FIXED_IO_ps_srstb;
   wire RST;
   wire RST_AXI;
-  wire event_tlast_missing;
-  wire frame_end;
-  wire frame_start;
-  wire pilot_flag;
 
   design_1 design_1_i
        (.CLK(CLK),
@@ -116,7 +101,6 @@ module design_1_wrapper
         .DDR_ras_n(DDR_ras_n),
         .DDR_reset_n(DDR_reset_n),
         .DDR_we_n(DDR_we_n),
-        .ERROR(ERROR),
         .FIXED_IO_ddr_vrn(FIXED_IO_ddr_vrn),
         .FIXED_IO_ddr_vrp(FIXED_IO_ddr_vrp),
         .FIXED_IO_mio(FIXED_IO_mio),
@@ -124,9 +108,5 @@ module design_1_wrapper
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
         .RST(RST),
-        .RST_AXI(RST_AXI),
-        .event_tlast_missing(event_tlast_missing),
-        .frame_end(frame_end),
-        .frame_start(frame_start),
-        .pilot_flag(pilot_flag));
+        .RST_AXI(RST_AXI));
 endmodule

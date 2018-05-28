@@ -48,7 +48,7 @@
 
 
 // IP VLNV: user.org:user:QAM_Modulator:0.2
-// IP Revision: 24
+// IP Revision: 27
 
 `timescale 1ns/1ps
 
@@ -82,6 +82,7 @@ module design_1_QAM_Modulator_1_0 (
   s00_axis_aclk,
   s00_axis_aresetn,
   m00_axis_tdata,
+  m00_axis_tlast,
   m00_axis_tvalid,
   m00_axis_tready,
   m00_axis_aclk,
@@ -143,6 +144,8 @@ input wire s00_axis_aclk;
 input wire s00_axis_aresetn;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TDATA" *)
 output wire [31 : 0] m00_axis_tdata;
+(* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TLAST" *)
+output wire m00_axis_tlast;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TVALID" *)
 output wire m00_axis_tvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 M00_AXIS TREADY" *)
@@ -187,6 +190,7 @@ input wire m00_axis_aresetn;
     .s00_axis_aclk(s00_axis_aclk),
     .s00_axis_aresetn(s00_axis_aresetn),
     .m00_axis_tdata(m00_axis_tdata),
+    .m00_axis_tlast(m00_axis_tlast),
     .m00_axis_tvalid(m00_axis_tvalid),
     .m00_axis_tready(m00_axis_tready),
     .m00_axis_aclk(m00_axis_aclk),

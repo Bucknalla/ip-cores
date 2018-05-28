@@ -27,6 +27,8 @@ verilog xil_defaultlib  "../../../ofdm_baseband.ip_user_files/bd/design_1/ipshar
 verilog xil_defaultlib  "../../../ofdm_baseband.ip_user_files/bd/design_1/ipshared/9d7f/hdl/QAM_Modulator_v0_1.v" --include "../../../ofdm_baseband.srcs/sources_1/bd/design_1/ipshared/7e3a/hdl"
 verilog xil_defaultlib  "../../../ofdm_baseband.ip_user_files/bd/design_1/ip/design_1_QAM_Modulator_1_0/sim/design_1_QAM_Modulator_1_0.v" --include "../../../ofdm_baseband.srcs/sources_1/bd/design_1/ipshared/7e3a/hdl"
 verilog xil_defaultlib  "../../../ofdm_baseband.ip_user_files/bd/design_1/hdl/design_1.v" --include "../../../ofdm_baseband.srcs/sources_1/bd/design_1/ipshared/7e3a/hdl"
+verilog xil_defaultlib  "../../../ofdm_baseband.ip_user_files/bd/design_1/ipshared/2e37/xlconcat.v" --include "../../../ofdm_baseband.srcs/sources_1/bd/design_1/ipshared/7e3a/hdl"
+verilog xil_defaultlib  "../../../ofdm_baseband.ip_user_files/bd/design_1/ip/design_1_xlconcat_0_0/sim/design_1_xlconcat_0_0.v" --include "../../../ofdm_baseband.srcs/sources_1/bd/design_1/ipshared/7e3a/hdl"
 verilog xil_defaultlib  "../../../ofdm_baseband.srcs/sim_1/new/baseband_tb_load.v" --include "../../../ofdm_baseband.srcs/sources_1/bd/design_1/ipshared/7e3a/hdl"
 
 # compile glbl module

@@ -1,44 +1,43 @@
 {
    guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port pilot_flag -pg 1 -y 380 -defaultsOSRD
 preplace port RST_AXI -pg 1 -y 200 -defaultsOSRD
-preplace port frame_end -pg 1 -y 420 -defaultsOSRD
 preplace port RST -pg 1 -y 110 -defaultsOSRD
 preplace port CLK -pg 1 -y 180 -defaultsOSRD
 preplace port DATA_OUT_AXIS -pg 1 -y 220 -defaultsOSRD
 preplace port CONFIG_AXI -pg 1 -y 160 -defaultsOSRD
-preplace port frame_start -pg 1 -y 400 -defaultsOSRD
-preplace port event_tlast_missing -pg 1 -y 280 -defaultsOSRD
-preplace port ERROR -pg 1 -y 260 -defaultsOSRD
 preplace port DATA_IN_AXIS -pg 1 -y 90 -defaultsOSRD
+preplace portBus IRQ_Errors -pg 1 -y 60 -defaultsOSRD
 preplace inst Pilot_Insertion_0 -pg 1 -lvl 4 -y 420 -defaultsOSRD
 preplace inst axi_interconnect -pg 1 -lvl 1 -y 280 -defaultsOSRD
 preplace inst QAM_Modulator_1 -pg 1 -lvl 2 -y 180 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 5 -y 60 -defaultsOSRD
 preplace inst FFT_Controller_0 -pg 1 -lvl 4 -y 190 -defaultsOSRD
 preplace inst Preamble_0 -pg 1 -lvl 3 -y 120 -defaultsOSRD
-preplace inst xfft_0 -pg 1 -lvl 5 -y 320 -defaultsOSRD
+preplace inst xfft_0 -pg 1 -lvl 5 -y 370 -defaultsOSRD
+preplace netloc QAM_Modulator_1_error 1 2 3 550 -10 NJ -10 1350J
 preplace netloc DATA_IN_AXIS_1 1 0 2 NJ 90 280J
-preplace netloc xfft_0_event_frame_started 1 3 3 880 550 NJ 550 1720
-preplace netloc xfft_0_event_tlast_unexpected 1 5 1 1730J
-preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1240
+preplace netloc xfft_0_event_frame_started 1 3 3 940 280 1300J 260 1720
+preplace netloc xfft_0_event_data_out_channel_halt 1 4 2 1350 170 1750
+preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1350
+preplace netloc Preamble_0_error 1 3 2 900 10 NJ
 preplace netloc axi_interconnect_M01_AXI 1 1 2 250 50 NJ
-preplace netloc ARESETN_1 1 0 4 -50J 460 280 460 560 460 870
-preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 540
+preplace netloc ARESETN_1 1 0 4 -50J 460 280 460 580 460 930
+preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 560
 preplace netloc ARESETN_2 1 0 1 -30
-preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1720J
+preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1760
+preplace netloc xlconcat_0_dout 1 5 1 N
 preplace netloc S00_AXI_1 1 0 1 NJ
 preplace netloc axi_interconnect_M02_AXI 1 1 3 250 340 NJ 340 NJ
-preplace netloc Pilot_Insertion_0_frame_end 1 4 2 NJ 480 1750J
-preplace netloc xfft_0_event_tlast_missing 1 5 1 1750J
-preplace netloc FFT_Controller_0_M00_AXIS 1 4 1 1260
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 -40 480 270 480 550 480 860 290 1250J
+preplace netloc xfft_0_event_status_channel_halt 1 4 2 1330 180 1730
+preplace netloc xfft_0_event_tlast_missing 1 4 2 1340 160 1740
+preplace netloc Pilot_Insertion_0_error 1 4 1 1320
+preplace netloc FFT_Controller_0_M00_AXIS 1 4 1 1310
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 -40 480 270 480 570 480 920 550 1350J
 preplace netloc axi_interconnect_M00_AXI 1 1 1 260
-preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 310 NJ 310 840
-preplace netloc Preamble_0_M00_AXIS 1 3 1 850
-preplace netloc Pilot_Insertion_0_frame_start 1 4 2 1240J 490 1740J
-preplace netloc Pilot_Insertion_0_pilot_flag 1 4 2 1260J 500 1730J
-levelinfo -pg 1 -70 110 410 700 1060 1510 1770 -top 0 -bot 570
+preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 310 NJ 310 900
+preplace netloc Preamble_0_M00_AXIS 1 3 1 910
+levelinfo -pg 1 -70 110 420 760 1150 1540 1790 -top -40 -bot 790
 ",
 }
 {

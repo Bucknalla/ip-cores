@@ -156,7 +156,7 @@ proc create_root_design { parentCell } {
   # Create interface ports
   set CONFIG_AXI [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 CONFIG_AXI ]
   set_property -dict [ list \
-CONFIG.ADDR_WIDTH {15} \
+CONFIG.ADDR_WIDTH {14} \
 CONFIG.ARUSER_WIDTH {0} \
 CONFIG.AWUSER_WIDTH {0} \
 CONFIG.BUSER_WIDTH {0} \
@@ -205,7 +205,7 @@ CONFIG.ASSOCIATED_BUSIF {DATA_IN_AXIS:CONFIG_AXI:DATA_OUT_AXIS} \
 CONFIG.ASSOCIATED_RESET {RST_AXI:RST} \
 CONFIG.FREQ_HZ {100000000} \
  ] $CLK
-  set ERROR [ create_bd_port -dir O ERROR ]
+  set IRQ_Errors [ create_bd_port -dir O -from 5 -to 0 IRQ_Errors ]
   set RST [ create_bd_port -dir I -type rst RST ]
   set_property -dict [ list \
 CONFIG.POLARITY {ACTIVE_LOW} \
@@ -214,10 +214,6 @@ CONFIG.POLARITY {ACTIVE_LOW} \
   set_property -dict [ list \
 CONFIG.POLARITY {ACTIVE_LOW} \
  ] $RST_AXI
-  set event_tlast_missing [ create_bd_port -dir O -type intr event_tlast_missing ]
-  set frame_end [ create_bd_port -dir O frame_end ]
-  set frame_start [ create_bd_port -dir O frame_start ]
-  set pilot_flag [ create_bd_port -dir O pilot_flag ]
 
   # Create instance: FFT_Controller_0, and set properties
   set FFT_Controller_0 [ create_bd_cell -type ip -vlnv user.org:user:FFT_Controller:0.1 FFT_Controller_0 ]
@@ -225,20 +221,20 @@ CONFIG.POLARITY {ACTIVE_LOW} \
   # Create instance: Pilot_Insertion_0, and set properties
   set Pilot_Insertion_0 [ create_bd_cell -type ip -vlnv user.org:user:Pilot_Insertion:0.1 Pilot_Insertion_0 ]
 
-  set_property -dict [ list \
-CONFIG.TDATA_NUM_BYTES {4} \
- ] [get_bd_intf_pins /Pilot_Insertion_0/M00_AXIS]
-
-  set_property -dict [ list \
-CONFIG.NUM_READ_OUTSTANDING {1} \
-CONFIG.NUM_WRITE_OUTSTANDING {1} \
- ] [get_bd_intf_pins /Pilot_Insertion_0/S00_AXI]
-
   # Create instance: Preamble_0, and set properties
   set Preamble_0 [ create_bd_cell -type ip -vlnv user.org:user:Preamble:0.1 Preamble_0 ]
 
   # Create instance: QAM_Modulator_1, and set properties
   set QAM_Modulator_1 [ create_bd_cell -type ip -vlnv user.org:user:QAM_Modulator:0.2 QAM_Modulator_1 ]
+
+  set_property -dict [ list \
+CONFIG.TDATA_NUM_BYTES {4} \
+ ] [get_bd_intf_pins /QAM_Modulator_1/M00_AXIS]
+
+  set_property -dict [ list \
+CONFIG.NUM_READ_OUTSTANDING {1} \
+CONFIG.NUM_WRITE_OUTSTANDING {1} \
+ ] [get_bd_intf_pins /QAM_Modulator_1/S00_AXI]
 
   # Create instance: axi_interconnect, and set properties
   set axi_interconnect [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect ]
@@ -261,6 +257,12 @@ CONFIG.transform_length {512} \
 CONFIG.xk_index {true} \
  ] $xfft_0
 
+  # Create instance: xlconcat_0, and set properties
+  set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
+  set_property -dict [ list \
+CONFIG.NUM_PORTS {6} \
+ ] $xlconcat_0
+
   # Create interface connections
   connect_bd_intf_net -intf_net DATA_IN_AXIS_1 [get_bd_intf_ports DATA_IN_AXIS] [get_bd_intf_pins QAM_Modulator_1/S00_AXIS]
   connect_bd_intf_net -intf_net FFT_Controller_0_M00_AXIS [get_bd_intf_pins FFT_Controller_0/M00_AXIS] [get_bd_intf_pins xfft_0/S_AXIS_CONFIG]
@@ -277,13 +279,15 @@ CONFIG.xk_index {true} \
   # Create port connections
   connect_bd_net -net ARESETN_1 [get_bd_ports RST] [get_bd_pins FFT_Controller_0/m00_axis_aresetn] [get_bd_pins FFT_Controller_0/s00_axi_aresetn] [get_bd_pins Pilot_Insertion_0/m00_axis_aresetn] [get_bd_pins Pilot_Insertion_0/s00_axi_aresetn] [get_bd_pins Pilot_Insertion_0/s00_axis_aresetn] [get_bd_pins Preamble_0/m00_axis_aresetn] [get_bd_pins Preamble_0/s00_axi_aresetn] [get_bd_pins Preamble_0/s00_axis_aresetn] [get_bd_pins QAM_Modulator_1/m00_axis_aresetn] [get_bd_pins QAM_Modulator_1/s00_axi_aresetn] [get_bd_pins QAM_Modulator_1/s00_axis_aresetn]
   connect_bd_net -net ARESETN_2 [get_bd_ports RST_AXI] [get_bd_pins axi_interconnect/ARESETN] [get_bd_pins axi_interconnect/M00_ARESETN] [get_bd_pins axi_interconnect/M01_ARESETN] [get_bd_pins axi_interconnect/M02_ARESETN] [get_bd_pins axi_interconnect/M03_ARESETN] [get_bd_pins axi_interconnect/S00_ARESETN]
-  connect_bd_net -net Pilot_Insertion_0_frame_end [get_bd_ports frame_end] [get_bd_pins Pilot_Insertion_0/frame_end]
-  connect_bd_net -net Pilot_Insertion_0_frame_start [get_bd_ports frame_start] [get_bd_pins Pilot_Insertion_0/frame_start]
-  connect_bd_net -net Pilot_Insertion_0_pilot_flag [get_bd_ports pilot_flag] [get_bd_pins Pilot_Insertion_0/pilot_flag]
+  connect_bd_net -net Pilot_Insertion_0_error [get_bd_pins Pilot_Insertion_0/error] [get_bd_pins xlconcat_0/In2]
+  connect_bd_net -net Preamble_0_error [get_bd_pins Preamble_0/error] [get_bd_pins xlconcat_0/In0]
+  connect_bd_net -net QAM_Modulator_1_error [get_bd_pins QAM_Modulator_1/error] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_ports CLK] [get_bd_pins FFT_Controller_0/m00_axis_aclk] [get_bd_pins FFT_Controller_0/s00_axi_aclk] [get_bd_pins Pilot_Insertion_0/m00_axis_aclk] [get_bd_pins Pilot_Insertion_0/s00_axi_aclk] [get_bd_pins Pilot_Insertion_0/s00_axis_aclk] [get_bd_pins Preamble_0/m00_axis_aclk] [get_bd_pins Preamble_0/s00_axi_aclk] [get_bd_pins Preamble_0/s00_axis_aclk] [get_bd_pins QAM_Modulator_1/m00_axis_aclk] [get_bd_pins QAM_Modulator_1/s00_axi_aclk] [get_bd_pins QAM_Modulator_1/s00_axis_aclk] [get_bd_pins axi_interconnect/ACLK] [get_bd_pins axi_interconnect/M00_ACLK] [get_bd_pins axi_interconnect/M01_ACLK] [get_bd_pins axi_interconnect/M02_ACLK] [get_bd_pins axi_interconnect/M03_ACLK] [get_bd_pins axi_interconnect/S00_ACLK] [get_bd_pins xfft_0/aclk]
+  connect_bd_net -net xfft_0_event_data_out_channel_halt [get_bd_pins xfft_0/event_data_out_channel_halt] [get_bd_pins xlconcat_0/In5]
   connect_bd_net -net xfft_0_event_frame_started [get_bd_pins Pilot_Insertion_0/event_frame_started] [get_bd_pins xfft_0/event_frame_started]
-  connect_bd_net -net xfft_0_event_tlast_missing [get_bd_ports event_tlast_missing] [get_bd_pins xfft_0/event_tlast_missing]
-  connect_bd_net -net xfft_0_event_tlast_unexpected [get_bd_ports ERROR] [get_bd_pins xfft_0/event_tlast_unexpected]
+  connect_bd_net -net xfft_0_event_status_channel_halt [get_bd_pins xfft_0/event_status_channel_halt] [get_bd_pins xlconcat_0/In4]
+  connect_bd_net -net xfft_0_event_tlast_missing [get_bd_pins xfft_0/event_tlast_missing] [get_bd_pins xlconcat_0/In3]
+  connect_bd_net -net xlconcat_0_dout [get_bd_ports IRQ_Errors] [get_bd_pins xlconcat_0/dout]
 
   # Create address segments
   create_bd_addr_seg -range 0x00001000 -offset 0x00003000 [get_bd_addr_spaces CONFIG_AXI] [get_bd_addr_segs FFT_Controller_0/S00_AXI/S00_AXI_reg] SEG_FFT_Controller_0_S00_AXI_reg
@@ -295,44 +299,43 @@ CONFIG.xk_index {true} \
   regenerate_bd_layout -layout_string {
    guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port pilot_flag -pg 1 -y 380 -defaultsOSRD
 preplace port RST_AXI -pg 1 -y 200 -defaultsOSRD
-preplace port frame_end -pg 1 -y 420 -defaultsOSRD
 preplace port RST -pg 1 -y 110 -defaultsOSRD
 preplace port CLK -pg 1 -y 180 -defaultsOSRD
 preplace port DATA_OUT_AXIS -pg 1 -y 220 -defaultsOSRD
 preplace port CONFIG_AXI -pg 1 -y 160 -defaultsOSRD
-preplace port frame_start -pg 1 -y 400 -defaultsOSRD
-preplace port event_tlast_missing -pg 1 -y 280 -defaultsOSRD
-preplace port ERROR -pg 1 -y 260 -defaultsOSRD
 preplace port DATA_IN_AXIS -pg 1 -y 90 -defaultsOSRD
+preplace portBus IRQ_Errors -pg 1 -y 60 -defaultsOSRD
 preplace inst Pilot_Insertion_0 -pg 1 -lvl 4 -y 420 -defaultsOSRD
 preplace inst axi_interconnect -pg 1 -lvl 1 -y 280 -defaultsOSRD
 preplace inst QAM_Modulator_1 -pg 1 -lvl 2 -y 180 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 5 -y 60 -defaultsOSRD
 preplace inst FFT_Controller_0 -pg 1 -lvl 4 -y 190 -defaultsOSRD
 preplace inst Preamble_0 -pg 1 -lvl 3 -y 120 -defaultsOSRD
-preplace inst xfft_0 -pg 1 -lvl 5 -y 320 -defaultsOSRD
+preplace inst xfft_0 -pg 1 -lvl 5 -y 370 -defaultsOSRD
+preplace netloc QAM_Modulator_1_error 1 2 3 550 -10 NJ -10 1350J
 preplace netloc DATA_IN_AXIS_1 1 0 2 NJ 90 280J
-preplace netloc xfft_0_event_frame_started 1 3 3 880 550 NJ 550 1720
-preplace netloc xfft_0_event_tlast_unexpected 1 5 1 1730J
-preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1240
+preplace netloc xfft_0_event_frame_started 1 3 3 940 280 1300J 260 1720
+preplace netloc xfft_0_event_data_out_channel_halt 1 4 2 1350 170 1750
+preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1350
+preplace netloc Preamble_0_error 1 3 2 900 10 NJ
 preplace netloc axi_interconnect_M01_AXI 1 1 2 250 50 NJ
-preplace netloc ARESETN_1 1 0 4 -50J 460 280 460 560 460 870
-preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 540
+preplace netloc ARESETN_1 1 0 4 -50J 460 280 460 580 460 930
+preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 560
 preplace netloc ARESETN_2 1 0 1 -30
-preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1720J
+preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1760
+preplace netloc xlconcat_0_dout 1 5 1 N
 preplace netloc S00_AXI_1 1 0 1 NJ
 preplace netloc axi_interconnect_M02_AXI 1 1 3 250 340 NJ 340 NJ
-preplace netloc Pilot_Insertion_0_frame_end 1 4 2 NJ 480 1750J
-preplace netloc xfft_0_event_tlast_missing 1 5 1 1750J
-preplace netloc FFT_Controller_0_M00_AXIS 1 4 1 1260
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 -40 480 270 480 550 480 860 290 1250J
+preplace netloc xfft_0_event_status_channel_halt 1 4 2 1330 180 1730
+preplace netloc xfft_0_event_tlast_missing 1 4 2 1340 160 1740
+preplace netloc Pilot_Insertion_0_error 1 4 1 1320
+preplace netloc FFT_Controller_0_M00_AXIS 1 4 1 1310
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 -40 480 270 480 570 480 920 550 1350J
 preplace netloc axi_interconnect_M00_AXI 1 1 1 260
-preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 310 NJ 310 840
-preplace netloc Preamble_0_M00_AXIS 1 3 1 850
-preplace netloc Pilot_Insertion_0_frame_start 1 4 2 1240J 490 1740J
-preplace netloc Pilot_Insertion_0_pilot_flag 1 4 2 1260J 500 1730J
-levelinfo -pg 1 -70 110 410 700 1060 1510 1770 -top 0 -bot 570
+preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 310 NJ 310 900
+preplace netloc Preamble_0_M00_AXIS 1 3 1 910
+levelinfo -pg 1 -70 110 420 760 1150 1540 1790 -top -40 -bot 790
 ",
 }
 

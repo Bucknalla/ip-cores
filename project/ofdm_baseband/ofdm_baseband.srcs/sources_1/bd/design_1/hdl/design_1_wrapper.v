@@ -1,8 +1,8 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1756540 Mon Jan 23 19:11:19 MST 2017
-//Date        : Thu May 17 14:29:54 2018
-//Host        : alex-warc running 64-bit Ubuntu 16.04.4 LTS
+//Date        : Mon May 28 19:52:08 2018
+//Host        : Alex-Ubuntu running 64-bit Ubuntu 16.04.4 LTS
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
 //Purpose     : IP block netlist
@@ -38,19 +38,15 @@ module design_1_wrapper
     DATA_OUT_AXIS_tready,
     DATA_OUT_AXIS_tuser,
     DATA_OUT_AXIS_tvalid,
-    ERROR,
+    IRQ_Errors,
     RST,
-    RST_AXI,
-    event_tlast_missing,
-    frame_end,
-    frame_start,
-    pilot_flag);
+    RST_AXI);
   input CLK;
-  input [14:0]CONFIG_AXI_araddr;
+  input [13:0]CONFIG_AXI_araddr;
   input [2:0]CONFIG_AXI_arprot;
   output [0:0]CONFIG_AXI_arready;
   input [0:0]CONFIG_AXI_arvalid;
-  input [14:0]CONFIG_AXI_awaddr;
+  input [13:0]CONFIG_AXI_awaddr;
   input [2:0]CONFIG_AXI_awprot;
   output [0:0]CONFIG_AXI_awready;
   input [0:0]CONFIG_AXI_awvalid;
@@ -73,20 +69,16 @@ module design_1_wrapper
   input DATA_OUT_AXIS_tready;
   output [15:0]DATA_OUT_AXIS_tuser;
   output DATA_OUT_AXIS_tvalid;
-  output ERROR;
+  output [5:0]IRQ_Errors;
   input RST;
   input RST_AXI;
-  output event_tlast_missing;
-  output frame_end;
-  output frame_start;
-  output pilot_flag;
 
   wire CLK;
-  wire [14:0]CONFIG_AXI_araddr;
+  wire [13:0]CONFIG_AXI_araddr;
   wire [2:0]CONFIG_AXI_arprot;
   wire [0:0]CONFIG_AXI_arready;
   wire [0:0]CONFIG_AXI_arvalid;
-  wire [14:0]CONFIG_AXI_awaddr;
+  wire [13:0]CONFIG_AXI_awaddr;
   wire [2:0]CONFIG_AXI_awprot;
   wire [0:0]CONFIG_AXI_awready;
   wire [0:0]CONFIG_AXI_awvalid;
@@ -109,13 +101,9 @@ module design_1_wrapper
   wire DATA_OUT_AXIS_tready;
   wire [15:0]DATA_OUT_AXIS_tuser;
   wire DATA_OUT_AXIS_tvalid;
-  wire ERROR;
+  wire [5:0]IRQ_Errors;
   wire RST;
   wire RST_AXI;
-  wire event_tlast_missing;
-  wire frame_end;
-  wire frame_start;
-  wire pilot_flag;
 
   design_1 design_1_i
        (.CLK(CLK),
@@ -146,11 +134,7 @@ module design_1_wrapper
         .DATA_OUT_AXIS_tready(DATA_OUT_AXIS_tready),
         .DATA_OUT_AXIS_tuser(DATA_OUT_AXIS_tuser),
         .DATA_OUT_AXIS_tvalid(DATA_OUT_AXIS_tvalid),
-        .ERROR(ERROR),
+        .IRQ_Errors(IRQ_Errors),
         .RST(RST),
-        .RST_AXI(RST_AXI),
-        .event_tlast_missing(event_tlast_missing),
-        .frame_end(frame_end),
-        .frame_start(frame_start),
-        .pilot_flag(pilot_flag));
+        .RST_AXI(RST_AXI));
 endmodule

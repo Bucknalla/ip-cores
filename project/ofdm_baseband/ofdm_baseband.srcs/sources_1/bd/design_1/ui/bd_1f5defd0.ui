@@ -15,29 +15,29 @@ preplace inst xlconcat_0 -pg 1 -lvl 5 -y 60 -defaultsOSRD
 preplace inst FFT_Controller_0 -pg 1 -lvl 4 -y 190 -defaultsOSRD
 preplace inst Preamble_0 -pg 1 -lvl 3 -y 120 -defaultsOSRD
 preplace inst xfft_0 -pg 1 -lvl 5 -y 370 -defaultsOSRD
-preplace netloc QAM_Modulator_1_error 1 2 3 550 -10 NJ -10 1350J
-preplace netloc DATA_IN_AXIS_1 1 0 2 NJ 90 280J
-preplace netloc xfft_0_event_frame_started 1 3 3 940 280 1300J 260 1720
-preplace netloc xfft_0_event_data_out_channel_halt 1 4 2 1350 170 1750
-preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1350
-preplace netloc Preamble_0_error 1 3 2 900 10 NJ
-preplace netloc axi_interconnect_M01_AXI 1 1 2 250 50 NJ
-preplace netloc ARESETN_1 1 0 4 -50J 460 280 460 580 460 930
-preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 560
-preplace netloc ARESETN_2 1 0 1 -30
-preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1760
+preplace netloc QAM_Modulator_1_error 1 2 3 590 -10 NJ -10 1390J
+preplace netloc DATA_IN_AXIS_1 1 0 2 NJ 90 250J
+preplace netloc xfft_0_event_frame_started 1 3 3 980 280 1340J 260 1760
+preplace netloc xfft_0_event_data_out_channel_halt 1 4 2 1390 170 1790
+preplace netloc Pilot_Insertion_0_M00_AXIS 1 4 1 1390
+preplace netloc Preamble_0_error 1 3 2 940 10 NJ
+preplace netloc axi_interconnect_M01_AXI 1 1 2 220 50 NJ
+preplace netloc ARESETN_1 1 0 4 -80J 460 250 460 620 460 970
+preplace netloc QAM_Modulator_1_M00_AXIS 1 2 1 600
+preplace netloc ARESETN_2 1 0 1 -60
+preplace netloc xfft_0_M_AXIS_DATA 1 5 1 1800
 preplace netloc xlconcat_0_dout 1 5 1 N
 preplace netloc S00_AXI_1 1 0 1 NJ
-preplace netloc axi_interconnect_M02_AXI 1 1 3 250 340 NJ 340 NJ
-preplace netloc xfft_0_event_status_channel_halt 1 4 2 1330 180 1730
-preplace netloc xfft_0_event_tlast_missing 1 4 2 1340 160 1740
-preplace netloc Pilot_Insertion_0_error 1 4 1 1320
-preplace netloc FFT_Controller_0_M00_AXIS 1 4 1 1310
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 -40 480 270 480 570 480 920 550 1350J
-preplace netloc axi_interconnect_M00_AXI 1 1 1 260
-preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 310 NJ 310 900
-preplace netloc Preamble_0_M00_AXIS 1 3 1 910
-levelinfo -pg 1 -70 110 420 760 1150 1540 1790 -top -40 -bot 790
+preplace netloc axi_interconnect_M02_AXI 1 1 3 220 340 NJ 340 NJ
+preplace netloc xfft_0_event_status_channel_halt 1 4 2 1370 180 1770
+preplace netloc xfft_0_event_tlast_missing 1 4 2 1380 160 1780
+preplace netloc Pilot_Insertion_0_error 1 4 1 1360
+preplace netloc FFT_Controller_0_M00_AXIS 1 4 1 1350
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 -70 480 240 480 610 480 960 550 1390J
+preplace netloc axi_interconnect_M00_AXI 1 1 1 230
+preplace netloc axi_interconnect_M03_AXI 1 1 3 NJ 310 NJ 310 940
+preplace netloc Preamble_0_M00_AXIS 1 3 1 950
+levelinfo -pg 1 -100 80 420 800 1190 1580 1820 -top -40 -bot 790
 ",
 }
 {
